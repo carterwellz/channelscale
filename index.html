@@ -152,12 +152,18 @@
                     ) : currentPage === 'about' ? (
                         <AboutPage setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
                     ) : currentPage === 'faq' ? (
-                        <FaqPage setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
+                        <FAQPage setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
+                    ) : currentPage === 'privacy' ? (
+                        <PrivacyPolicyPage setCurrentPage={setCurrentPage} />
+                    ) : currentPage === 'terms' ? (
+                        <TermsOfServicePage setCurrentPage={setCurrentPage} />
+                    ) : currentPage === 'disclaimer' ? (
+                        <DisclaimerPage setCurrentPage={setCurrentPage} />
                     ) : (
                         <SystemConfigurationsPage setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
                     )}
 
-                    <SiteFooter />
+                    <SiteFooter setCurrentPage={setCurrentPage} />
                 </div>
             );
         };
@@ -570,7 +576,7 @@
             );
         };
 
-        const FaqPage = ({ setCurrentPage, navigateToForm }) => {
+        const FAQPage = ({ setCurrentPage, navigateToForm }) => {
             const pageRef = useRef(null);
             const [openIndex, setOpenIndex] = useState(null);
 
@@ -676,6 +682,99 @@
                 </section>
             );
         };
+
+        const LegalPageLayout = ({ title, subtitle, children, setCurrentPage }) => {
+            const pageRef = useRef(null);
+
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    gsap.from(".legal-animate", {
+                        y: 20,
+                        opacity: 0,
+                        duration: 0.6,
+                        stagger: 0.1,
+                        ease: "power2.out"
+                    });
+                }, pageRef);
+                return () => ctx.revert();
+            }, []);
+
+            return (
+                <section ref={pageRef} className="min-h-screen pt-32 pb-24 px-4 md:px-12 relative z-10 bg-[#0D0D0D] text-[#F8FAFC]">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="legal-animate text-center mb-16 border-b border-white/10 pb-12">
+                            <h1 className="font-emphasis text-5xl md:text-7xl tracking-tight uppercase mb-4 text-[#F8FAFC]">
+                                <span className="text-[#FD0033] opacity-50">[</span>{title}<span className="text-[#FD0033] opacity-50">]</span>
+                            </h1>
+                            <p className="font-data text-[#F8FAFC]/50 tracking-widest uppercase text-xs md:text-sm">
+                                {subtitle}
+                            </p>
+                        </div>
+                        <div className="legal-animate font-body text-steel/80 space-y-8 leading-relaxed max-w-3xl mx-auto">
+                            {children}
+                        </div>
+                        <div className="legal-animate mt-20 flex justify-center pt-8 border-t border-white/10">
+                            <button
+                                onClick={() => { setCurrentPage('home'); window.scrollTo(0,0); }}
+                                className="group relative flex items-center justify-center px-8 py-4 border border-white/20 rounded hover:border-[#FD0033] bg-[#0A0A0B] transition-all duration-300"
+                            >
+                                <span className="relative z-10 font-data text-xs tracking-widest uppercase text-white group-hover:text-[#FD0033]">
+                                    [RETURN_TO_HOME]
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const PrivacyPolicyPage = ({ setCurrentPage }) => (
+            <LegalPageLayout title="PRIVACY_POLICY" subtitle="DATA_PROTECTION_PROTOCOL" setCurrentPage={setCurrentPage}>
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">1. Information Collection</h2>
+                <p>We collect information you provide directly to us through our strategic intake forms, including your name, email address, phone number, and business metrics. This telemetry is essential for architecting your content engine.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">2. Data Utilization</h2>
+                <p>Your data is used exclusively to optimize your YouTube growth strategy and facilitate communication regarding our services. We do not sell your business metrics to third-party data brokers.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">3. Security Infrastructure</h2>
+                <p>We implement industry-standard encryption and security protocols to protect your sensitive business information. Our internal systems are monitored for unauthorized access 24/7.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">4. Third-Party Interfaces</h2>
+                <p>While we use selected third-party tools (like Formspree) for data transmission, your information remains within our controlled ecosystem for the purpose of service delivery.</p>
+            </LegalPageLayout>
+        );
+
+        const TermsOfServicePage = ({ setCurrentPage }) => (
+            <LegalPageLayout title="TERMS_OF_SERVICE" subtitle="OPERATIONAL_FRAMEWORK" setCurrentPage={setCurrentPage}>
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">1. Service Scope</h2>
+                <p>ChannelScale provides specialized YouTube strategy and production services. Final output quality is dependent on client cooperation and adherence to the agreed-upon filming protocols.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">2. Intellectual Property</h2>
+                <p>Unless otherwise negotiated, all content produced by ChannelScale for the client remains the property of the client upon final payment. ChannelScale retains the right to display project samples in our portfolio.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">3. Termination Protocol</h2>
+                <p>Either party may terminate the partnership with 30 days written notice. Specific service level agreements (SLAs) may apply to bundled configurations.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">4. Liability Limitation</h2>
+                <p>ChannelScale is not liable for algorithmic shifts or platform-wide changes on YouTube. We provide the architecture, but market conditions remain independent of our systems.</p>
+            </LegalPageLayout>
+        );
+
+        const DisclaimerPage = ({ setCurrentPage }) => (
+            <LegalPageLayout title="LEGAL_DISCLAIMER" subtitle="RISK_AND_RESULTS_TELEMETRY" setCurrentPage={setCurrentPage}>
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">1. Results Variance</h2>
+                <p>Earnings and growth results mentioned are illustrative. Social media success depends on various factors including niche, consistency, and market demand. Past performance of our portfolio does not guarantee future results.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">2. No Financial Advice</h2>
+                <p>The information provided by ChannelScale is for marketing and production purposes only and does not constitute financial, legal, or professional investment advice.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">3. Third-Party Links</h2>
+                <p>Our site and services may contain links to third-party platforms. We are not responsible for the content or privacy policies of these external infrastructures.</p>
+                
+                <h2 className="text-xl font-bold text-white uppercase tracking-wider">4. LLc Ownership</h2>
+                <p>ChannelScale is a registered operating name of Noia Media LLC. All legal contracts and billing are handled through Noia Media LLC.</p>
+            </LegalPageLayout>
+        );
 
         const HeroSection = () => {
             const heroRef = useRef(null);
@@ -887,6 +986,15 @@
                                                 <input type="tel" name="phone_number" required placeholder="Phone Number*" className="flex-1 min-w-0 bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-4 sm:px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
                                             </div>
                                         </div>
+                                        <div className="mt-4">
+                                            <select name="preferred_communication" required className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white/50 font-body focus:outline-none transition-all appearance-none cursor-pointer">
+                                                <option value="" disabled selected>Preferred Communication Method*</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Phone/SMS">Phone / SMS</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Discord">Discord</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     {/* [NARRATIVE] */}
@@ -1017,10 +1125,48 @@
         }
 
         const FeaturesSection = () => {
+            const sectionRef = useRef(null);
+
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    // Floating animations for module icons and elements
+                    gsap.to(".floating-icon", {
+                        y: -10,
+                        duration: 2,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "power1.inOut",
+                        stagger: {
+                            each: 0.5,
+                            from: "random"
+                        }
+                    });
+
+                    // Pulse animations for signals
+                    gsap.to(".pulse-signal", {
+                        opacity: 0.4,
+                        scale: 1.1,
+                        duration: 1.5,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "none"
+                    });
+
+                    // Scanning line animation
+                    gsap.to(".scanning-line", {
+                        x: "300%",
+                        duration: 3,
+                        repeat: -1,
+                        ease: "linear"
+                    });
+                }, sectionRef);
+                return () => ctx.revert();
+            }, []);
+
             return (
-                <section className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5">
+                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5">
                     <div className="max-w-6xl mx-auto">
-                        <div className="flex items-center gap-4 mb-20">
+                        <div className="flex items-center gap-4 mb-20 animate-pulse">
                             <i data-lucide="crosshairs" className="w-5 h-5 text-signal"></i>
                             <span className="font-data text-signal text-sm uppercase tracking-wider">production_modules</span>
                             <div className="h-[1px] bg-white/10 flex-1"></div>
@@ -1031,7 +1177,7 @@
                             <div className="glass-panel p-8 rounded-[2rem] flex flex-col gap-6 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-signal blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
                                 <div className="flex justify-between items-start">
-                                    <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
+                                    <div className="floating-icon p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
                                         <i data-lucide="cpu" className="w-6 h-6 text-signal"></i>
                                     </div>
                                     <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.01</span>
@@ -1040,17 +1186,19 @@
                                     <h3 className="font-heading font-extrabold text-2xl text-white mb-3">Script Stress-Tester</h3>
                                     <p className="font-data text-xs text-white/50 leading-relaxed shadow-sm">
                                         Analyzing text logic... <br />
-                                        <span className="text-obsidian bg-signal px-1 rounded inline-block mt-2 font-bold">High Retentivity Detected</span>
+                                        <span className="text-obsidian bg-signal px-1 rounded inline-block mt-2 font-bold pulse-signal">High Retentivity Detected</span>
                                     </p>
                                 </div>
                                 {/* Mock UI */}
                                 <div className="mt-8 pt-4 border-t border-white/10 flex flex-col gap-2 font-data text-[10px] text-white/30">
                                     <div className="flex justify-between">
                                         <span>Hook Density</span>
-                                        <span className="text-signal">94%</span>
+                                        <span className="text-signal animate-pulse">94%</span>
                                     </div>
-                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                                        <div className="h-full bg-signal w-[94%]"></div>
+                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden relative">
+                                        <div className="h-full bg-signal w-[94%] relative">
+                                            <div className="absolute inset-0 bg-white/20 scanning-line w-full"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1059,7 +1207,7 @@
                             <div className="glass-panel p-8 rounded-[2rem] flex flex-col gap-6 relative overflow-hidden group md:translate-y-8">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-signal blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
                                 <div className="flex justify-between items-start">
-                                    <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
+                                    <div className="floating-icon p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
                                         <i data-lucide="bar-chart-2" className="w-6 h-6 text-signal"></i>
                                     </div>
                                     <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.02</span>
@@ -1072,15 +1220,16 @@
                                 </div>
                                 {/* Interactive Graph Mock */}
                                 <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                                    <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                                    <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:shadow-[0_0_10px_rgba(255,255,255,0.2)] transition-shadow">
                                         <i data-lucide="user" className="w-4 h-4 text-white/60"></i>
                                     </div>
-                                    <div className="flex-1 h-[1px] bg-gradient-to-r from-white/10 via-signal to-white/10 relative">
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-obsidian px-2">
+                                    <div className="flex-1 h-[1px] bg-gradient-to-r from-white/10 via-signal to-white/10 relative overflow-hidden">
+                                        <div className="absolute top-0 bottom-0 bg-white/50 scanning-line w-1/4 blur-sm"></div>
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-obsidian px-2 animate-bounce">
                                             <i data-lucide="youtube" className="w-5 h-5 text-signal"></i>
                                         </div>
                                     </div>
-                                    <div className="w-8 h-8 rounded-full bg-signal/20 border border-signal/50 flex items-center justify-center">
+                                    <div className="w-8 h-8 rounded-full bg-signal/20 border border-signal/50 flex items-center justify-center pulse-signal">
                                         <i data-lucide="dollar-sign" className="w-4 h-4 text-signal"></i>
                                     </div>
                                 </div>
@@ -1090,7 +1239,7 @@
                             <div className="glass-panel p-8 rounded-[2rem] flex flex-col gap-6 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-signal blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
                                 <div className="flex justify-between items-start">
-                                    <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
+                                    <div className="floating-icon p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
                                         <i data-lucide="film" className="w-6 h-6 text-signal"></i>
                                     </div>
                                     <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.03</span>
@@ -1103,10 +1252,12 @@
                                 </div>
                                 {/* Timeline Mock */}
                                 <div className="mt-8 pt-6 border-t border-white/10 relative">
-                                    <div className="w-[2px] h-10 bg-signal absolute left-1/3 top-4 shadow-[0_0_10px_#FD0033] z-10"></div>
+                                    <div className="w-[2px] h-10 bg-signal absolute left-1/3 top-4 shadow-[0_0_15px_#FD0033] z-10 animate-pulse scanning-line-v"></div>
                                     <div className="flex flex-col gap-1.5 opacity-60">
-                                        <div className="w-full h-3 bg-white/5 rounded overflow-hidden flex">
-                                            <div className="w-1/3 bg-signal/20"></div>
+                                        <div className="w-full h-3 bg-white/5 rounded overflow-hidden flex relative">
+                                            <div className="w-1/3 bg-signal/20 relative overflow-hidden">
+                                                <div className="absolute inset-0 bg-signal/20 animate-[pulse_2s_infinite]"></div>
+                                            </div>
                                         </div>
                                         <div className="w-2/3 h-2 bg-white/10 rounded ml-4"></div>
                                         <div className="w-1/2 h-2 bg-white/10 rounded ml-10"></div>
@@ -1115,6 +1266,15 @@
                             </div>
                         </div>
                     </div>
+                    <style dangerouslySetInnerHTML={{ __html: `
+                        @keyframes scanning-line-v {
+                             0% { left: 10%; }
+                             100% { left: 90%; }
+                        }
+                        .scanning-line-v {
+                            animation: scanning-line-v 4s ease-in-out infinite alternate;
+                        }
+                    `}} />
                 </section>
             );
         }
@@ -1550,7 +1710,13 @@
             );
         }
 
-        const SiteFooter = () => {
+        const SiteFooter = ({ setCurrentPage }) => {
+            const handleLegalClick = (e, page) => {
+                e.preventDefault();
+                setCurrentPage(page);
+                window.scrollTo(0, 0);
+            };
+
             return (
                 <footer className="w-full bg-[#030303] border-t border-white/5 py-12 px-4 md:px-12 z-40 relative">
                     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
@@ -1567,19 +1733,19 @@
 
                         {/* Legal Navigation */}
                         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
-                            <a href="#" className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Privacy Policy</a>
-                            <a href="#" className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Terms of Service</a>
-                            <a href="#" className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Disclaimers</a>
+                            <a href="#" onClick={(e) => handleLegalClick(e, 'privacy')} className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Privacy Policy</a>
+                            <a href="#" onClick={(e) => handleLegalClick(e, 'terms')} className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Terms of Service</a>
+                            <a href="#" onClick={(e) => handleLegalClick(e, 'disclaimer')} className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Disclaimers</a>
                         </div>
                     </div>
 
                     {/* Copyright & Terminal Status */}
                     <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="font-data text-[10px] text-white/30 tracking-widest uppercase">
-                            © {new Date().getFullYear()} CHANNELSCALE. ALL RIGHTS RESERVED.
+                        <p className="font-data text-[10px] text-white/30 tracking-widest uppercase text-center md:text-left">
+                            © {new Date().getFullYear()} CHANNELSCALE | A NOIA MEDIA LLC COMPANY. ALL RIGHTS RESERVED.
                         </p>
                         <p className="font-data text-[10px] text-[#FD0033]/70 tracking-widest uppercase">
-                            [STATUS: ONLINE] // SYSTEM_VERSION_1.0
+                            [STATUS: ONLINE] // SYSTEM_VERSION_1.1
                         </p>
                     </div>
                 </footer>
