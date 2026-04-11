@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Specifically allow AI bots
+User-agent: Claude-Bot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ccBot
+Allow: /
+
+Sitemap: https://channelscale.yt/sitemap.xml
