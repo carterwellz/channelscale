@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChannelScale</title>
+    <title>ChannelScale | Full-Stack Content Marketing</title>
     <meta name="description"
-        content="ChannelScale scales YouTube presence for personal brands and founders through data-driven strategy and high-retention production.">
+        content="ChannelScale is Carter Wells. A full-stack content marketer on retainer. YouTube strategy, podcast production, social media management, and short-form clips for brands and founders who are serious about content.">
 
     <!-- Open Graph (LinkedIn / iMessage / etc) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ChannelScale | The Operating System for YouTube Growth">
+    <meta property="og:title" content="ChannelScale | Full-Stack Content Marketing">
     <meta property="og:description"
-        content="ChannelScale scales YouTube presence for personal brands and founders through data-driven strategy and high-retention production.">
+        content="ChannelScale is Carter Wells. A full-stack content marketer on retainer. YouTube strategy, podcast production, social media management, and short-form clips for brands and founders who are serious about content.">
     <meta property="og:image" content="/Website%20Preview.jpg">
-    <meta property="og:image:alt" content="ChannelScale - The Operating System for YouTube Growth">
+    <meta property="og:image:alt" content="ChannelScale - Full-Stack Content Marketing">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ChannelScale | The Operating System for YouTube Growth">
+    <meta name="twitter:title" content="ChannelScale | Full-Stack Content Marketing">
     <meta name="twitter:description"
-        content="ChannelScale scales YouTube presence for personal brands and founders through data-driven strategy and high-retention production.">
+        content="ChannelScale is Carter Wells. A full-stack content marketer on retainer. YouTube strategy, podcast production, social media management, and short-form clips for brands and founders who are serious about content.">
     <meta name="twitter:image" content="/Website%20Preview.jpg">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23FD0033%22/></svg>">
@@ -59,8 +59,8 @@
                 position: fixed;
                 top: 0; left: 0; width: 100%; height: 100%;
                 pointer-events: none;
-                z-index: 50;
-                opacity: 0.05;
+                z-index: 1;
+                opacity: 0.04;
                 background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             }
             .glass-panel {
@@ -82,6 +82,32 @@
                 scrollbar-width: none;
             }
         }
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .logo-item img {
+            opacity: 0.55;
+            transition: opacity 0.35s ease;
+            height: 56px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+        }
+        .logo-item img:hover {
+            opacity: 1;
+        }
+        .logo-item.logo-outline img {
+            filter: drop-shadow(0 0 0 1px rgba(255,255,255,0.5)) brightness(2);
+        }
+        .logo-item.logo-outline img:hover {
+            filter: drop-shadow(0 0 0 1px rgba(255,255,255,0.8)) brightness(2.5);
+        }
+        .results-carousel-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 50s linear infinite;
+        }
     </style>
 
     <!-- Google Fonts -->
@@ -102,6 +128,10 @@
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Social Embeds -->
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 
 <body class="bg-obsidian text-steel font-body antialiased overflow-x-hidden selection:bg-signal selection:text-white">
@@ -145,13 +175,14 @@
                     {currentPage === 'home' ? (
                         <>
                             <HeroSection />
-                            <PortfolioSection />
+                            <StatsSection />
                             <StrategicIntakeSection />
-                            <FeaturesSection />
-                            <WhoThisIsForSection />
-                            <ManifestoSection />
-                            <ProtocolSection />
+                            <WhySocialSection />
+                            <ProcessSection />
+                            <HomeFAQSection setCurrentPage={setCurrentPage} />
                         </>
+                    ) : currentPage === 'work' ? (
+                        <WorkPage setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
                     ) : currentPage === 'about' ? (
                         <AboutPage setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
                     ) : currentPage === 'faq' ? (
@@ -202,25 +233,31 @@
                                 onClick={() => handleNavClick('home')}
                                 className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap ${currentPage === 'home' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
                             >
-                                [HOME_BASE]
+                                [HOME]
                             </button>
                             <button
-                                onClick={() => handleNavClick('faq')}
-                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap ${currentPage === 'faq' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
+                                onClick={() => handleNavClick('work')}
+                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap flex-shrink-0 ${currentPage === 'work' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
                             >
-                                [FAQ]
+                                [OUR_WORK]
                             </button>
                             <button
                                 onClick={() => handleNavClick('services')}
                                 className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap flex-shrink-0 ${currentPage === 'services' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
                             >
-                                [CONFIGURATIONS]
+                                [SERVICES]
                             </button>
                             <button
                                 onClick={() => handleNavClick('about')}
                                 className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap flex-shrink-0 ${currentPage === 'about' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
                             >
                                 [DIRECTOR]
+                            </button>
+                            <button
+                                onClick={() => handleNavClick('faq')}
+                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap ${currentPage === 'faq' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
+                            >
+                                [FAQ]
                             </button>
                             <button onClick={handleInitializeClick} className="btn-magnetic group relative overflow-hidden px-6 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors flex-shrink-0">
                                 <span className="relative z-10 font-data text-sm font-bold uppercase tracking-wider">Initialize</span>
@@ -249,25 +286,31 @@
                             onClick={() => handleNavClick('home')}
                             className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'home' ? 'text-[#FD0033]' : 'text-white/60'}`}
                         >
-                            [HOME_BASE]
+                            [HOME]
                         </button>
                         <button
-                            onClick={() => handleNavClick('faq')}
-                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'faq' ? 'text-[#FD0033]' : 'text-white/60'}`}
+                            onClick={() => handleNavClick('work')}
+                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'work' ? 'text-[#FD0033]' : 'text-white/60'}`}
                         >
-                            [FAQ]
+                            [OUR_WORK]
                         </button>
                         <button
                             onClick={() => handleNavClick('services')}
                             className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'services' ? 'text-[#FD0033]' : 'text-white/60'}`}
                         >
-                            [CONFIGURATIONS]
+                            [SERVICES]
                         </button>
                         <button
                             onClick={() => handleNavClick('about')}
                             className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'about' ? 'text-[#FD0033]' : 'text-white/60'}`}
                         >
                             [DIRECTOR]
+                        </button>
+                        <button
+                            onClick={() => handleNavClick('faq')}
+                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'faq' ? 'text-[#FD0033]' : 'text-white/60'}`}
+                        >
+                            [FAQ]
                         </button>
                         <div className="pt-6 pb-2 w-full px-8 flex justify-center">
                             <button onClick={handleInitializeClick} className="w-full max-w-xs group relative overflow-hidden px-4 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors">
@@ -329,16 +372,13 @@
                             <div className="about-animate grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                                 <div className="md:col-span-4 relative z-10 border-l-4 border-[#FD0033] pl-3">
                                     <h2 className="font-emphasis text-4xl md:text-5xl text-[#F8FAFC] tracking-tight uppercase mb-2">System Architecture</h2>
-                                    <span className="font-data text-[#FD0033] text-xs tracking-widest uppercase block">
-                                        [MODULE_01] // PEDIGREE
-                                    </span>
                                 </div>
                                 <div className="md:col-span-8 flex flex-col gap-6">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light">
-                                        I built ChannelScale to solve the operational drag of high-level content. Over the last two years, I have worked with top-tier production teams to architect systems that have combined for over <span className="text-[#F8FAFC] font-bold">1.4 Billion views</span> and <span className="text-[#F8FAFC] font-bold">3 Million subscribers</span>.
+                                        I built ChannelScale to solve the operational drag that kills high-level content. Social media management does not solve the full picture. An outside marketing team without in-house creative production loses the touch. But when you bring the creative, the direction, and the strategy under one roof, it functions like a single machine. Same voice. Same goal. Every time.
                                     </p>
                                     <p className="font-data text-sm md:text-base text-[#F8FAFC]/70 leading-relaxed bg-[#0A0A0B] p-6 border border-white/5 rounded-lg shadow-inner">
-                                        From scaling a channel from 0 to 500k subscribers in a single year to managing the output for multi-million subscriber ecosystems, I have mastered the frameworks that drive massive attention and long-term retention.
+                                        I have been making content since 2016. Professionally for six years across graphic design, documentary cinematography, and video editing. Over the last two years I built out the internal workflows and assembled a team, running everything quietly for my own portfolio. Now I am opening it up. If you have ever tried to get your branding, strategy, and creative to actually work together without it consuming your schedule, we have already solved that problem.
                                     </p>
                                 </div>
                             </div>
@@ -347,17 +387,14 @@
                             <div className="about-animate grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                                 <div className="md:col-span-4 relative z-10 border-l-4 border-[#FD0033] pl-3">
                                     <h2 className="font-emphasis text-4xl md:text-5xl text-[#F8FAFC] tracking-tight uppercase mb-2">The Foundation</h2>
-                                    <span className="font-data text-[#FD0033] text-xs tracking-widest uppercase block">
-                                        [MODULE_02] // FOUNDATION
-                                    </span>
                                 </div>
                                 <div className="md:col-span-8 flex flex-col gap-6">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light">
-                                        My approach is rooted in a Bachelor of Arts in Cinema and a decade of experience producing for organizations like the <span className="text-[#F8FAFC] font-bold">PGA Tour</span>, <span className="text-[#F8FAFC] font-bold">Iowa Hawkeye Football</span>, and the <span className="text-[#F8FAFC] font-bold">NWSL</span>. I’ve taken that professional rigor and applied it to the YouTube economy, generating <span className="text-[#F8FAFC] font-bold">six figures</span> in personal AdSense revenue from my own portfolio alone.
+                                        My approach is rooted in a Bachelor of Arts in Cinema and a decade of experience producing for organizations like the <span className="text-[#F8FAFC] font-bold">PGA Tour</span>, <span className="text-[#F8FAFC] font-bold">Iowa Hawkeye Football</span>, and the <span className="text-[#F8FAFC] font-bold">NWSL</span>. I’ve taken that professional rigor and applied it to the YouTube economy, generating <span className="text-[#F8FAFC] font-bold">six figures</span> in personal AdSense revenue from my own portfolio alone. Executive producer of <span className="text-[#F8FAFC] font-bold">Counterpoint Studios</span>, a nationally distributed dialogue series. Builder of <span className="text-[#F8FAFC] font-bold">SlicePost</span>, an internal-only pipeline tool for automated social media video clip distribution.
                                     </p>
                                     <div className="p-6 border-l-4 border-[#FD0033] bg-[#FD0033]/10">
                                         <p className="font-heading text-xl md:text-3xl text-[#F8FAFC] font-extrabold tracking-tight">
-                                            Applying these strategies to a brand that can capitalize on lead generation makes this a <span className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.8)]">no-brainer</span> for any high-level voice.
+                                            "Applying these strategies to a brand that can capitalize on lead generation makes this a <span className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.8)]">no-brainer</span> for any high-level voice."
                                         </p>
                                     </div>
                                 </div>
@@ -368,13 +405,10 @@
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#FD0033] blur-[120px] opacity-10 pointer-events-none"></div>
                                 <div className="md:col-span-4 relative z-10">
                                     <h2 className="font-emphasis text-4xl md:text-5xl text-[#F8FAFC] tracking-tight uppercase mb-2">The Studio Standard</h2>
-                                    <span className="font-data text-[#FD0033] text-xs tracking-widest uppercase block border-l-4 border-[#FD0033] pl-3">
-                                        [MODULE_03] // QC FOCUS
-                                    </span>
                                 </div>
                                 <div className="md:col-span-8 relative z-10">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light">
-                                        ChannelScale operates as a specialized post-production studio. While our crew handles the heavy lifting of the edit, I personally review and finalize every strategy and frame. You get the output of a full team with the quality control of a single director.
+                                        ChannelScale operates as a specialized content marketing studio. YouTube, podcast, social. Whatever the format, you get the output of a full team with the quality control of a single proven director. I personally review and finalize every strategy and frame. Let's partner together to scale your channel.
                                     </p>
                                 </div>
                             </div>
@@ -419,143 +453,133 @@
                 <section ref={pageRef} className="min-h-screen pt-32 pb-24 px-4 md:px-12 relative z-10 bg-[#0D0D0D] text-[#F8FAFC]">
                     <div className="max-w-5xl mx-auto">
 
-                        {/* 1. Header */}
-                        <div className="config-animate text-center mb-24 border-b border-white/10 pb-16">
+                        {/* Header */}
+                        <div className="config-animate text-center mb-20 border-b border-white/10 pb-16">
                             <h1 className="font-emphasis text-[9.5vw] sm:text-6xl md:text-[6rem] lg:text-[7rem] tracking-tight uppercase leading-[0.85] mb-6 text-[#F8FAFC] drop-shadow-[0_0_15px_rgba(253,0,51,0.15)] break-words break-all sm:break-normal">
-                                <span className="text-[#FD0033] opacity-50">[</span>SYSTEM_CONFIGURATIONS<span className="text-[#FD0033] opacity-50">]</span>
+                                <span className="text-[#FD0033] opacity-50">[</span>SERVICES<span className="text-[#FD0033] opacity-50">]</span>
                             </h1>
-                            <p className="font-data text-[#F8FAFC]/70 tracking-widest uppercase text-sm md:text-lg">
-                                "Architected for Scale. Engineered for Results."
+                            <p className="font-data text-[#F8FAFC]/50 tracking-widest uppercase text-sm md:text-base">
+                                Creative. Direction. Strategy. One roof.
                             </p>
                         </div>
 
-                        <div className="space-y-24">
+                        <div className="space-y-20">
 
-                            {/* 2. Initialization Protocol */}
+                            {/* Positioning block */}
                             <div className="config-animate border border-[#FD0033] p-8 md:p-12 rounded-xl relative overflow-hidden bg-[#0A0A0B] shadow-[0_0_30px_rgba(253,0,51,0.2)]">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#FD0033] blur-[120px] opacity-10 pointer-events-none"></div>
-                                <div className="relative z-10">
-                                    <h2 className="font-emphasis text-4xl md:text-5xl text-[#F8FAFC] tracking-tight uppercase mb-6">
-                                        <span className="text-[#FD0033] opacity-50">[</span>SYSTEM_INITIALIZATION<span className="text-[#FD0033] opacity-50">]</span>
-                                    </h2>
+                                <div className="relative z-10 space-y-6">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light border-l-4 border-[#FD0033] pl-6">
-                                        Every partnership begins here. We perform a total rework of your YouTube Infrastructure from Channel Banner to back-end metadata. We build the foundation then we run the engine. (One-Time Setup Fee Required)
+                                        ChannelScale is built to solve the operational drag that kills high-level content.
+                                    </p>
+                                    <p className="font-body text-lg text-[#F8FAFC]/70 leading-relaxed font-light">
+                                        Social media management alone does not solve the full picture. An outside marketing team without in-house creative production loses the voice. But when you bring the creative, the direction, and the strategy under one roof, it functions like a single machine. Same voice. Same goal. Every time.
                                     </p>
                                 </div>
                             </div>
 
-                            {/* 3. The Configurations */}
-                            <div className="config-animate space-y-12">
-                                <h3 className="font-data text-[#FD0033] text-sm md:text-base tracking-widest uppercase mb-8 border-b border-white/10 pb-4">
-                                    SYS.01 // BUNDLED_TIERS
-                                </h3>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                                    {/* [THE_EDIT] */}
-                                    <div className="bg-[#0A0A0B] border border-white/10 rounded-xl p-8 hover:border-[#FD0033] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(253,0,51,0.5)]">
-                                        <h4 className="font-emphasis text-3xl tracking-wide uppercase mb-2 text-[#F8FAFC]">[THE_EDIT]</h4>
-                                        <p className="font-body text-base text-[#F8FAFC]/80 leading-relaxed font-light mb-6 border-b border-white/10 pb-4">
-                                            For those who want the technical drag removed.
-                                        </p>
-                                        <p className="font-body text-base text-[#F8FAFC]/90 leading-relaxed font-light">
-                                            <span className="text-[#F8FAFC] font-semibold">Specs:</span> 1x Long-form per week. Custom Thumbnails. Niche Optimization.
-                                        </p>
-                                    </div>
-
-                                    {/* [THE_MANAGER] (Permanent Elevation) */}
-                                    <div className="bg-[#0A0A0B] border border-[#FD0033] rounded-xl p-8 shadow-[0_0_60px_rgba(253,0,51,0.6)] relative overflow-hidden transform scale-110 z-10 w-full relative">
-                                        <div className="absolute inset-0 bg-[#FD0033] mix-blend-overlay opacity-5 pointer-events-none"></div>
-                                        <div className="absolute top-0 left-0 w-full h-1 bg-[#FD0033]"></div>
-                                        <h4 className="font-emphasis text-4xl tracking-wide uppercase mb-2 text-[#FD0033] drop-shadow-[0_0_10px_rgba(253,0,51,0.5)]">[THE_MANAGER]</h4>
-                                        <p className="font-body text-base text-[#FD0033]/90 leading-relaxed font-light mb-6 border-b border-[#FD0033]/20 pb-4 drop-shadow-[0_0_5px_rgba(253,0,51,0.3)]">
-                                            For those who want a hands-off YouTube experience.
-                                        </p>
-                                        <p className="font-body text-base text-[#F8FAFC]/90 leading-relaxed font-light">
-                                            <span className="text-[#F8FAFC] font-semibold">Specs:</span> Everything in [THE_EDIT]. Full Scripting. Ideation. 3x Shorts per video. Managed Posting.
-                                        </p>
-                                    </div>
-
-                                    {/* [THE_PARTNER] */}
-                                    <div className="bg-[#0A0A0B] border border-white/10 rounded-xl p-8 hover:border-[#FD0033] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(253,0,51,0.5)]">
-                                        <h4 className="font-emphasis text-3xl tracking-wide uppercase mb-2 text-[#F8FAFC]">[THE_PARTNER]</h4>
-                                        <p className="font-body text-base text-[#F8FAFC]/80 leading-relaxed font-light mb-6 border-b border-white/10 pb-4">
-                                            For those who want a hands-off social media presence.
-                                        </p>
-                                        <p className="font-body text-base text-[#F8FAFC]/90 leading-relaxed font-light">
-                                            <span className="text-[#F8FAFC] font-semibold">Specs:</span> Everything in [THE_MANAGER]. Social Multiplier (IG/TT). 1-on-1 Coaching. Live Thumbnail A/B Testing. Continuous Full Channel Daily Data Analysis.
-                                        </p>
-                                    </div>
-
+                            {/* Flexible engagement callout */}
+                            <div className="config-animate flex items-start gap-5 bg-white/[0.03] border border-white/10 rounded-xl p-7 md:p-10">
+                                <div className="w-1.5 h-full min-h-[48px] bg-[#FD0033] rounded-full flex-shrink-0 mt-1"></div>
+                                <div>
+                                    <p className="font-heading font-bold text-lg md:text-xl text-[#F8FAFC] mb-2 uppercase tracking-wide">As much or as little as you need.</p>
+                                    <p className="font-body text-[#F8FAFC]/70 leading-relaxed">
+                                        Partners can plug into the full operation or bring us in for a single service. Want us to run your entire content engine? Done. Just need your YouTube edited? Also done. We scope what you actually need and build from there.
+                                    </p>
                                 </div>
                             </div>
 
-                            {/* 4. Custom Architecture Directive */}
-                            <div className="config-animate border border-white/10 p-8 md:p-12 rounded-xl bg-[#030303] shadow-inner mb-24">
-                                <h2 className="font-emphasis text-[9vw] sm:text-4xl md:text-5xl text-[#F8FAFC] tracking-tight uppercase mb-4 text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] break-words break-all sm:break-normal">
-                                    [CUSTOM_SYSTEM_BUILDS]
-                                </h2>
-                                <p className="font-data text-[#FD0033] text-sm md:text-base tracking-widest uppercase mb-8 border-b border-[#FD0033]/30 pb-4 text-center mx-auto max-w-[300px]">
-                                    SYS.02 // BESPOKE_ENGINEERING
-                                </p>
-                                <p className="font-body text-lg md:text-xl text-[#F8FAFC]/80 leading-relaxed font-light text-center max-w-4xl mx-auto">
-                                    The configurations above are our most utilized frameworks but every high-level brand has unique requirements. Every partnership at ChannelScale begins with a consultation. During your System Audit we can architect a custom bundle tailored specifically to your needs ranging from full-scale on-site video production to high-volume short-form repurposing across all socials.
-                                </p>
-                            </div>
-
-                            {/* 5. The A LA CARTE Menu */}
-                            <div className="config-animate space-y-12">
-                                <h3 className="font-data text-[#FD0033] text-sm md:text-base tracking-widest uppercase mb-8 border-b border-white/10 pb-4">
-                                    SYS.03 // [A_LA_CARTE]
-                                </h3>
+                            {/* Service cards */}
+                            <div className="config-animate">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                                    {/* Item */}
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="user" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Strategic Consultation</h4>
+                                            <i data-lucide="play" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">YouTube Production</h4>
                                         </div>
-                                        <p className="font-body text-[#F8FAFC]/80 font-light leading-relaxed">
-                                            1-on-1 sessions for content strategy and audits. Answers for the questions AI can't process.
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Full end-to-end YouTube operation. Channel strategy, branding, thumbnail design, title writing, scripting, and video editing. The anchor of your entire content presence.
                                         </p>
                                     </div>
-                                    {/* Item */}
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="camera" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Field Operations</h4>
+                                            <i data-lucide="film" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Video Editing</h4>
                                         </div>
-                                        <p className="font-body text-[#F8FAFC]/80 font-light leading-relaxed">
-                                            On-site cinema-grade capture. We travel to you to film documentaries, series, or high-stakes brand assets.
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Post-production for any format. Short form social clips, long-form YouTube videos, branded commercials, and podcast edits. If it was filmed, we can build it.
                                         </p>
                                     </div>
-                                    {/* Item */}
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="mic" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Podcast Architecture</h4>
+                                            <i data-lucide="camera" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">On-Site Production</h4>
                                         </div>
-                                        <p className="font-body text-[#F8FAFC]/80 font-light leading-relaxed">
-                                            Full podcast production. We turn raw conversations into high-retention multi-platform assets.
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            We come to you. Cinema-grade capture for branded series, documentaries, event coverage, and high-stakes shoots. Setup to final edit, handled entirely by us.
                                         </p>
                                     </div>
-                                    {/* Item */}
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="share" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">The Social Multiplier</h4>
+                                            <i data-lucide="mic" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Podcast Production</h4>
                                         </div>
-                                        <p className="font-body text-[#F8FAFC]/80 font-light leading-relaxed">
-                                            Stand-alone short-form creation and daily social posting for TikTok, Instagram, and Shorts.
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Full podcast build from the ground up. Recording setup, editing, show notes, clip extraction, and distribution across every major platform. You talk. We handle everything else.
                                         </p>
                                     </div>
-                                    {/* Item (Full Width) */}
-                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group md:col-span-2">
+                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="layout" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">The Blueprint</h4>
+                                            <i data-lucide="smartphone" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Social Media Management</h4>
                                         </div>
-                                        <p className="font-body text-[#F8FAFC]/80 font-light leading-relaxed">
-                                            Scripting and Packaging only. High-click thumbnails, titles, and full video scripts for your team to execute.
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Full account management across every major platform. Posting, scheduling, community engagement, and growth strategy. Your presence stays active and consistent without you lifting a finger.
+                                        </p>
+                                    </div>
+                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <i data-lucide="scissors" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Social Media Clipping</h4>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            We pull the best moments from your long-form content and distribute them across every major platform systematically. Your reach compounds without extra effort on your end.
+                                        </p>
+                                    </div>
+                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <i data-lucide="globe" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Web Apps & Digital Funnels</h4>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Custom web applications built to turn your social audience into real business. Lead capture pages, booking systems, and conversion funnels designed specifically around your brand and offer.
+                                        </p>
+                                    </div>
+                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <i data-lucide="mail" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Email & Text Automations</h4>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Marketing systems that run without you. Email sequences, SMS campaigns, and automated follow-up flows built to move your audience from viewer to paying client.
+                                        </p>
+                                    </div>
+                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <i data-lucide="cpu" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Internal Tools Access</h4>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Partners get access to our full internal toolkit. Content generators, caption tools, lead generation systems, and custom performance dashboards built for your business.
+                                        </p>
+                                    </div>
+                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <i data-lucide="user" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Strategy & Consulting</h4>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            1-on-1 sessions on content strategy, platform direction, and channel audits. Before we build anything, we figure out exactly what needs to be built and why.
                                         </p>
                                     </div>
                                 </div>
@@ -563,18 +587,473 @@
                         </div>
 
                         {/* Action Area */}
-                        <div className="config-animate mt-32 flex justify-center pt-8 border-t border-white/10">
+                        <div className="config-animate mt-28 flex justify-center pt-8 border-t border-white/10">
                             <button
                                 onClick={navigateToForm || (() => setCurrentPage('home'))}
                                 className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
                             >
                                 <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
-                                    [INITIALIZE_SYSTEM_AUDIT]
+                                    [START_A_CONVERSATION]
                                 </span>
                             </button>
                         </div>
 
                     </div>
+                </section>
+            );
+        };
+
+        const WorkPage = ({ setCurrentPage, navigateToForm }) => {
+            const pageRef = useRef(null);
+            const [lightbox, setLightbox] = React.useState(null);
+
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    gsap.from(".work-animate", {
+                        y: 30, opacity: 0, duration: 0.8, stagger: 0.12, ease: "power3.out"
+                    });
+                }, pageRef);
+                return () => ctx.revert();
+            }, []);
+
+            React.useEffect(() => {
+                const onKey = (e) => { if (e.key === 'Escape') setLightbox(null); };
+                window.addEventListener('keydown', onKey);
+                return () => window.removeEventListener('keydown', onKey);
+            }, []);
+
+            React.useEffect(() => {
+                if (window.lucide) window.lucide.createIcons();
+                if (window.instgrm) window.instgrm.Embeds.process();
+                if (window.twttr && window.twttr.widgets) window.twttr.widgets.load();
+            });
+
+            const ClickImg = ({ src, alt, className }) => (
+                <img src={src} alt={alt || ''} className={`cursor-zoom-in ${className || ''}`} onClick={() => setLightbox(src)} />
+            );
+
+            const ScreenshotSlot = ({ label }) => (
+                <div className="aspect-video bg-white/[0.02] border border-dashed border-white/15 rounded-lg flex flex-col items-center justify-center gap-3 mb-5 hover:border-[#FD0033]/30 transition-colors">
+                    <i data-lucide="image" className="w-8 h-8 text-white/15"></i>
+                    <span className="font-data text-[10px] text-white/20 uppercase tracking-widest">{label}</span>
+                </div>
+            );
+
+            const SectionHeader = ({ icon, label, description }) => (
+                <div className="flex items-center gap-4 mb-10 pb-5 border-b border-white/10">
+                    <div className="p-2.5 rounded-lg bg-[#FD0033]/10 border border-[#FD0033]/20 flex-shrink-0">
+                        <i data-lucide={icon} className="w-5 h-5 text-[#FD0033]"></i>
+                    </div>
+                    <div>
+                        <h2 className="font-emphasis text-3xl md:text-4xl uppercase tracking-wide text-[#F8FAFC]">{label}</h2>
+                        <p className="font-body text-[#F8FAFC]/50 text-sm mt-0.5">{description}</p>
+                    </div>
+                </div>
+            );
+
+            const resultScreenshots = [
+                "Short%20form/Results/Screenshot%202026-06-11%20214353.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20224102.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214928.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214612.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20215439.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214435.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20224137.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20215238.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214645.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20230104.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20221145.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214423.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20215212.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214634.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20224150.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20220903.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214448.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20215329.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20214744.png",
+                "Short%20form/Results/Screenshot%202026-06-11%20222149.png",
+            ];
+
+            const shortFormPairs = [
+                {
+                    client: "@bowmarbowhunting",
+                    before: "Short%20form/Before%20results/before%20bowmar.png",
+                    beforeViews: "29K views",
+                    after: "Short%20form/Results/After%20bowmar.png",
+                    afterViews: "2M views",
+                },
+                {
+                    client: "@bible_alive",
+                    before: "Short%20form/Before%20results/bible%20alive%20before.png",
+                    beforeViews: "25.3K views",
+                    after: "Short%20form/Results/Bible%20Alive%20After.png",
+                    afterViews: "4.3M views",
+                },
+                {
+                    client: "@counterpointstudios",
+                    before: "Short%20form/Before%20results/Counterpoint%20before.png",
+                    beforeViews: "2.1K views",
+                    after: "Short%20form/Results/Counterpoint%20after.png",
+                    afterViews: "2M views",
+                },
+            ];
+
+            const ytChannels = [
+                {
+                    client: "Bible Alive",
+                    handle: "@bible_alive",
+                    href: "https://www.youtube.com/@bible_alive",
+                    avatar: "https://unavatar.io/youtube/bible_alive",
+                    stat: "550K+ Subscribers",
+                    tags: ["Channel Strategy", "Video Editing", "Thumbnails", "Scripting"],
+                    body: "Built and scaled one of the fastest-growing Christian apologetics channels on YouTube. Full production, strategy, and growth system from the ground up."
+                },
+                {
+                    client: "Bowmar Bowhunting",
+                    handle: "@bowmarbowhunting",
+                    href: "https://www.youtube.com/@bowmarbowhunting",
+                    avatar: "https://unavatar.io/youtube/bowmarbowhunting",
+                    stat: "2.6M+ Subscribers",
+                    tags: ["YouTube Management", "Video Editing", "Growth Strategy"],
+                    body: "Long-form YouTube content for one of the most followed bowhunting brands in the world. Consistent production at scale."
+                },
+                {
+                    client: "Counterpoint Studios",
+                    handle: "@counterpointstudios",
+                    href: "https://www.youtube.com/@counterpointstudios",
+                    avatar: "https://unavatar.io/youtube/counterpointstudios",
+                    stat: "26K+ Subscribers",
+                    tags: ["Channel Build", "Full Production", "On-Site Filming"],
+                    body: "Built the Counterpoint channel from scratch. End-to-end production including on-site filming with multiple 4K cameras, editing, and full distribution."
+                }
+            ];
+
+            return (
+                <section ref={pageRef} className="min-h-screen pt-32 pb-24 px-4 md:px-12 relative z-10 bg-[#0D0D0D] text-[#F8FAFC]">
+                    <div className="max-w-5xl mx-auto">
+
+                        {/* Header */}
+                        <div className="work-animate text-center mb-20 border-b border-white/10 pb-16">
+                            <h1 className="font-emphasis text-[9.5vw] sm:text-6xl md:text-[6rem] lg:text-[7rem] tracking-tight uppercase leading-[0.85] mb-6 text-[#F8FAFC] drop-shadow-[0_0_15px_rgba(253,0,51,0.15)] break-words break-all sm:break-normal">
+                                <span className="text-[#FD0033] opacity-50">[</span>OUR WORK<span className="text-[#FD0033] opacity-50">]</span>
+                            </h1>
+                            <p className="font-data text-[#F8FAFC]/50 tracking-widest uppercase text-sm md:text-base">
+                                Real clients. Real results. Real work.
+                            </p>
+                        </div>
+
+                        <div className="space-y-24">
+
+                            {/* Video Content */}
+                            <div className="work-animate">
+                                <SectionHeader icon="clapperboard" label="Short-Form Results" description="View counts from our content strategy and short-form editing." />
+
+                                {/* Auto-scrolling carousel */}
+                                <div className="relative overflow-hidden"
+                                    style={{
+                                        maskImage: 'linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent)',
+                                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent)'
+                                    }}>
+                                    <div className="results-carousel-track">
+                                        {[...resultScreenshots, ...resultScreenshots].map((src, i) => (
+                                            <div key={i} className="flex-shrink-0 rounded-xl overflow-hidden bg-[#111]" style={{width: '210px', height: '380px', marginRight: '14px'}}>
+                                                <img src={src} alt="Content result" className="w-full h-full object-cover object-bottom" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Short-Form Before & After */}
+                                <div className="mt-16">
+                                    <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.25em] mb-8">Short-Form Before &amp; After</p>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                        {shortFormPairs.map((pair, i) => (
+                                            <div key={i} className="flex flex-col gap-4">
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    {/* Before */}
+                                                    <div className="flex flex-col gap-2">
+                                                        <div className="relative rounded-xl overflow-hidden bg-[#111]" style={{aspectRatio: '9/16'}}>
+                                                            <ClickImg src={pair.before} alt="Before" className="w-full h-full object-cover object-bottom" />
+                                                            <span className="absolute top-2 left-2 font-data text-[10px] font-bold uppercase tracking-widest bg-black/85 text-white px-2 py-1 rounded">Before</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-1.5">
+                                                            <i data-lucide="eye" className="w-3 h-3 text-white/40 flex-shrink-0"></i>
+                                                            <span className="font-data text-xs font-bold text-white/50">{pair.beforeViews}</span>
+                                                        </div>
+                                                    </div>
+                                                    {/* After */}
+                                                    <div className="flex flex-col gap-2">
+                                                        <div className="relative rounded-xl overflow-hidden bg-[#111]" style={{aspectRatio: '9/16'}}>
+                                                            <ClickImg src={pair.after} alt="After" className="w-full h-full object-cover object-bottom" />
+                                                            <span className="absolute top-2 left-2 font-data text-[10px] font-bold uppercase tracking-widest bg-[#FD0033] text-white px-2 py-1 rounded">After</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-1.5">
+                                                            <i data-lucide="eye" className="w-3 h-3 text-[#FD0033] flex-shrink-0"></i>
+                                                            <span className="font-data text-xs font-bold text-[#FD0033]">{pair.afterViews}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* YouTube Production */}
+                            <div className="work-animate">
+                                <SectionHeader icon="play-circle" label="YouTube Production" description="Full channel builds. Strategy, scripting, editing, thumbnails, and growth." />
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                    {ytChannels.map((ch, i) => (
+                                        <div key={i} className="bg-white/[0.02] border border-white/8 rounded-xl p-6 hover:border-white/20 transition-colors group flex flex-col">
+                                            {/* Avatar */}
+                                            <div className="flex items-center gap-4 mb-5">
+                                                <img
+                                                    src={ch.avatar}
+                                                    alt={ch.client}
+                                                    className="w-14 h-14 rounded-full object-cover border-2 border-white/10 group-hover:border-[#FD0033]/40 transition-colors flex-shrink-0"
+                                                    onError={(e) => { e.target.style.display='none'; }}
+                                                />
+                                                <div className="min-w-0">
+                                                    <a href={ch.href} target="_blank" rel="noopener noreferrer"
+                                                        className="font-heading font-bold text-[#F8FAFC] text-base leading-tight hover:text-[#FD0033] transition-colors flex items-center gap-1.5 group/link">
+                                                        {ch.client}
+                                                        <i data-lucide="external-link" className="w-3 h-3 opacity-40 group-hover/link:opacity-100 transition-opacity flex-shrink-0"></i>
+                                                    </a>
+                                                    <span className="font-data text-[10px] text-white/35 uppercase tracking-widest">{ch.handle}</span>
+                                                </div>
+                                            </div>
+                                            <span className="font-data text-xs text-[#FD0033] border border-[#FD0033]/30 rounded-full px-3 py-1 self-start mb-4">{ch.stat}</span>
+                                            <p className="font-body text-[#F8FAFC]/60 text-sm leading-relaxed mb-4 flex-1">{ch.body}</p>
+                                            <div className="flex flex-wrap gap-2">
+                                                {ch.tags.map((tag, ti) => (
+                                                    <span key={ti} className="font-data text-[9px] text-white/40 bg-white/5 border border-white/10 rounded px-2 py-1 uppercase tracking-wider">{tag}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Before & After */}
+                                <div className="bg-white/[0.02] border border-white/8 rounded-xl p-6">
+                                    {/* Header */}
+                                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                                        <p className="font-data text-sm text-white/60 uppercase tracking-widest font-bold">Video Editing & Thumbnail Design — Before & After</p>
+                                    </div>
+                                    <div className="flex items-center gap-2 mb-8">
+                                        <i data-lucide="play-circle" className="w-4 h-4 text-[#FD0033]"></i>
+                                        <span className="font-data text-sm text-[#FD0033] font-bold">@BowmarBowhunting</span>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                        {[
+                                            { before: "Bowmar%20before%20and%20after/Before/Screenshot%202026-06-11%20152133.png", beforeViews: "30K", after: "Bowmar%20before%20and%20after/After/Screenshot%202026-06-11%20152455.png", afterViews: "573K" },
+                                            { before: "Bowmar%20before%20and%20after/Before/Screenshot%202026-06-11%20152334.png", beforeViews: "42K", after: "Bowmar%20before%20and%20after/After/Screenshot%202026-06-11%20152517.png", afterViews: "569K" },
+                                            { before: "Bowmar%20before%20and%20after/Before/Screenshot%202026-06-11%20152358.png", beforeViews: "16K", after: "Bowmar%20before%20and%20after/After/Screenshot%202026-06-11%20152604.png", afterViews: "178K" },
+                                        ].map((pair, i) => (
+                                            <div key={i} className="flex flex-col gap-2">
+                                                {/* Before */}
+                                                <div className="relative rounded-lg overflow-hidden h-[200px] bg-[#0A0A0B]">
+                                                    <ClickImg src={pair.before} alt="Before" className="w-full h-full object-contain object-top" />
+                                                    <span className="absolute top-2 left-2 font-data text-[11px] font-bold uppercase tracking-widest bg-black/85 text-white px-2.5 py-1 rounded">Before</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 px-0.5">
+                                                    <i data-lucide="eye" className="w-3.5 h-3.5 text-white/40 flex-shrink-0"></i>
+                                                    <span className="font-data text-sm font-bold text-white/50">{pair.beforeViews} views</span>
+                                                </div>
+                                                {/* Arrow */}
+                                                <div className="flex justify-center items-center py-0.5">
+                                                    <i data-lucide="arrow-down" className="w-6 h-6 text-[#FD0033]"></i>
+                                                </div>
+                                                {/* After */}
+                                                <div className="relative rounded-lg overflow-hidden h-[200px] bg-[#0A0A0B]">
+                                                    <ClickImg src={pair.after} alt="After" className="w-full h-full object-contain object-top" />
+                                                    <span className="absolute top-2 left-2 font-data text-[11px] font-bold uppercase tracking-widest bg-[#FD0033] text-white px-2.5 py-1 rounded">After</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 px-0.5">
+                                                    <i data-lucide="eye" className="w-3.5 h-3.5 text-[#FD0033] flex-shrink-0"></i>
+                                                    <span className="font-data text-sm font-bold text-[#FD0033]">{pair.afterViews} views</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* GiveMeAnAnswer Before & After */}
+                                <div className="bg-white/[0.02] border border-white/8 rounded-xl p-6 mt-6">
+                                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                                        <p className="font-data text-sm text-white/60 uppercase tracking-widest font-bold">Video Editing & Thumbnail Design — Before & After</p>
+                                    </div>
+                                    <div className="flex items-center gap-2 mb-8">
+                                        <i data-lucide="play-circle" className="w-4 h-4 text-[#FD0033]"></i>
+                                        <span className="font-data text-sm text-[#FD0033] font-bold">@GiveMeAnAnswer</span>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                        {[
+                                            { before: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/bEFORE/Screenshot%202026-06-11%20213030.png", beforeViews: "10K", after: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/AFTER/Screenshot%202026-06-11%20212839.png", afterViews: "2.8M" },
+                                            { before: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/bEFORE/Screenshot%202026-06-11%20213156.png", beforeViews: "39K", after: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/AFTER/Screenshot%202026-06-11%202125565.png", afterViews: "997K" },
+                                            { before: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/bEFORE/Screenshot%202026-06-11%20213241.png", beforeViews: "48K", after: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/AFTER/Screenshot%202026-06-11%20213002.png", afterViews: "573K" },
+                                        ].map((pair, i) => (
+                                            <div key={i} className="flex flex-col gap-2">
+                                                <div className="relative rounded-lg overflow-hidden h-[200px] bg-[#0A0A0B]">
+                                                    <ClickImg src={pair.before} alt="Before" className="w-full h-full object-contain object-top" />
+                                                    <span className="absolute top-2 left-2 font-data text-[11px] font-bold uppercase tracking-widest bg-black/85 text-white px-2.5 py-1 rounded">Before</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 px-0.5">
+                                                    <i data-lucide="eye" className="w-3.5 h-3.5 text-white/40 flex-shrink-0"></i>
+                                                    <span className="font-data text-sm font-bold text-white/50">{pair.beforeViews} views</span>
+                                                </div>
+                                                <div className="flex justify-center items-center py-0.5">
+                                                    <i data-lucide="arrow-down" className="w-6 h-6 text-[#FD0033]"></i>
+                                                </div>
+                                                <div className="relative rounded-lg overflow-hidden h-[200px] bg-[#0A0A0B]">
+                                                    <ClickImg src={pair.after} alt="After" className="w-full h-full object-contain object-top" />
+                                                    <span className="absolute top-2 left-2 font-data text-[11px] font-bold uppercase tracking-widest bg-[#FD0033] text-white px-2.5 py-1 rounded">After</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 px-0.5">
+                                                    <i data-lucide="eye" className="w-3.5 h-3.5 text-[#FD0033] flex-shrink-0"></i>
+                                                    <span className="font-data text-sm font-bold text-[#FD0033]">{pair.afterViews} views</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Podcast Production */}
+                            <div className="work-animate">
+                                <SectionHeader icon="radio" label="Podcast Production" description="From raw conversation to a fully distributed, branded audio product." />
+                                <div className="bg-white/[0.02] border border-white/8 rounded-xl p-6 hover:border-white/20 transition-colors">
+                                    {/* Channel screenshot */}
+                                    <div className="rounded-lg overflow-hidden mb-4">
+                                        <ClickImg src="Production%20images/CounterpointChannel.png" alt="Counterpoint YouTube channel" className="w-full" />
+                                    </div>
+                                    {/* Production photo */}
+                                    <div className="rounded-lg overflow-hidden mb-5">
+                                        <ClickImg src="Production%20images/ChristiansvsMuslims-Counterpoint2026-69.JPG" alt="Counterpoint full set" className="w-full rounded-lg" />
+                                    </div>
+                                    <div className="flex items-start justify-between gap-3 mb-3">
+                                        <div>
+                                            <h3 className="font-heading font-bold text-[#F8FAFC] text-lg leading-tight">Counterpoint</h3>
+                                            <span className="font-data text-[10px] text-white/35 uppercase tracking-widest">Counterpoint Show</span>
+                                        </div>
+                                        <span className="font-data text-xs text-[#FD0033] border border-[#FD0033]/30 rounded-full px-3 py-1 whitespace-nowrap flex-shrink-0">1M+ Watch Hours</span>
+                                    </div>
+                                    <p className="font-body text-[#F8FAFC]/60 text-sm leading-relaxed mb-4">
+                                        End-to-end podcast production for the Counterpoint show. 3 angles of 4K footage with up to 11 guests at one time. Audio editing, show notes, and clip distribution across TikTok, Instagram, X, and Facebook.
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {["4K Multi-Cam", "Up to 11 Guests", "Audio Editing", "Show Notes", "TikTok", "Instagram", "X / Twitter", "Facebook"].map((tag, ti) => (
+                                            <span key={ti} className="font-data text-[9px] text-white/40 bg-white/5 border border-white/10 rounded px-2 py-1 uppercase tracking-wider">{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Custom Builds & Tools */}
+                            <div className="work-animate">
+                                <SectionHeader icon="wrench" label="Custom Builds & Tools" description="Custom web apps, internal tools, and dashboards built for specific business problems." />
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    {/* SlicePost — wider */}
+                                    <div className="bg-white/[0.02] border border-white/8 rounded-xl p-6 hover:border-white/20 transition-colors group md:col-span-2 flex flex-col">
+                                        <div className="grid grid-cols-2 gap-2 mb-5 flex-1 min-h-[220px]">
+                                            <div className="bg-[#111] rounded-lg overflow-hidden"><ClickImg src="Internal%20tools/Slicepost%20uploading%20screen.png" alt="SlicePost upload screen" className="w-full h-full object-cover object-bottom" /></div>
+                                            <div className="bg-[#111] rounded-lg overflow-hidden"><ClickImg src="Internal%20tools/slicepost%20Content%20calendar.png" alt="SlicePost content calendar" className="w-full h-full object-cover object-bottom" /></div>
+                                        </div>
+                                        <div className="flex items-start justify-between gap-3 mb-3">
+                                            <div>
+                                                <a href="https://slicepost.com" target="_blank" rel="noopener noreferrer"
+                                                    className="font-heading font-bold text-[#F8FAFC] text-lg leading-tight hover:text-[#FD0033] transition-colors flex items-center gap-1.5 group/link">
+                                                    SlicePost
+                                                    <i data-lucide="external-link" className="w-3.5 h-3.5 opacity-40 group-hover/link:opacity-100 transition-opacity"></i>
+                                                </a>
+                                                <span className="font-data text-[10px] text-white/35 uppercase tracking-widest">slicepost.com</span>
+                                            </div>
+                                            <span className="font-data text-xs text-[#FD0033] border border-[#FD0033]/30 rounded-full px-3 py-1 whitespace-nowrap flex-shrink-0">Internal Tool</span>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/60 text-sm leading-relaxed mb-4">
+                                            Our internal content toolkit. Caption tools, content generators, lead generation systems, and performance dashboards. All built and maintained in-house. Partners get access.
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {["Content Generator", "Caption Tools", "Lead Gen", "Performance Dashboard"].map((tag, ti) => (
+                                                <span key={ti} className="font-data text-[9px] text-white/40 bg-white/5 border border-white/10 rounded px-2 py-1 uppercase tracking-wider">{tag}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Email & Text Automation — compact */}
+                                    <div className="bg-white/[0.02] border border-white/8 rounded-xl p-6 hover:border-white/20 transition-colors group md:col-span-1">
+                                        <div className="bg-[#111] rounded-lg overflow-hidden mb-4 h-44"><ClickImg src="Internal%20tools/n8n%20automated%20text%20and%20email%20workflow%20.png" alt="Automated workflow" className="w-full h-full object-cover object-bottom" /></div>
+                                        <div className="flex items-start justify-between gap-3 mb-3">
+                                            <div>
+                                                <h3 className="font-heading font-bold text-[#F8FAFC] text-lg leading-tight">Email & Text Reminder System</h3>
+                                                <span className="font-data text-[10px] text-white/35 uppercase tracking-widest">Automated Workflows</span>
+                                            </div>
+                                            <span className="font-data text-xs text-[#FD0033] border border-[#FD0033]/30 rounded-full px-3 py-1 whitespace-nowrap flex-shrink-0">Custom Build</span>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/60 text-sm leading-relaxed mb-4">
+                                            Automated email and text reminder workflows built for your website and business. Trigger-based sequences that follow up with leads, confirm appointments, and re-engage contacts.
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {["Email Automation", "SMS Reminders", "Lead Follow-Up", "Trigger Sequences"].map((tag, ti) => (
+                                                <span key={ti} className="font-data text-[9px] text-white/40 bg-white/5 border border-white/10 rounded px-2 py-1 uppercase tracking-wider">{tag}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Counterpoint Casting Dashboard — full width */}
+                                    <div className="bg-white/[0.02] border border-white/8 rounded-xl p-6 hover:border-white/20 transition-colors group md:col-span-3">
+                                        <div className="grid grid-cols-2 gap-3 mb-5">
+                                            <div className="bg-[#111] rounded-lg overflow-hidden h-64"><ClickImg src="Internal%20tools/counterpoint.show%20.png" alt="Counterpoint casting portal" className="w-full h-full object-cover object-top" /></div>
+                                            <div className="bg-[#111] rounded-lg overflow-hidden h-64"><ClickImg src="Internal%20tools/Counterpoint.show%20admin%20side.png" alt="Counterpoint admin dashboard" className="w-full h-full object-cover object-top" /></div>
+                                        </div>
+                                        <div className="flex items-start justify-between gap-3 mb-3">
+                                            <div>
+                                                <a href="https://counterpoint.show" target="_blank" rel="noopener noreferrer"
+                                                    className="font-heading font-bold text-[#F8FAFC] text-lg leading-tight hover:text-[#FD0033] transition-colors flex items-center gap-1.5 group/link">
+                                                    Counterpoint Casting Dashboard
+                                                    <i data-lucide="external-link" className="w-3.5 h-3.5 opacity-40 group-hover/link:opacity-100 transition-opacity"></i>
+                                                </a>
+                                                <span className="font-data text-[10px] text-white/35 uppercase tracking-widest">counterpoint.show</span>
+                                            </div>
+                                            <span className="font-data text-xs text-[#FD0033] border border-[#FD0033]/30 rounded-full px-3 py-1 whitespace-nowrap flex-shrink-0">Custom CRM</span>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/60 text-sm leading-relaxed mb-4">
+                                            Custom CRM built entirely for the Counterpoint show. Mass texting, contact management with labeling, private invitation links, and automated follow-up. Every lead captured and managed from one dashboard. Applicants go from inquiry to confirmed guest in a couple of clicks.
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {["Custom CRM", "Mass Texting", "Contact Management", "Private Invite Links", "Lead Conversion"].map((tag, ti) => (
+                                                <span key={ti} className="font-data text-[9px] text-white/40 bg-white/5 border border-white/10 rounded px-2 py-1 uppercase tracking-wider">{tag}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Production Reel */}
+                        </div>
+
+                        {/* CTA */}
+                        <div className="work-animate mt-28 flex justify-center pt-8 border-t border-white/10">
+                            <button
+                                onClick={navigateToForm || (() => setCurrentPage('home'))}
+                                className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
+                            >
+                                <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
+                                    [START_A_CONVERSATION]
+                                </span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    {/* Lightbox */}
+                    {lightbox && (
+                        <div className="fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-6" onClick={() => setLightbox(null)}>
+                            <button className="absolute top-5 right-5 text-white/50 hover:text-white transition-colors p-2" onClick={() => setLightbox(null)}>
+                                <i data-lucide="x" className="w-7 h-7"></i>
+                            </button>
+                            <img src={lightbox} className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onClick={(e) => e.stopPropagation()} />
+                        </div>
+                    )}
                 </section>
             );
         };
@@ -607,14 +1086,13 @@
             };
 
             const faqs = [
-                { q: "Who is ChannelScale for?", a: "We primarily cater to entrepreneurs and business owners who recognize that YouTube is the highest ROI use of marketing dollars. Most competitors are still not on the platform or are doing it incorrectly because of the immense workload required. We also partner with established Instagram and TikTok creators who know the real money and audience depth is on YouTube but need a professional team to handle the shift to long-form episodic content." },
-                { q: "Why are world-class athletes and celebrities moving to YouTube?", a: "There is a reason individuals like Cristiano Ronaldo. Tom Brady. and Logan Paul are running highly branded channels despite being multi-millionaires. They understand that YouTube is a different beast. It is not about mindless scrolling. It is about packaging content that people intentionally click on and watch for an hour. The value of that attention is unmatched." },
+                { q: "Who is ChannelScale for?", a: "We partner with entrepreneurs, business owners, and personal brands who are ready to use video content as their primary marketing engine. Most of our clients are sitting on untapped authority. They just need the system to capture and distribute it. Whether it is long-form YouTube, a branded podcast, or a social presence that actually converts, we build the operation around what fits your business." },
+                { q: "Why are world-class athletes and celebrities investing in video content?", a: "Cristiano Ronaldo, Tom Brady, and Hailey Bieber all have full production teams running their YouTube channels. These are not passion projects. They are deliberate media operations built to control their narrative and own their audience. They understand that video content is a different beast. It is not about mindless scrolling. It is about packaging content that people intentionally click on and watch for an hour. The value of that attention is unmatched and they are not leaving it on the table." },
                 { q: "How is this different from hiring a standard editor or freelancer?", a: "Hiring freelancers means dealing with the headaches of teaching your brand. You deal with the risk of people flaking. You deal with overseas taxes and management responsibilities. At ChannelScale everything is in-house. It is cohesive. You don't have to worry about hiring or tax headaches. We are the manager so you don't have to be." },
-                { q: "Why YouTube over other social platforms?", a: "YouTube has officially passed Netflix in TV watch hours. It is a worldwide phenomenon where you reach specific audiences for long periods of time to build deep rapport. People on YouTube search for specific results and products. They aren't mindlessly scrolling. They click because they want to consume exactly what you have to give." },
+                { q: "Why create original content like a podcast if I'm just a business?", a: "Everyone is consuming content. Instead of putting your marketing dollars toward slapping your name on other people's platforms, build a media company that does the marketing for you. One that can pay itself back. When done well it is an endless cycle. Your content attracts an audience, that audience converts to clients, those clients fund more content. A podcast or YouTube channel is not a marketing expense. It is a compounding asset." },
                 { q: "I’ve tried YouTube before and it didn’t work. Why will this?", a: "That is exactly why this will work. You already know the pain points of doing this alone. You know the benefit of a successful channel. We take all that pain out and implement proven strategies. This allows you to focus 100% on what you do best while we run the engine." },
                 { q: "How much of my time will this actually take?", a: "It takes as little or as much time as you want. Most of our partners only spend a couple of hours a month filming themselves and checking in on progress. We handle the heavy lifting of the output." },
-                { q: "Do I need a massive audience to see lead generation results?", a: "No. Influence is not about view counts. It is about view quality. YouTube is the best platform for this. We focus on niche domination to ensure your views are coming from potential high-ticket clients." },
-                { q: "What is the purpose of live A/B testing and daily data check-ins?", a: "Unlike Instagram or TikTok where content dies within a week. YouTube lives forever. You can see massive viewership years after posting. This is digital real estate. Continually optimizing for trends and audience data is the only way to maximize lead generation. Ad revenue. And authority." }
+                { q: "Do I need a massive audience to see lead generation results?", a: "No. Influence is not about view counts. It is about view quality. We focus on niche domination to ensure your views are coming from potential high-ticket clients. A smaller, highly targeted audience outperforms a large disengaged one every time." }
             ];
 
             return (
@@ -627,7 +1105,7 @@
                                 <span className="text-[#FD0033] opacity-50">[</span>FAQ<span className="text-[#FD0033] opacity-50">]</span>
                             </h1>
                             <p className="font-data text-[#F8FAFC]/70 tracking-widest uppercase text-sm md:text-lg">
-                                "Operational Clarification. Pre-Audit Documentation."
+                                Frequently Asked Questions
                             </p>
                         </div>
 
@@ -841,6 +1319,38 @@
                 return () => ctx.revert();
             }, []);
 
+            const marqueeRef = React.useRef(null);
+
+            React.useEffect(() => {
+                const el = marqueeRef.current;
+                if (!el) return;
+                let pos = 0;
+                let raf;
+                const step = () => {
+                    pos -= 0.2;
+                    const half = el.scrollWidth / 2;
+                    if (pos <= -half) pos = 0;
+                    el.style.transform = `translateX(${pos}px)`;
+                    raf = requestAnimationFrame(step);
+                };
+                raf = requestAnimationFrame(step);
+                return () => cancelAnimationFrame(raf);
+            }, []);
+
+            const logos = [
+                { src: "./client-logos/Bowmar.png", alt: "Bowmar" },
+                { src: "./client-logos/COUNTERPOINT%20LOGO%20png.png", alt: "Counterpoint Studios", height: 78 },
+                { src: "./client-logos/NWSL_logo.svg.png", alt: "NWSL" },
+                { src: "./client-logos/pgatouru_1920_logo.png", alt: "PGA Tour" },
+                { src: "./client-logos/Tigerhawk-black.png", alt: "Iowa Hawkeyes", invert: true },
+                { src: "./client-logos/logo_octagon-e1566483030603.png", alt: "Octagon", height: 78 },
+                { src: "./client-logos/IHSAA%20logo.png", alt: "IHSAA" },
+                { src: "./client-logos/Morgan_%26_Morgan_Logo.svg.png", alt: "Morgan & Morgan" },
+                { src: "./client-logos/Quittr%20Logo.png", alt: "Quittr" },
+                { src: "./client-logos/crosstalk_logo.webp", alt: "Crosstalk", outline: true },
+                { src: "./client-logos/ZocDoc_logo.png", alt: "ZocDoc" },
+            ];
+
             return (
                 <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center text-center px-4 pt-24 md:pt-32 pb-8 md:pb-16">
                     {/* Cinematic BG element */}
@@ -854,17 +1364,12 @@
                     {/* High-Impact Hero Headline - Dual Tone System Layout */}
                     <div ref={headerRef} className="z-20 relative w-full flex flex-col items-center mb-10 md:mb-12 opacity-0 px-4 pt-[4vh] md:pt-[12vh]">
                         <div className="flex flex-col items-start text-left max-w-[1000px] w-full border-l-4 border-[#FD0033] pl-6 py-2">
-                            {/* The Label */}
-                            <span className="font-data text-[10px] text-[#FD0033] uppercase tracking-widest mb-4 block">
-                                [STATUS: SYSTEM_INITIALIZED]
-                            </span>
-
                             {/* Main Heading */}
                             <h1
                                 className="font-emphasis text-[#F8FAFC] tracking-wide mb-6 leading-[0.95] uppercase"
-                                style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+                                style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}
                             >
-                                We build your <span ref={highlightRef} className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">YouTube channel</span> into a <span className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">killer asset</span> while you stick to what you do best.
+                                We build your <span ref={highlightRef} className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">social channels</span> into a <span className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">marketing machine</span> while you stick to what you do best.
                             </h1>
 
                             {/* Sub-heading */}
@@ -874,11 +1379,11 @@
                         </div>
                     </div>
 
-                    {/* Centered VSL Video Player - Expanded and Perfectly Centered */}
+                    {/* Centered VSL Video Player */}
                     <div className="z-10 relative flex w-full items-center justify-center max-w-[1100px]">
                         <div ref={videoRef} className="w-full aspect-video rounded-[16px] overflow-hidden bg-[#0A0A0B] border border-white/10 shadow-[0_0_60px_rgba(253,0,51,0.25)] relative flex items-center justify-center group">
 
-                            {/* Placeholder / Fallback visual if no src is provided */}
+                            {/* Placeholder visual */}
                             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                                 <div className="w-20 h-20 rounded-full bg-signal/20 flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
                                     <i data-lucide="play" className="w-8 h-8 text-signal ml-1"></i>
@@ -893,9 +1398,43 @@
                                 playsInline
                                 className="w-full h-full object-cover relative z-10 opacity-0 transition-opacity duration-1000"
                                 onCanPlay={(e) => e.target.classList.remove('opacity-0')}
-                            // src="YOUR_VIDEO_URL_HERE.mp4"
                             ></video>
 
+                        </div>
+                    </div>
+
+                    {/* SEE IF YOU QUALIFY CTA */}
+                    <div className="z-10 relative mt-10 md:mt-12 flex flex-col items-center gap-4">
+                        <button
+                            onClick={() => document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                            className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
+                        >
+                            <span className="relative z-10">See if you qualify</span>
+                            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                        </button>
+                        <p className="font-data text-white/40 text-xs tracking-widest uppercase">No commitment. 15-minute call.</p>
+                    </div>
+
+                    {/* Brand Marquee */}
+                    <div className="z-10 relative w-full mt-14 md:mt-16">
+                        <p className="font-data text-white/60 text-xs font-bold uppercase tracking-[0.3em] text-center mb-8">Brands we have worked with</p>
+                        <div className="relative w-full overflow-hidden">
+                            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#0A0A0B] to-transparent z-10 pointer-events-none"></div>
+                            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#0A0A0B] to-transparent z-10 pointer-events-none"></div>
+                            <div ref={marqueeRef} className="flex" style={{ willChange: "transform" }}>
+                                {[...logos, ...logos].map((logo, i) => (
+                                    <div key={i} className={`logo-item${logo.outline ? " logo-outline" : ""} flex-shrink-0 flex items-center justify-center`} style={{ padding: "0 64px" }}>
+                                        <img
+                                            src={logo.src}
+                                            alt={logo.alt}
+                                            style={{
+                                                ...(logo.height ? { height: logo.height + "px" } : {}),
+                                                ...(logo.invert ? { filter: "brightness(0) invert(1)" } : {}),
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -954,13 +1493,6 @@
                     <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-screen bg-repeat" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noise\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.8\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noise)\"/%3E%3C/svg%3E')" }}></div>
 
                     <div className="max-w-4xl mx-auto relative z-10 bg-obsidian/60 backdrop-blur-[24px] border border-white/10 rounded-[24px] p-6 md:p-12 shadow-[0_0_80px_rgba(0,0,0,0.5)] min-h-[600px] flex flex-col justify-center">
-                        <div className="flex justify-between items-start mb-14 border-b border-white/5 pb-8">
-                            <div>
-                                <h2 className="font-heading text-[8vw] sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight uppercase break-words break-all sm:break-normal">APPLY_TO_WORK_WITH_US</h2>
-                                <p className="font-data text-[#FD0033] text-sm tracking-[0.2em] mt-3 drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]">SECURE_CHANNEL_ESTABLISHED</p>
-                            </div>
-                            <span className="font-data text-[10px] px-3 py-1.5 bg-[#FD0033]/10 rounded border border-[#FD0033]/30 text-[#FD0033] tracking-widest">SYS.00</span>
-                        </div>
 
                         <div ref={formContainerRef} className="w-full">
                             {!isSuccess ? (
@@ -979,15 +1511,20 @@
                                         <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[COMMUNICATION]</label>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <input type="email" name="business_email" required placeholder="Business Email*" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
-                                            <div className="flex gap-2 sm:gap-3">
-                                                <select name="country_code" className="bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-2 sm:px-4 py-4 text-white/50 font-body focus:outline-none transition-all w-[80px] sm:w-[100px] cursor-pointer shrink-0">
-                                                    <option value="+1">+1</option>
-                                                    <option value="+44">+44</option>
-                                                    <option value="+61">+61</option>
-                                                    <option value="+81">+81</option>
-                                                </select>
-                                                <input type="tel" name="phone_number" required placeholder="Phone Number*" className="flex-1 min-w-0 bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-4 sm:px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
-                                            </div>
+                                            <input
+                                                type="tel"
+                                                name="phone_number"
+                                                required
+                                                placeholder="Phone Number*"
+                                                className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30"
+                                                onChange={(e) => {
+                                                    const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                                    let fmt = digits;
+                                                    if (digits.length > 6) fmt = `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+                                                    else if (digits.length > 3) fmt = `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+                                                    e.target.value = fmt;
+                                                }}
+                                            />
                                         </div>
                                         <div className="mt-4">
                                             <select name="preferred_communication" required className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white/50 font-body focus:outline-none transition-all appearance-none cursor-pointer">
@@ -1004,9 +1541,8 @@
                                         <textarea name="business_narrative" required placeholder="Tell us about your business*" rows="4" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all resize-none placeholder:text-white/30"></textarea>
                                     </div>
 
-                                    {/* [REVENUE_METRICS] */}
+                                    {/* Revenue */}
                                     <div className="space-y-5">
-                                        <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[REVENUE_METRICS]</label>
                                         <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Monthly Revenue (Approximate):</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['< $10k/mo', '$10k-$50k/mo', '$50k-$100k/mo', '$100k-$250k/mo', '$250k+/mo'].map((opt, i) => (
@@ -1021,9 +1557,8 @@
                                         </div>
                                     </div>
 
-                                    {/* [AD_INTEL] */}
+                                    {/* Marketing Spend */}
                                     <div className="space-y-5">
-                                        <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[AD_INTEL]</label>
                                         <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Marketing Spend (Last 30 Days):</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['Under $1k', '$1k-$3k', '$3k-$10k', '$10k-$50k', '$50k+'].map((opt, i) => (
@@ -1038,9 +1573,8 @@
                                         </div>
                                     </div>
 
-                                    {/* [CONTENT_MATURITY] */}
+                                    {/* Posting History */}
                                     <div className="space-y-5">
-                                        <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[CONTENT_MATURITY]</label>
                                         <p className="text-white/90 font-heading text-lg tracking-wide uppercase">How long have you been posting video content?</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['Never', '6 Months', '1 Year+', '5 Years+'].map((opt, i) => (
@@ -1055,9 +1589,8 @@
                                         </div>
                                     </div>
 
-                                    {/* [DEPLOYMENT_TIMELINE] */}
+                                    {/* Deployment Timeline */}
                                     <div className="space-y-5">
-                                        <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[DEPLOYMENT_TIMELINE]</label>
                                         <p className="text-white/90 font-heading text-lg tracking-wide uppercase">When will you start on social media?</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['Now', 'Within 30 days', '30 days or more'].map((opt, i) => (
@@ -1080,7 +1613,6 @@
                                             {/* Scanning light animation overlay */}
                                             {!isSubmitting && <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-[30%] -left-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-300 skew-x-[-20deg] animate-[scan_2s_ease-in-out_infinite]" ></div>}
                                         </button>
-                                        <span className="font-data text-[10px] uppercase text-white/30 tracking-[0.3em] mt-6">End-to-End Encryption Enabled</span>
                                     </div>
                                 </form>
                             ) : (
@@ -1184,9 +1716,9 @@
                                     <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.01</span>
                                 </div>
                                 <div>
-                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">Script Stress-Tester</h3>
+                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">[CONTENT_STRATEGY]</h3>
                                     <p className="font-data text-xs text-white/50 leading-relaxed shadow-sm">
-                                        Analyzing text logic... <br />
+                                        Mapping your brand's message to algorithm-ready content... <br />
                                         <span className="text-obsidian bg-signal px-1 rounded inline-block mt-2 font-bold pulse-signal">High Retentivity Detected</span>
                                     </p>
                                 </div>
@@ -1214,9 +1746,9 @@
                                     <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.02</span>
                                 </div>
                                 <div>
-                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">Revenue Velocity</h3>
+                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">[DISTRIBUTION_ENGINE]</h3>
                                     <p className="font-data text-xs text-white/50 leading-relaxed shadow-sm">
-                                        Routing viewers through the pipeline into measurable business impact.
+                                        Auto-routing every long-form asset into clips, reels, and shorts across every platform.
                                     </p>
                                 </div>
                                 {/* Interactive Graph Mock */}
@@ -1227,7 +1759,7 @@
                                     <div className="flex-1 h-[1px] bg-gradient-to-r from-white/10 via-signal to-white/10 relative overflow-hidden">
                                         <div className="absolute top-0 bottom-0 bg-white/50 scanning-line w-1/4 blur-sm"></div>
                                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-obsidian px-2 animate-bounce">
-                                            <i data-lucide="youtube" className="w-5 h-5 text-signal"></i>
+                                            <i data-lucide="play-circle" className="w-5 h-5 text-signal"></i>
                                         </div>
                                     </div>
                                     <div className="w-8 h-8 rounded-full bg-signal/20 border border-signal/50 flex items-center justify-center pulse-signal">
@@ -1246,9 +1778,9 @@
                                     <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.03</span>
                                 </div>
                                 <div>
-                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">The Ghost Producer</h3>
+                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">[PODCAST_ARCHITECTURE]</h3>
                                     <p className="font-data text-xs text-white/50 leading-relaxed shadow-sm">
-                                        Automated timeline scrubbing instantly snapping cinematic B-roll and subtitles.
+                                        Raw conversations into high-retention, multi-platform audio and video assets.
                                     </p>
                                 </div>
                                 {/* Timeline Mock */}
@@ -1298,7 +1830,7 @@
                             </div>
                             <div className="md:col-span-7">
                                 <p className="font-body text-base md:text-lg text-steel/80 leading-relaxed max-w-2xl font-normal">
-                                    ChannelScale is the definitive engine for entrepreneurs and elite brands who demand a high-authority YouTube presence without sacrificing their operational focus. Whether you require a completely 'hands-off' department or a high-velocity growth partner to scale your existing resources, we provide the architecture.
+                                    ChannelScale is the retainer partner for founders and brands who need a full-stack content operator. Not a freelancer. Not an agency of strangers. You get one person who owns your entire content pipeline.
                                 </p>
                             </div>
                         </div>
@@ -1320,7 +1852,7 @@
                                     </div>
                                     <h3 className="font-emphasis text-4xl text-white mb-4 tracking-wide group-hover:text-signal transition-colors duration-300">THE BRANDS</h3>
                                     <p className="font-body text-sm text-steel/70 leading-relaxed font-medium">
-                                        Scaling corporate authority through cinematic storytelling and algorithmic precision. Designed for established entities moving into the digital-first era.
+                                        Establishing corporate authority through YouTube, podcast, and social. We build the content infrastructure that positions your brand as the authority in your space.
                                     </p>
                                 </div>
 
@@ -1350,7 +1882,7 @@
                                     </div>
                                     <h3 className="font-emphasis text-4xl text-white mb-4 tracking-wide group-hover:text-signal transition-colors duration-300">THE BUSINESS OWNERS</h3>
                                     <p className="font-body text-sm text-steel/70 leading-relaxed font-medium">
-                                        Turning founder expertise into a self-sustaining lead-generation engine. Built for CEOs who need a content department that runs without their daily input.
+                                        Turning founder expertise into a self-sustaining content engine. Podcast episodes, long-form YouTube, clips, and daily social. All managed without your daily input.
                                     </p>
                                 </div>
 
@@ -1381,7 +1913,7 @@
                                     </div>
                                     <h3 className="font-emphasis text-4xl text-white mb-4 tracking-wide group-hover:text-signal transition-colors duration-300">THE MEDIA ESTATES</h3>
                                     <p className="font-body text-sm text-steel/70 leading-relaxed font-medium">
-                                        Evolving high-level creators into professional media assets. We provide the institutional infrastructure to turn individual influence into a scalable business legacy.
+                                        Scaling existing media operations. High-volume clip repurposing, show production, multi-platform distribution, and data-backed packaging for creators ready to operate like a studio.
                                     </p>
                                 </div>
 
@@ -1461,17 +1993,16 @@
 
         const PortfolioSection = () => {
             return (
-                <section className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5 bg-[#050505] overflow-hidden">
-                    <div className="max-w-6xl mx-auto">
-
-                        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-20 gap-6">
+                <section className="py-24 md:py-32 relative z-10 border-t border-white/5 bg-[#050505] overflow-hidden">
+                    <div className="max-w-6xl mx-auto px-4 md:px-12">
+                        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-6">
                             <div className="relative">
                                 <div className="absolute -left-6 top-0 w-1 h-full bg-[#FD0033]"></div>
                                 <h2 className="font-heading text-4xl md:text-6xl font-extrabold text-white tracking-tight uppercase leading-none mb-2">
                                     PORTFOLIO
                                 </h2>
                                 <p className="font-body text-steel/60 tracking-wider uppercase text-sm font-semibold">
-                                    Channels We Have Worked With
+                                    YouTube Channels We Have Worked With
                                 </p>
                             </div>
                         </div>
@@ -1481,49 +2012,34 @@
 
                             {/* Module 04: BIBLE ALIVE */}
                             <a href="https://www.youtube.com/@bible_alive" target="_blank" rel="noopener noreferrer" className="cursor-pointer group relative w-full aspect-[3/4] bg-obsidian/90 backdrop-blur-[20px] border border-white/5 hover:border-[#FD0033]/60 rounded-[20px] p-8 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_0_80px_rgba(253,0,51,0.3)] hover:scale-[1.02] hover:-translate-y-1 hover:bg-[#0c0c0e]">
-                                {/* Outer Label */}
-                                <div className="absolute top-6 right-6 font-data text-[10px] px-2 py-1 bg-[#FD0033]/10 rounded border border-[#FD0033]/30 text-[#FD0033] tracking-widest z-10">
-                                    NET.04
-                                </div>
-
                                 <div className="flex flex-col items-center mt-8 z-10 relative">
-                                    {/* Glowing Avatar Ring */}
                                     <div className="relative w-28 h-28 mb-6">
                                         <div className="absolute inset-0 rounded-full border-[3px] border-[#FD0033] opacity-50 shadow-[0_0_20px_#FD0033] group-hover:scale-110 group-hover:opacity-100 transition-all duration-500 z-0 animate-[spin_10s_linear_infinite]"></div>
-                                        {/* Profile Picture Placeholder - SVG icon representing the 'Bible Alive' aesthetic */}
                                         <div className="w-full h-full rounded-full bg-obsidian border-4 border-[#0c0c0e] relative z-10 overflow-hidden flex items-center justify-center p-4">
                                             <i data-lucide="book-open" className="w-12 h-12 text-white/80 group-hover:text-white transition-colors"></i>
                                         </div>
                                     </div>
                                     <h3 className="font-data font-bold text-white text-lg tracking-wider mb-1 group-hover:text-[#FD0033] transition-colors">@bible_alive</h3>
-                                    <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-2">550K+ SUBSCRIBERS</p>
+                                    <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-1">550K+ SUBS</p>
                                 </div>
 
-                                {/* Telemetry: Retention Heatmap Sparkline */}
-                                <div className="mt-auto pt-6 border-t border-white/5 relative z-10">
-                                    <div className="flex justify-between items-center mb-2">
-                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Retention Heatmap</span>
-                                        <span className="font-data text-[10px] text-[#FD0033]">+48%</span>
+                                <div className="mt-auto pt-6 border-t border-white/5 relative z-10 flex flex-col gap-3">
+                                    <div className="flex justify-between items-center">
+                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">YouTube Views</span>
+                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">330M+</span>
                                     </div>
-                                    <div className="h-6 w-full flex items-end gap-[2px]">
-                                        {/* Generating dynamic heights for a heatmap sparkline */}
-                                        {[40, 45, 50, 42, 60, 65, 70, 68, 75, 85, 80, 95, 100, 90, 95, 100].map((h, i) => (
-                                            <div key={i} className="flex-1 bg-[#FD0033] transition-all duration-700 ease-out group-hover:opacity-100 opacity-40 rounded-[1px]" style={{ height: `0%`, transitionDelay: `${i * 30}ms` }} ref={el => { if (el) el.style.height = `${h}%`; }}></div>
-                                        ))}
+                                    <div className="flex justify-between items-center">
+                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Watch Time Hours</span>
+                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">5.8M+</span>
                                     </div>
                                 </div>
                             </a>
 
                             {/* Module 05: BOWMAR BOWHUNTING */}
                             <a href="https://www.youtube.com/@BowmarBowhunting" target="_blank" rel="noopener noreferrer" className="cursor-pointer group relative w-full aspect-[3/4] bg-obsidian/90 backdrop-blur-[20px] border border-white/5 hover:border-[#FD0033]/60 rounded-[20px] p-8 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_0_80px_rgba(253,0,51,0.3)] hover:scale-[1.02] hover:-translate-y-1 hover:bg-[#0c0c0e]">
-                                <div className="absolute top-6 right-6 font-data text-[10px] px-2 py-1 bg-[#FD0033]/10 rounded border border-[#FD0033]/30 text-[#FD0033] tracking-widest z-10">
-                                    NET.05
-                                </div>
-
                                 <div className="flex flex-col items-center mt-8 z-10 relative">
                                     <div className="relative w-28 h-28 mb-6">
                                         <div className="absolute inset-0 rounded-full border-[3px] border-[#FD0033] opacity-50 shadow-[0_0_20px_#FD0033] group-hover:scale-110 group-hover:opacity-100 transition-all duration-500 z-0 animate-[spin_8s_linear_infinite_reverse]"></div>
-                                        {/* Profile Picture Placeholder - SVG icon representing the 'Bowhunting' aesthetic */}
                                         <div className="w-full h-full rounded-full bg-obsidian border-4 border-[#0c0c0e] relative z-10 overflow-hidden flex items-center justify-center p-4">
                                             <i data-lucide="target" className="w-12 h-12 text-white/80 group-hover:text-white transition-colors"></i>
                                         </div>
@@ -1531,82 +2047,29 @@
                                     <h3 className="font-data font-bold text-white text-lg tracking-wider mb-1 group-hover:text-[#FD0033] transition-colors">@bowmarbowhunting</h3>
                                     <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-2">2.6M+ SUBSCRIBERS</p>
                                 </div>
-
-                                {/* Telemetry: Conversion Velocity Pulse Wave */}
-                                <div className="mt-auto pt-6 border-t border-white/5 relative z-10">
-                                    <div className="flex justify-between items-center mb-2">
-                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Conversion Velocity</span>
-                                        <span className="font-data text-[10px] text-[#FD0033]">+2.1x</span>
-                                    </div>
-                                    <div className="w-full h-8 relative flex items-center justify-center overflow-hidden">
-                                        <svg className="absolute w-[200%] h-full group-hover:animate-[wave_3s_linear_infinite]" viewBox="0 0 400 30" preserveAspectRatio="none">
-                                            <path d="M0,15 Q50,0 100,15 T200,15 T300,15 T400,15" fill="none" stroke="#FD0033" strokeWidth="2" className="opacity-40 group-hover:opacity-100 transition-opacity duration-300"></path>
-                                            <path d="M0,15 Q50,30 100,15 T200,15 T300,15 T400,15" fill="none" stroke="#FD0033" strokeWidth="2" className="opacity-20 group-hover:opacity-80 transition-opacity duration-300"></path>
-                                        </svg>
-                                        <style dangerouslySetInnerHTML={{
-                                            __html: `
-                                            @keyframes wave {
-                                                0% { transform: translateX(0); }
-                                                100% { transform: translateX(-50%); }
-                                            }
-                                        `}} />
-                                    </div>
-                                </div>
                             </a>
 
                             {/* Module 06: COUNTERPOINT */}
                             <a href="https://www.youtube.com/@counterpointstudios" target="_blank" rel="noopener noreferrer" className="cursor-pointer group relative w-full aspect-[3/4] bg-obsidian/90 backdrop-blur-[20px] border border-white/5 hover:border-[#FD0033]/60 rounded-[20px] p-8 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_0_80px_rgba(253,0,51,0.3)] hover:scale-[1.02] hover:-translate-y-1 hover:bg-[#0c0c0e]">
-                                <div className="absolute top-6 right-6 font-data text-[10px] px-2 py-1 bg-[#FD0033]/10 rounded border border-[#FD0033]/30 text-[#FD0033] tracking-widest z-10">
-                                    NET.06
-                                </div>
-
                                 <div className="flex flex-col items-center mt-8 z-10 relative">
                                     <div className="relative w-28 h-28 mb-6">
                                         <div className="absolute inset-0 rounded-full border-[3px] border-[#FD0033] opacity-50 shadow-[0_0_20px_#FD0033] group-hover:scale-110 group-hover:opacity-100 transition-all duration-500 z-0 animate-[spin_12s_linear_infinite]"></div>
-                                        {/* Profile Picture Placeholder - SVG icon representing the 'Counterpoint Studios' aesthetic */}
                                         <div className="w-full h-full rounded-full bg-obsidian border-4 border-[#0c0c0e] relative z-10 overflow-hidden flex items-center justify-center p-4">
                                             <i data-lucide="radio" className="w-12 h-12 text-white/80 group-hover:text-white transition-colors"></i>
                                         </div>
                                     </div>
                                     <h3 className="font-data font-bold text-white text-lg tracking-wider mb-1 group-hover:text-[#FD0033] transition-colors">@counterpointstudios</h3>
-                                    <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-2">20K+ SUBSCRIBERS</p>
+                                    <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-2">26K+ SUBS</p>
                                 </div>
 
-                                {/* Telemetry: Growth Trajectory Arrow */}
-                                <div className="mt-auto pt-6 border-t border-white/5 relative z-10">
-                                    <div className="flex justify-between items-center mb-2">
-                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Growth Trajectory</span>
-                                        <span className="font-data text-[10px] text-[#FD0033]">Active</span>
+                                <div className="mt-auto pt-6 border-t border-white/5 relative z-10 flex flex-col gap-3">
+                                    <div className="flex justify-between items-center">
+                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Video Episodes</span>
+                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">25+</span>
                                     </div>
-                                    <div className="relative w-full h-8 flex items-center overflow-hidden">
-                                        <div className="w-full h-[1px] border-b border-dashed border-[#FD0033]/30 absolute top-1/2"></div>
-
-                                        {/* Animated Arrow Trail */}
-                                        <svg className="w-full h-full" viewBox="0 0 100 20" preserveAspectRatio="none">
-                                            <path
-                                                d="M -10,18 L 40,10 L 85,2"
-                                                fill="none"
-                                                stroke="#FD0033"
-                                                strokeWidth="1.5"
-                                                className="group-hover:stroke-[2.5px] transition-all duration-300 drop-shadow-[0_0_5px_rgba(253,0,51,0.8)]"
-                                                strokeDasharray="100"
-                                                strokeDashoffset="100"
-                                                ref={el => {
-                                                    if (el) {
-                                                        // Fallback inline animation just using native CSS for simplicity since it's a specific internal component
-                                                        el.style.animation = "drawArrow 2s ease-out forwards infinite";
-                                                    }
-                                                }}
-                                            />
-                                            <circle cx="85" cy="2" r="1.5" fill="#FD0033" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300" />
-                                        </svg>
-                                        <style dangerouslySetInnerHTML={{
-                                            __html: `
-                                            @keyframes drawArrow {
-                                                0% { stroke-dashoffset: 100; }
-                                                100% { stroke-dashoffset: 0; }
-                                            }
-                                        `}} />
+                                    <div className="flex justify-between items-center">
+                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Watch Hours</span>
+                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">1M+</span>
                                     </div>
                                 </div>
                             </a>
@@ -1674,9 +2137,9 @@
                                 </div>
                                 <span className="font-data text-xs text-signal tracking-[0.3em] uppercase border border-signal/30 px-3 py-1 rounded-full">Strategic Content Roadmap</span>
                                 <h2 className="font-emphasis text-[12vw] md:text-[8rem] mt-6 mb-8 leading-none text-white tracking-widest">STRATEGY</h2>
-                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Algorithmic Architecture</h3>
+                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Content Strategy & Planning</h3>
                                 <p className="font-body font-medium text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                    We engineer the blueprint for your market dominance, building high-velocity roadmaps that ensure every video serves a business objective.
+                                    We build the content plan before we touch a camera. Topic selection, format decisions, platform fit, and a publishing cadence that actually makes sense for your business.
                                 </p>
                             </div>
 
@@ -1687,9 +2150,9 @@
                                 </div>
                                 <span className="font-data text-xs text-signal tracking-[0.3em] uppercase border border-signal/30 px-3 py-1 rounded-full">Executive Studio Design</span>
                                 <h2 className="font-emphasis text-[12vw] md:text-[8rem] mt-6 mb-8 leading-none text-white tracking-widest">PRODUCTION</h2>
-                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Studio-Grade Deployment</h3>
+                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Cinema-Grade Production</h3>
                                 <p className="font-body font-medium text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                    We translate your authority into a premium digital presence, architecting your environment for elite visuals and delivering high-retention post-production that keeps eyes locked.
+                                    We build your studio setup from scratch, film on-site when needed, and edit everything to a standard that reflects the quality of your actual business. No stock footage. No cookie-cutter edits.
                                 </p>
                             </div>
 
@@ -1700,11 +2163,264 @@
                                 </div>
                                 <span className="font-data text-xs text-signal tracking-[0.3em] uppercase border border-signal/30 px-3 py-1 rounded-full">High-CTR Packaging</span>
                                 <h2 className="font-emphasis text-[12vw] md:text-[8rem] mt-6 mb-8 leading-none text-white tracking-widest">MANAGEMENT</h2>
-                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Growth Operations & Packaging</h3>
+                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Channel Management & Growth</h3>
                                 <p className="font-body font-medium text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                    We manage the high-stakes logistics of CTR and algorithmic velocity—deploying split-tested packaging and viral titling to turn your channel into a lead-gen machine.
+                                    Thumbnails, titles, publish timing, A/B tests, and performance tracking. We run the channel as an operator, not a contractor. Every decision is tied back to what actually drives views and converts them into clients.
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        const StatsSection = () => {
+            const sectionRef = useRef(null);
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    gsap.from(".stat-item", {
+                        y: 30, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
+                        scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
+                    });
+                }, sectionRef);
+                return () => ctx.revert();
+            }, []);
+
+            const stats = [
+                { value: "1.4B+", label: "Combined social views", icon: "eye" },
+                { value: "3M+", label: "YouTube subscribers managed", icon: "users" },
+                { value: "3,000+", label: "High-ticket leads generated", icon: "trending-up" },
+            ];
+
+            return (
+                <section ref={sectionRef} className="py-16 md:py-20 px-4 md:px-12 border-t border-white/5 bg-[#050505]">
+                    <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+                        {stats.map((s, i) => (
+                            <div key={i} className="stat-item flex flex-col items-center text-center p-6 rounded-2xl border border-white/5 bg-obsidian/60 hover:border-signal/30 transition-colors group">
+                                <div className="mb-3 p-3 rounded-xl bg-signal/10 border border-signal/20 group-hover:border-signal/40 transition-colors">
+                                    <i data-lucide={s.icon} className="w-5 h-5 text-signal"></i>
+                                </div>
+                                <span className="font-emphasis text-4xl md:text-5xl text-white tracking-wide mb-2 group-hover:text-signal transition-colors duration-300">{s.value}</span>
+                                <span className="font-data text-[10px] text-white/50 uppercase tracking-widest leading-tight">{s.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        const WhySocialSection = () => {
+            const sectionRef = useRef(null);
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    gsap.from(".why-card", {
+                        y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
+                        scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
+                    });
+                }, sectionRef);
+                return () => ctx.revert();
+            }, []);
+
+            React.useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
+
+            const cards = [
+                {
+                    icon: "users",
+                    label: "Audience Reality",
+                    headline: "Your buyers are already watching",
+                    body: "90% of households earning $100K+ are active on social media daily. The average person spends 2.5+ hours scrolling. They aren't going to find you. You have to appear."
+                },
+                {
+                    icon: "search",
+                    label: "Discovery Shift",
+                    headline: "The feed is the new search engine",
+                    body: "Social drives visibility far beyond the platforms themselves — surfacing in Google results, AI answers, and everywhere your audience goes to find solutions."
+                },
+                {
+                    icon: "trending-up",
+                    label: "Attention Economy",
+                    headline: "One view is worth more than one cold email",
+                    body: "A single piece of content that hooks a new viewer builds trust at scale. Trust converts to inbound. Inbound converts to revenue. Cold outreach doesn't compound — content does."
+                },
+                {
+                    icon: "repeat-2",
+                    label: "Content Leverage",
+                    headline: "One piece of content. Infinite distribution.",
+                    body: "A 10-minute interview becomes 6 short clips, 4 captions, 2 blog posts, and 1 email. Most brands create once and stop. We build systems that multiply the asset."
+                },
+            ];
+
+            return (
+                <section ref={sectionRef} className="py-24 px-4 md:px-12 relative z-10">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="mb-12">
+                            <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.3em] mb-3">Why It Works</p>
+                            <h2 className="font-emphasis text-4xl md:text-5xl uppercase tracking-wide text-[#F8FAFC] leading-none">
+                                The Case For<br className="hidden md:block" /> Serious Content
+                            </h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {cards.map((card, i) => (
+                                <div key={i} className="why-card bg-white/[0.025] border border-white/8 rounded-2xl p-7 hover:border-white/15 transition-colors duration-300 group">
+                                    <div className="w-10 h-10 rounded-lg bg-[#FD0033]/10 border border-[#FD0033]/20 flex items-center justify-center mb-5 group-hover:bg-[#FD0033]/15 transition-colors">
+                                        <i data-lucide={card.icon} className="w-4.5 h-4.5 text-[#FD0033]" style={{width:'18px',height:'18px'}}></i>
+                                    </div>
+                                    <p className="font-data text-[#FD0033]/70 text-[10px] uppercase tracking-[0.25em] mb-2">{card.label}</p>
+                                    <h3 className="font-emphasis text-2xl uppercase tracking-wide text-[#F8FAFC] mb-3 leading-tight">{card.headline}</h3>
+                                    <p className="font-body text-[#F8FAFC]/55 text-sm leading-relaxed">{card.body}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const ProcessSection = () => {
+            const sectionRef = useRef(null);
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    gsap.from(".process-step", {
+                        y: 30, duration: 0.7, stagger: 0.12, ease: "power3.out",
+                        scrollTrigger: { trigger: sectionRef.current, start: "top 90%" }
+                    });
+                }, sectionRef);
+                return () => ctx.revert();
+            }, []);
+
+            const steps = [
+                {
+                    num: "1",
+                    title: "Audit & Strategy",
+                    body: "We start by getting a full picture of your brand. Then we build the custom plan. Content style, platform specifics, website overhaul, dashboard builds, and custom internal apps. Whatever a custom fit looks like for your business, that is what we build.",
+                    icon: "compass"
+                },
+                {
+                    num: "2",
+                    title: "Build & Produce",
+                    body: "We build custom workflows so your content operation runs without eating your time. Then we get to work on what we do best. Using our in-house internal tools and workflows that have helped build million+ subscriber YouTube channels, billion+ video views, and thousands of high-ticket leads. Stunning content that pulls in leads and eyeballs with no day-to-day.",
+                    icon: "video"
+                },
+                {
+                    num: "3",
+                    title: "Manage & Grow",
+                    body: "The longer we work together, the sharper everything gets. More data means better decisions. Better decisions mean better content. We optimize every part of the pipeline to push performance higher and more efficiently. We are here to partner with you as an extension of your business, not just bystanders.",
+                    icon: "activity"
+                }
+            ];
+
+            return (
+                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 border-t border-white/5 bg-[#0A0A0B]">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="flex items-center gap-4 mb-6">
+                            <span className="font-data text-signal text-xs uppercase tracking-[0.3em]">How it works</span>
+                            <div className="h-[1px] bg-white/10 flex-1"></div>
+                        </div>
+                        <h2 className="font-heading text-4xl md:text-6xl font-extrabold text-white tracking-tight uppercase leading-none mb-16">
+                            We scale your business<br /><span className="text-signal">with content.</span>
+                        </h2>
+
+                        <div className="flex flex-col gap-6">
+                            {steps.map((step, i) => (
+                                <div key={i} className="process-step group relative flex flex-col md:flex-row md:items-center gap-8 p-10 md:p-14 rounded-2xl border border-white/8 hover:border-signal/40 bg-[#0d0d0f] hover:bg-[#111114] transition-all duration-300 overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-signal blur-[120px] opacity-0 group-hover:opacity-8 transition-opacity duration-700 pointer-events-none"></div>
+
+                                    {/* Step number */}
+                                    <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-2xl border border-white/10 group-hover:border-signal/40 bg-white/3 transition-colors">
+                                        <span className="font-emphasis text-5xl md:text-6xl text-white/20 group-hover:text-signal/40 transition-colors leading-none">{step.num}</span>
+                                    </div>
+
+                                    {/* Divider */}
+                                    <div className="hidden md:block w-px self-stretch bg-white/5 group-hover:bg-signal/20 transition-colors"></div>
+
+                                    {/* Content */}
+                                    <div className="flex-1 flex flex-col gap-3">
+                                        <div className="flex items-center gap-3 mb-1">
+                                            <i data-lucide={step.icon} className="w-5 h-5 text-signal flex-shrink-0"></i>
+                                            <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white group-hover:text-signal transition-colors duration-300">{step.title}</h3>
+                                        </div>
+                                        <p className="font-body text-base md:text-lg text-white/55 leading-relaxed max-w-2xl">{step.body}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-14 flex justify-center">
+                            <button
+                                onClick={() => document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                                className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
+                            >
+                                <span className="relative z-10">See if you qualify</span>
+                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        const HomeFAQSection = ({ setCurrentPage }) => {
+            const [openIndex, setOpenIndex] = React.useState(null);
+            const sectionRef = useRef(null);
+
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    gsap.from(".home-faq-item", {
+                        y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out",
+                        scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
+                    });
+                }, sectionRef);
+                return () => ctx.revert();
+            }, []);
+
+            const homeFaqs = [
+                { q: "Who is ChannelScale for?", a: "We partner with entrepreneurs, business owners, and personal brands who are ready to use video content as their primary marketing engine. Most of our clients are sitting on untapped authority. They just need the system to capture and distribute it. Whether it is long-form YouTube, a branded podcast, or a social presence that actually converts, we build the operation around what fits your business." },
+                { q: "Why social media?", a: "Unlike most marketing strategies, social media lets you build real relationships with potential clients at scale. It is word-of-mouth and referral marketing — but the stage is global. Your audience is already there watching content every day. If you are not showing up consistently, someone in your space is." },
+                { q: "Do I need a massive audience to see lead generation results?", a: "No. Influence is not about view counts. It is about view quality. We focus on niche domination to ensure your views are coming from potential high-ticket clients. A smaller, highly targeted audience outperforms a large disengaged one every time." },
+                { q: "How do I know this will work for me?", a: "Start with a conversation. We'll talk through your business, your goals, and what growth actually looks like for you. We only work with clients where we genuinely see a clear path to results. If we don't think the fit is right, we will tell you straight." },
+                { q: "How is this different from hiring a standard editor or freelancer?", a: "Hiring freelancers means dealing with the headaches of teaching your brand. You deal with the risk of people flaking. You deal with overseas taxes and management responsibilities. At ChannelScale everything is in-house. It is cohesive. You don't have to worry about hiring or tax headaches. We are the manager so you don't have to be." },
+                { q: "How much of my time will this actually take?", a: "It takes as little or as much time as you want. Most of our partners only spend a couple of hours a month filming themselves and checking in on progress. We handle the heavy lifting of the output." },
+            ];
+
+            return (
+                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 border-t border-white/5 bg-[#050505]">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="flex items-center gap-4 mb-6">
+                            <span className="font-data text-signal text-xs uppercase tracking-[0.3em]">Common questions</span>
+                            <div className="h-[1px] bg-white/10 flex-1"></div>
+                        </div>
+                        <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-white tracking-tight uppercase leading-none mb-12">
+                            You've got questions.<br /><span className="text-signal">We've got answers.</span>
+                        </h2>
+
+                        <div className="flex flex-col divide-y divide-white/5">
+                            {homeFaqs.map((faq, i) => (
+                                <div key={i} className="home-faq-item">
+                                    <button
+                                        onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                                        className="w-full flex justify-between items-center py-6 text-left group"
+                                    >
+                                        <span className="font-heading font-bold text-lg text-white group-hover:text-signal transition-colors pr-6">{faq.q}</span>
+                                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 ${openIndex === i ? 'border-signal bg-signal/10 rotate-45' : 'group-hover:border-signal/50'}`}>
+                                            <i data-lucide="plus" className={`w-4 h-4 transition-colors ${openIndex === i ? 'text-signal' : 'text-white/50 group-hover:text-signal'}`}></i>
+                                        </div>
+                                    </button>
+                                    {openIndex === i && (
+                                        <div className="pb-6 pr-12">
+                                            <p className="font-body text-base text-white/60 leading-relaxed">{faq.a}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-12 flex flex-col sm:flex-row items-center gap-4 pt-8 border-t border-white/5">
+                            <button
+                                onClick={() => { setCurrentPage('faq'); window.scrollTo(0, 0); }}
+                                className="font-data text-sm text-signal hover:text-white transition-colors uppercase tracking-widest"
+                            >
+                                See all questions →
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -1728,7 +2444,7 @@
                                 <span className="font-heading font-extrabold text-lg tracking-tighter text-white">CHANNELSCALE</span>
                             </div>
                             <p className="font-data text-white/40 text-[10px] uppercase tracking-widest max-w-xs">
-                                Cinema-Grade Strategy. Data-Proven Results. <br /> Engineered for high-level voices.
+                                Full-Stack Content Marketing.
                             </p>
                         </div>
 
@@ -1740,8 +2456,15 @@
                         </div>
                     </div>
 
+                    {/* Disclaimer */}
+                    <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5">
+                        <p className="font-body text-[11px] text-white/25 leading-relaxed text-center max-w-4xl mx-auto mb-8">
+                            Results are not guaranteed and are not typical. Client success depends on individual effort, experience, application, and many other factors unique to each business. Testimonials reflect exceptional outcomes and should not be considered average. Noia Media LLC makes no guarantee of financial results. All information provided is for educational purposes only and should not be considered professional advice.
+                        </p>
+                    </div>
+
                     {/* Copyright & Terminal Status */}
-                    <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="max-w-7xl mx-auto pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="font-data text-[10px] text-white/30 tracking-widest uppercase text-center md:text-left">
                             © {new Date().getFullYear()} CHANNELSCALE | A NOIA MEDIA LLC COMPANY. ALL RIGHTS RESERVED.
                         </p>
