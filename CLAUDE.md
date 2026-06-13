@@ -4,119 +4,85 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ChannelScale is a **single-page React application** serving as a marketing website for a YouTube growth strategy service. The entire application is deployed as a single `index.html` file with no build process, package.json, or Node.js dependencies required.
+ChannelScale is a **single-page React application** serving as a marketing website for a full-stack content marketing retainer service. The entire application is a single `index.html` file — no build process, no package.json, no Node.js dependencies.
 
 **Tech Stack:**
-- React 18 (via CDN)
-- Tailwind CSS (via CDN with custom theme)
-- GSAP 3.12.5 with ScrollTrigger for animations
-- Babel Standalone for JSX compilation
-- Lucide Icons for UI icons
+- React 18 (via CDN, unpkg)
+- Tailwind CSS (via CDN with inline custom theme)
+- GSAP 3.12.5 + ScrollTrigger for animations
+- Babel Standalone for in-browser JSX compilation
+- Lucide Icons (`lucide.createIcons()` on each page mount)
 - Formspree.io for form submissions
 
-## Development
+## Running the Application
 
-### Running the Application
+Open `index.html` directly in a browser. No server required, but a local server avoids CORS issues:
 
-**Local Development:**
-Simply open `index.html` directly in a web browser. The application runs entirely client-side with no server required.
-
-```bash
-# Windows
-start index.html
-
-# macOS
-open index.html
-
-# Linux
-xdg-open index.html
-```
-
-Alternatively, serve with a simple HTTP server to avoid CORS issues:
 ```bash
 python -m http.server 8000
-# Then visit http://localhost:8000
+# visit http://localhost:8000
 ```
 
-**No build process, lint commands, or tests exist** — this is a vanilla React application compiled in the browser.
+There is no build step, lint command, or test suite.
 
-### Code Organization
+## Architecture
 
-The application uses **custom client-side routing** managed via React state. All code lives within a single `<script type="text/babel">` block in `index.html`. The structure is:
-
-- **App** (root component) — manages `currentPage` state and renders the active page
-- **NavBar** — fixed header navigation with mobile menu support
-- **Page Components** (all defined as separate React components):
-  - HeroSection
-  - PortfolioSection
-  - StrategicIntakeSection (intake form using Formspree)
-  - FeaturesSection
-  - WhoThisIsForSection
-  - ManifestoSection
-  - ProtocolSection
-  - AboutPage ([DIRECTOR] page)
-  - FAQPage
-  - SystemConfigurationsPage ([SYSTEM_CONFIGURATIONS] page)
-  - Legal pages: PrivacyPolicyPage, TermsOfServicePage, DisclaimerPage
-- **SiteFooter** — fixed footer with legal navigation
+All application code lives inside a single `<script type="text/babel">` block in `index.html`. Components are defined as plain functions in that block — no imports, no modules.
 
 ### Routing
 
-Navigation is handled by `setCurrentPage()` state setter. Valid page values:
-- `'home'` — Main landing page (default)
-- `'about'` — [DIRECTOR] page
-- `'faq'` — FAQ accordion page
-- `'services'` — [SYSTEM_CONFIGURATIONS] page
-- `'privacy'`, `'terms'`, `'disclaimer'` — Legal pages
+Client-side routing via React state (`currentPage`). The `App` component renders the active page based on this string:
 
-When navigating, the app scrolls to top: `window.scrollTo(0, 0)`.
+| `currentPage` value | Renders |
+|---|---|
+| `'home'` | `HeroSection` + `StatsSection` + `StrategicIntakeSection` + `WhySocialSection` + `ProcessSection` + `HomeFAQSection` |
+| `'work'` | `WorkPage` |
+| `'about'` | `AboutPage` |
+| `'faq'` | `FAQPage` |
+| `'services'` | `SystemConfigurationsPage` |
+| `'privacy'` | `PrivacyPolicyPage` |
+| `'terms'` | `TermsOfServicePage` |
+| `'disclaimer'` | `DisclaimerPage` |
 
-### Form Submission
+All navigation calls `setCurrentPage()` + `window.scrollTo(0, 0)`.
 
-The strategic intake form submits to Formspree endpoint:
-```
-https://formspree.io/f/mvzbwwgw
-```
+### `navigateToForm` helper
 
-Form fields collected:
-- Identification: first_name, last_name
-- Communication: business_email, country_code, phone_number, preferred_communication
-- Business narrative
-- Revenue metrics (revenue_scale radio group)
-- Marketing spend (marketing_spend radio group)
-- Content maturity (posting_history radio group)
-- Timeline (deployment_timeline radio group)
+Defined in `App`, passed as a prop to `NavBar` and all page components. Navigates home then smooth-scrolls to `#intake-form`. Use this for any "Initialize" / CTA button — do not call `setCurrentPage('home')` alone.
 
-On success, the form displays a success screen with "TRANSMISSION_RECEIVED" message. The `isSuccess` state variable controls visibility.
+### Icon initialization
 
-### Design System
+Lucide icons use the `data-lucide` attribute pattern. They must be initialized by calling `lucide.createIcons()` after each page render. This runs in `App`'s `useEffect(() => { lucide.createIcons(); }, [currentPage])`.
 
-**Tailwind Config (inline in `<script>`):**
-- Custom colors: `obsidian` (#0A0A0B), `signal` (#FD0033), `steel` (#E2E8F0)
-- Font families: heading, emphasis (Bebas Neue), data (JetBrains Mono), body (Inter)
-- Custom utilities: `.analog-grain`, `.glass-panel`, `.btn-magnetic`, `.no-scrollbar`
+## Design System
 
-**Color Usage:**
-- **obsidian** — Dark backgrounds
-- **signal** — Accent red for highlights, active states, CTAs
-- **steel** — Light text/secondary content
+**Custom Tailwind colors** (defined inline in `tailwind.config`):
+- `obsidian` — `#0A0A0B` (backgrounds)
+- `signal` — `#FD0033` (accent red: highlights, CTAs, active nav states)
+- `steel` — `#E2E8F0` (body text, secondary content)
 
-**Key CSS Patterns:**
-- Backdrop blur glass morphism via `.glass-panel`
-- Signal glow effects using `drop-shadow-[0_0_Xpx_#FD0033]`
-- Animations via GSAP in useLayoutEffect (never useState for animations)
+**Font families:**
+- `font-emphasis` — Bebas Neue (display headlines)
+- `font-heading` — Inter Tight 800
+- `font-data` — JetBrains Mono (nav labels, metrics, tags)
+- `font-body` — Inter
 
-### Animation Patterns
+**Custom CSS utilities** (in `<style type="text/tailwindcss">`):
+- `.analog-grain` — fixed noise overlay (z-index 1, pointer-events none)
+- `.glass-panel` — backdrop blur + transparent border
+- `.btn-magnetic` — scale-on-hover transition
+- `.no-scrollbar` — hides scrollbar cross-browser
 
-All animations use GSAP with ScrollTrigger for scroll-based effects:
+Signal glow pattern: `drop-shadow-[0_0_Xpx_#FD0033]` and `shadow-[0_0_Xpx_rgba(253,0,51,Y)]`
+
+## Animation Patterns
+
+All GSAP animations use `gsap.context()` inside `useLayoutEffect` for scoped cleanup:
 
 ```javascript
 useLayoutEffect(() => {
   let ctx = gsap.context(() => {
-    gsap.from(".selector", { 
-      y: 30, 
-      opacity: 0, 
-      duration: 0.8,
+    gsap.from(".my-selector", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
       scrollTrigger: { trigger: sectionRef.current, start: "top 70%" }
     });
   }, sectionRef);
@@ -124,66 +90,38 @@ useLayoutEffect(() => {
 }, []);
 ```
 
-**Key animations:**
-- Hero section: flicker effect on headline, video entrance
-- Sections: staggered fade-in on scroll
-- Cards: floating icons, pulse signals, scanning lines
-- Protocol section: card pinning with scroll-based scale/blur
+Never use `useState` for animation state — always GSAP.
 
-Use `data-lucide` attributes on icons — they're initialized by `lucide.createIcons()` on component mount.
+## Form
 
-### Portfolio Section
+The `StrategicIntakeSection` submits to Formspree: `https://formspree.io/f/mvzbwwgw`
 
-Hardcoded portfolio items with links to YouTube channels:
-- @bible_alive (550K+ subscribers)
-- @bowmarbowhunting (2.6M+ subscribers)
-- @counterpointstudios (20K+ subscribers)
+Fields: `first_name`, `last_name`, `business_email`, `country_code`, `phone_number`, `preferred_communication`, `business_narrative`, plus radio groups `revenue_scale`, `marketing_spend`, `posting_history`, `deployment_timeline`.
 
-Each card has retention/conversion/growth metrics displayed as SVG visualizations.
+On success, `isSuccess` state switches to a "TRANSMISSION_RECEIVED" confirmation screen.
 
-### Mobile Responsiveness
+## Adding a New Page
 
-Responsive breakpoints are standard Tailwind (`md:`, `lg:`, `sm:`). Key mobile considerations:
-- NavBar has desktop flex layout and mobile hamburger menu (toggles `isMobileMenuOpen` state)
-- Font sizes use `clamp()` for smooth scaling
-- Grid layouts collapse from 3 columns to 1 on mobile
-- Padding adjusted with `md:px-12` / `px-4` pattern
-
-### Common Editing Tasks
-
-**Adding a new page:**
-1. Create a new component function (e.g., `const NewPage = ({ setCurrentPage }) => { ... }`)
-2. Add it to the conditional render in App's JSX
-3. Add a button in NavBar to set currentPage to the new route
-
-**Updating portfolio items:**
-Edit the PortfolioSection's hardcoded YouTube links and subscriber counts in the component.
-
-**Modifying form fields:**
-Edit the StrategicIntakeSection component. Form field names must match Formspree field mappings.
-
-**Adding animations:**
-Use gsap.context() with useLayoutEffect. Always include cleanup return: `() => ctx.revert()`.
-
-**Updating colors:**
-Modify tailwind.config theme.colors in the `<script>` tag. Signal color (#FD0033) is the primary accent used throughout.
+1. Define a new component (e.g., `const NewPage = ({ setCurrentPage, navigateToForm }) => { ... }`)
+2. Add a branch in `App`'s render: `currentPage === 'newpage' ? <NewPage ... /> :`
+3. Add a nav button in `NavBar` calling `handleNavClick('newpage')`
 
 ## File Structure
 
 ```
 .
-├── index.html (complete application)
-├── .git/ (version control)
-├── images/ (reference images)
-└── ChannelScale.code-workspace (VS Code workspace config)
+├── index.html              — complete application
+├── llms.txt                — AI scraper summary
+├── robots.txt
+├── .well-known/llms.txt
+├── *.jpeg                  — images used in the app (root level)
+├── images/                 — additional reference images
+└── .claude/launch.json
 ```
-
-## Cross-Page Navigation
-
-There is a special `navigateToForm` helper in `App` that navigates to the home page and then smooth-scrolls to `#intake-form`. Any CTA button that should land on the intake form should call this instead of `setCurrentPage('home')` alone. `navigateToForm` is passed down as a prop to `NavBar` and page components.
 
 ## Notes
 
-- **Form endpoint** — Formspree ID is `mvzbwwgw`. Test submission after any form field changes.
-- **CDN dependencies** — all external libs loaded via CDN; the app does not function offline.
-- **SEO** — OG/Twitter meta tags reference `/Website%20Preview.jpg`; update if the preview image path changes.
+- **SEO meta tags** reference `/Website%20Preview.jpg` — update if the preview image path changes.
+- **CDN dependencies** — the app does not function offline.
+- **Formspree ID** is `mvzbwwgw` — test any form field changes after editing.
+- Nav labels use bracket notation matching the page identity: `[HOME]`, `[OUR_WORK]`, `[SERVICES]`, `[DIRECTOR]`, `[FAQ]`.

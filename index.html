@@ -150,7 +150,7 @@
             const [currentPage, setCurrentPage] = useState('home');
 
             useEffect(() => {
-                // Initialize icons
+                // Get Started icons
                 lucide.createIcons();
                 window.scrollTo(0, 0); // scroll to top when page changes
             }, [currentPage]);
@@ -210,7 +210,7 @@
                 setIsMobileMenuOpen(false);
             };
 
-            const handleInitializeClick = () => {
+            const handleGetStartedClick = () => {
                 if (navigateToForm) {
                     navigateToForm();
                 } else {
@@ -259,8 +259,8 @@
                             >
                                 [FAQ]
                             </button>
-                            <button onClick={handleInitializeClick} className="btn-magnetic group relative overflow-hidden px-6 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors flex-shrink-0">
-                                <span className="relative z-10 font-data text-sm font-bold uppercase tracking-wider">Initialize</span>
+                            <button onClick={handleGetStartedClick} className="btn-magnetic group relative overflow-hidden px-6 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors flex-shrink-0">
+                                <span className="relative z-10 font-data text-sm font-bold uppercase tracking-wider">Get Started</span>
                                 <div className="absolute inset-0 bg-signal translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                             </button>
                         </div>
@@ -313,8 +313,8 @@
                             [FAQ]
                         </button>
                         <div className="pt-6 pb-2 w-full px-8 flex justify-center">
-                            <button onClick={handleInitializeClick} className="w-full max-w-xs group relative overflow-hidden px-4 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors">
-                                <span className="relative z-10 font-data text-sm font-bold uppercase tracking-wider">Initialize</span>
+                            <button onClick={handleGetStartedClick} className="w-full max-w-xs group relative overflow-hidden px-4 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors">
+                                <span className="relative z-10 font-data text-sm font-bold uppercase tracking-wider">Get Started</span>
                                 <div className="absolute inset-0 bg-signal translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                             </button>
                         </div>
@@ -371,11 +371,11 @@
                             {/* Text Module 01: SYSTEM ARCHITECTURE */}
                             <div className="about-animate grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                                 <div className="md:col-span-4 relative z-10 border-l-4 border-[#FD0033] pl-3">
-                                    <h2 className="font-emphasis text-4xl md:text-5xl text-[#F8FAFC] tracking-tight uppercase mb-2">System Architecture</h2>
+                                    <h2 className="font-emphasis text-4xl md:text-5xl text-[#F8FAFC] tracking-tight uppercase mb-2">Why ChannelScale</h2>
                                 </div>
                                 <div className="md:col-span-8 flex flex-col gap-6">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light">
-                                        I built ChannelScale to solve the operational drag that kills high-level content. Social media management does not solve the full picture. An outside marketing team without in-house creative production loses the touch. But when you bring the creative, the direction, and the strategy under one roof, it functions like a single machine. Same voice. Same goal. Every time.
+                                        I built ChannelScale to solve the operational drag that kills high-level content. Social media management does not solve the full picture. An outside marketing team without in-house creative production loses the touch. But when you bring the creative, the direction, and the strategy under one roof, it functions like a single machine.
                                     </p>
                                     <p className="font-data text-sm md:text-base text-[#F8FAFC]/70 leading-relaxed bg-[#0A0A0B] p-6 border border-white/5 rounded-lg shadow-inner">
                                         I have been making content since 2016. Professionally for six years across graphic design, documentary cinematography, and video editing. Over the last two years I built out the internal workflows and assembled a team, running everything quietly for my own portfolio. Now I am opening it up. If you have ever tried to get your branding, strategy, and creative to actually work together without it consuming your schedule, we have already solved that problem.
@@ -422,7 +422,7 @@
                                 className="group relative flex items-center justify-center px-10 py-6 border border-white/20 rounded hover:border-[#FD0033] bg-[#0A0A0B] transition-all duration-300 hover:shadow-[0_0_40px_rgba(253,0,51,0.4)] overflow-hidden"
                             >
                                 <span className="relative z-10 font-data text-xs md:text-sm tracking-[0.2em] uppercase text-[#F8FAFC] group-hover:text-[#FD0033] transition-colors">
-                                    [RETURN_TO_COMMAND_CENTER]
+                                    Get Started
                                 </span>
                                 <div className="absolute inset-0 bg-[#FD0033]/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out pointer-events-none"></div>
                             </button>
@@ -593,7 +593,7 @@
                                 className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
                             >
                                 <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
-                                    [START_A_CONVERSATION]
+                                    Get Started
                                 </span>
                             </button>
                         </div>
@@ -1038,7 +1038,7 @@
                                 className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
                             >
                                 <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
-                                    [START_A_CONVERSATION]
+                                    Get Started
                                 </span>
                             </button>
                         </div>
@@ -1047,11 +1047,14 @@
 
                     {/* Lightbox */}
                     {lightbox && (
-                        <div className="fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-6" onClick={() => setLightbox(null)}>
-                            <button className="absolute top-5 right-5 text-white/50 hover:text-white transition-colors p-2" onClick={() => setLightbox(null)}>
-                                <i data-lucide="x" className="w-7 h-7"></i>
+                        <div className="fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4" onClick={() => setLightbox(null)}>
+                            <button
+                                className="absolute top-[76px] right-4 md:top-5 md:right-5 flex items-center justify-center w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 text-white transition-colors z-10"
+                                onClick={() => setLightbox(null)}
+                            >
+                                <i data-lucide="x" className="w-5 h-5"></i>
                             </button>
-                            <img src={lightbox} className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onClick={(e) => e.stopPropagation()} />
+                            <img src={lightbox} className="max-w-full max-h-[80vh] md:max-h-[90vh] object-contain rounded-lg shadow-2xl" onClick={(e) => e.stopPropagation()} />
                         </div>
                     )}
                 </section>
@@ -1153,7 +1156,7 @@
                                     className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
                                 >
                                     <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
-                                        [INITIALIZE_SYSTEM_AUDIT]
+                                        Get Started
                                     </span>
                                 </button>
                             </div>
@@ -1326,8 +1329,9 @@
                 if (!el) return;
                 let pos = 0;
                 let raf;
+                const speed = window.innerWidth < 768 ? 0.7 : 0.2;
                 const step = () => {
-                    pos -= 0.2;
+                    pos -= speed;
                     const half = el.scrollWidth / 2;
                     if (pos <= -half) pos = 0;
                     el.style.transform = `translateX(${pos}px)`;
@@ -1373,7 +1377,7 @@
                             </h1>
 
                             {/* Sub-heading */}
-                            <p className="font-data text-white/70 leading-relaxed whitespace-nowrap" style={{ fontSize: '1.5rem' }}>
+                            <p className="font-data text-white/70 leading-relaxed" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
                                 Total production and strategy for high-level voices and brands.
                             </p>
                         </div>
@@ -1423,7 +1427,7 @@
                             <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#0A0A0B] to-transparent z-10 pointer-events-none"></div>
                             <div ref={marqueeRef} className="flex" style={{ willChange: "transform" }}>
                                 {[...logos, ...logos].map((logo, i) => (
-                                    <div key={i} className={`logo-item${logo.outline ? " logo-outline" : ""} flex-shrink-0 flex items-center justify-center`} style={{ padding: "0 64px" }}>
+                                    <div key={i} className={`logo-item${logo.outline ? " logo-outline" : ""} flex-shrink-0 flex items-center justify-center`} style={{ padding: window.innerWidth < 768 ? "0 20px" : "0 64px" }}>
                                         <img
                                             src={logo.src}
                                             alt={logo.alt}
@@ -1497,18 +1501,21 @@
                         <div ref={formContainerRef} className="w-full">
                             {!isSuccess ? (
                                 <form onSubmit={handleSubmit} className="space-y-12">
-                                    {/* [IDENTIFICATION] */}
+                                    {/* Heading */}
+                                    <div className="mb-2">
+                                        <h2 className="font-emphasis text-4xl md:text-5xl text-white tracking-tight uppercase leading-none">Apply to work with us</h2>
+                                    </div>
+
+                                    {/* Name */}
                                     <div className="space-y-5">
-                                        <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[IDENTIFICATION]</label>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <input type="text" name="first_name" required placeholder="First Name*" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
                                             <input type="text" name="last_name" required placeholder="Last Name*" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
                                         </div>
                                     </div>
 
-                                    {/* [COMMUNICATION] */}
+                                    {/* Contact */}
                                     <div className="space-y-5">
-                                        <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[COMMUNICATION]</label>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <input type="email" name="business_email" required placeholder="Business Email*" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
                                             <input
@@ -1535,9 +1542,8 @@
                                         </div>
                                     </div>
 
-                                    {/* [NARRATIVE] */}
+                                    {/* Business narrative */}
                                     <div className="space-y-5">
-                                        <label className="font-data text-[#FD0033] text-xs tracking-[0.2em] uppercase block drop-shadow-[0_0_5px_rgba(253,0,51,0.4)]">[NARRATIVE]</label>
                                         <textarea name="business_narrative" required placeholder="Tell us about your business*" rows="4" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all resize-none placeholder:text-white/30"></textarea>
                                     </div>
 
@@ -1608,7 +1614,7 @@
                                     {/* Center massive Action Interface */}
                                     <div className="pt-12 mt-12 border-t border-white/10 flex flex-col items-center">
                                         <button type="submit" disabled={isSubmitting} className={`group relative w-full md:w-[80%] mx-auto bg-[#FD0033] text-white font-heading font-extrabold text-xl sm:text-2xl md:text-3xl tracking-[0.1em] uppercase py-8 px-2 rounded flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(253,0,51,0.5)] transition-all ${isSubmitting ? 'scale-[1.02] shadow-[0_0_80px_rgba(253,0,51,0.8)] animate-pulse cursor-wait' : 'hover:scale-[1.03] hover:shadow-[0_0_100px_rgba(253,0,51,0.8)] cursor-pointer'}`}>
-                                            <span className="relative z-10 break-all text-center">{isSubmitting ? 'UPLOADING_TELEMETRY...' : 'INITIALIZE_STRATEGY'}</span>
+                                            <span className="relative z-10 break-all text-center">{isSubmitting ? 'Submitting...' : 'Submit'}</span>
 
                                             {/* Scanning light animation overlay */}
                                             {!isSubmitting && <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-[30%] -left-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-300 skew-x-[-20deg] animate-[scan_2s_ease-in-out_infinite]" ></div>}
