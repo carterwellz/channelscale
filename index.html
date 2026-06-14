@@ -1746,31 +1746,12 @@
                                     </div>
                                 </form>
                             ) : (
-                                <div className="flex flex-col items-center justify-center py-10 text-center w-full">
-                                    {/* Glowing Icon */}
-                                    <div className="relative w-32 h-32 mb-10 flex text-center justify-center items-center">
-                                        <div className="absolute inset-0 rounded-full border-[2px] border-[#FD0033] opacity-30 shadow-[0_0_40px_rgba(253,0,51,0.6)] animate-[spin_8s_linear_infinite]"></div>
-                                        <div className="absolute inset-2 rounded-full border-[1px] border-[#FD0033]/50 animate-[spin_6s_linear_infinite_reverse]"></div>
-                                        <div className="w-20 h-20 rounded-full bg-[#FD0033]/20 backdrop-blur-sm border border-[#FD0033]/40 flex items-center justify-center z-10 relative">
-                                            <i data-lucide="radio" className="w-10 h-10 text-[#FD0033]"></i>
-                                        </div>
-                                    </div>
-
-                                    <h3 className="font-emphasis text-5xl md:text-6xl text-white tracking-[0.1em] mb-6 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">TRANSMISSION_RECEIVED</h3>
-
-                                    <p className="font-data text-white/70 max-w-xl mx-auto leading-loose text-sm md:text-base border border-white/5 p-6 rounded-lg bg-obsidian/40 backdrop-blur-md">
-                                        Telemetry successfully uploaded to the ChannelScale engine. <br />
-                                        Our architects are analyzing your data. Expect a response within 24 standard business hours.
+                                <div className="flex flex-col items-center justify-center py-16 text-center w-full">
+                                    <h3 className="font-emphasis text-5xl md:text-7xl text-white tracking-tight uppercase leading-none mb-8">Application Submitted</h3>
+                                    <p className="font-body text-steel/70 max-w-lg mx-auto text-base md:text-lg leading-relaxed">
+                                        Thank you for your submission.<br />
+                                        If we believe we can create meaningful growth, we'll contact you within 1–2 business days to schedule a call.
                                     </p>
-
-                                    {/* Progress Bar Stay at 100% */}
-                                    <div className="w-full max-w-md mx-auto mt-12 bg-white/5 h-1.5 rounded-full overflow-hidden relative">
-                                        <div className="absolute top-0 left-0 bottom-0 bg-[#FD0033] shadow-[0_0_10px_rgba(253,0,51,0.8)]" style={{ width: '100%' }}></div>
-                                    </div>
-                                    <div className="flex justify-between w-full max-w-md mt-3 font-data text-[10px] uppercase tracking-widest text-[#FD0033]">
-                                        <span>Processing...</span>
-                                        <span>100%</span>
-                                    </div>
                                 </div>
                             )}
                         </div>
