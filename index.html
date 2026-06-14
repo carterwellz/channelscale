@@ -1595,6 +1595,10 @@
                             duration: 0.4,
                             onComplete: () => {
                                 setIsSuccess(true);
+                                setTimeout(() => {
+                                    const section = document.getElementById('intake-form');
+                                    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }, 50);
                                 gsap.fromTo(formContainerRef.current,
                                     { opacity: 0, scale: 1.05 },
                                     {
