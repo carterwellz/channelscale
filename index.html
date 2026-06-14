@@ -1578,10 +1578,12 @@
 
                 try {
                     const formData = new FormData(e.target);
-                    const response = await fetch("https://formspree.io/f/mvzbwwgw", {
+                    const payload = Object.fromEntries(formData.entries());
+                    const response = await fetch("https://n8n-production-a00d.up.railway.app/webhook/d9fbe289-a8eb-4236-b47d-99ac3f7d1794", {
                         method: "POST",
-                        body: formData,
+                        body: JSON.stringify(payload),
                         headers: {
+                            'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         }
                     });

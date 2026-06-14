@@ -12,7 +12,7 @@ ChannelScale is a **single-page React application** serving as a marketing websi
 - GSAP 3.12.5 + ScrollTrigger for animations
 - Babel Standalone for in-browser JSX compilation
 - Lucide Icons (`lucide.createIcons()` on each page mount)
-- Formspree.io for form submissions
+- n8n webhook for form submissions
 
 ## Running the Application
 
@@ -94,7 +94,7 @@ Never use `useState` for animation state — always GSAP.
 
 ## Form
 
-The `StrategicIntakeSection` submits to Formspree: `https://formspree.io/f/mvzbwwgw`
+The `StrategicIntakeSection` submits as JSON to the n8n webhook: `https://n8n-production-a00d.up.railway.app/webhook/d9fbe289-a8eb-4236-b47d-99ac3f7d1794`
 
 Fields: `first_name`, `last_name`, `business_email`, `country_code`, `phone_number`, `preferred_communication`, `business_narrative`, plus radio groups `revenue_scale`, `marketing_spend`, `posting_history`, `deployment_timeline`.
 
@@ -123,5 +123,5 @@ On success, `isSuccess` state switches to a "TRANSMISSION_RECEIVED" confirmation
 
 - **SEO meta tags** reference `/Website%20Preview.jpg` — update if the preview image path changes.
 - **CDN dependencies** — the app does not function offline.
-- **Formspree ID** is `mvzbwwgw` — test any form field changes after editing.
+- **n8n webhook** — form submits JSON to the production URL above; test any field changes after editing.
 - Nav labels use bracket notation matching the page identity: `[HOME]`, `[OUR_WORK]`, `[SERVICES]`, `[DIRECTOR]`, `[FAQ]`.
