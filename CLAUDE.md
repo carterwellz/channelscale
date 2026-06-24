@@ -27,7 +27,15 @@ There is no build step, lint command, or test suite.
 
 ## Architecture
 
-All application code lives inside a single `<script type="text/babel">` block in `index.html`. Components are defined as plain functions in that block — no imports, no modules.
+The page has **two separate script blocks** at the bottom of `index.html`:
+
+1. **`<script type="text/babel">`** (lines ~143–2590) — All React components and app logic. Babel standalone compiles this JSX in the browser at runtime. This is the last thing to execute; React mounts only after Babel finishes compilation.
+
+2. **`<script>` plain JS** (lines ~2592–end) — Particle canvas animation and custom cursor. Runs immediately without Babel. This is why the animated background and cursor appear before React content.
+
+> **Performance note:** `@babel/standalone` (~2.5MB uncompressed) compiles ~220KB of JSX on every page load. This is the sole cause of the slow initial load. Content from `#root` only appears after compilation finishes. The custom cursor hides the native cursor immediately (via `document.body.style.cursor = 'none'`) so users see the particle animation + cursor with no React content during the Babel compilation window.
+
+All React components are defined as plain functions in the Babel block — no imports, no modules.
 
 ### Routing
 
@@ -122,6 +130,7 @@ On success, `isSuccess` state switches to a "TRANSMISSION_RECEIVED" confirmation
 ## Notes
 
 - **SEO meta tags** reference `/Website%20Preview.jpg` — update if the preview image path changes.
-- **CDN dependencies** — the app does not function offline.
+- **CDN dependencies** — the app does not function offline. React, ReactDOM, Babel, and Lucide load from `cdn.jsdelivr.net` (pinned versions); GSAP and ScrollTrigger from `cdnjs.cloudflare.com`.
 - **n8n webhook** — form submits JSON to the production URL above; test any field changes after editing.
 - Nav labels use bracket notation matching the page identity: `[HOME]`, `[OUR_WORK]`, `[SERVICES]`, `[DIRECTOR]`, `[FAQ]`.
+- **Custom cursor** — desktop-only; sets `document.body.style.cursor = 'none'` and injects two `<div>` elements (a dot + ring). Lives in the plain JS block, not React, so it activates before React mounts.
