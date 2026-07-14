@@ -132,6 +132,17 @@
     <!-- Social Embeds -->
     <script async src="//www.instagram.com/embed.js"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <!-- Wistia VSL Player -->
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/2phmix67ds.js" async type="module"></script>
+    <style>wistia-player[media-id='2phmix67ds']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/2phmix67ds/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+
+    <!-- Cal.com Embed -->
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", { origin: "https://cal.com" });
+    </script>
 </head>
 
 <body class="bg-obsidian text-steel font-body antialiased overflow-x-hidden selection:bg-signal selection:text-white">
@@ -1509,22 +1520,8 @@
                     <div className="z-10 relative flex w-full items-center justify-center max-w-[1100px]">
                         <div ref={videoRef} className="w-full aspect-video rounded-[16px] overflow-hidden bg-[#0A0A0B] border border-white/10 shadow-[0_0_60px_rgba(253,0,51,0.25)] relative flex items-center justify-center group">
 
-                            {/* Placeholder visual */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                <div className="w-20 h-20 rounded-full bg-signal/20 flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
-                                    <i data-lucide="play" className="w-8 h-8 text-signal ml-1"></i>
-                                </div>
-                                <span className="font-data text-sm tracking-widest uppercase text-white/50">VSL.mp4_</span>
-                            </div>
-
-                            <video
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                className="w-full h-full object-cover relative z-10 opacity-0 transition-opacity duration-1000"
-                                onCanPlay={(e) => e.target.classList.remove('opacity-0')}
-                            ></video>
+                            {/* Wistia VSL Player */}
+                            <wistia-player media-id="2phmix67ds" aspect="1.7777777777777777" style={{ width: '100%', height: '100%' }}></wistia-player>
 
                         </div>
                     </div>
@@ -1568,7 +1565,25 @@
         const StrategicIntakeSection = () => {
             const [isSubmitting, setIsSubmitting] = useState(false);
             const [isSuccess, setIsSuccess] = useState(false);
+            const [showCal, setShowCal] = useState(false);
             const formContainerRef = useRef(null);
+            const calRef = useRef(null);
+            const calInitedRef = useRef(false);
+
+            // Mount the inline Cal.com calendar once the user reveals it
+            useEffect(() => {
+                if (!showCal || calInitedRef.current || !window.Cal) return;
+                calInitedRef.current = true;
+                window.Cal("inline", {
+                    elementOrSelector: "#my-cal-inline",
+                    calLink: "carterw/30min",
+                    config: { layout: "month_view", overlayCalendar: "true" },
+                });
+                window.Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
+                if (calRef.current) {
+                    gsap.from(calRef.current, { height: 0, opacity: 0, duration: 0.6, ease: "power3.out" });
+                }
+            }, [showCal]);
 
             const handleSubmit = async (e) => {
                 e.preventDefault();
@@ -1745,6 +1760,23 @@
                                             {/* Scanning light animation overlay */}
                                             {!isSubmitting && <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-[30%] -left-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-300 skew-x-[-20deg] animate-[scan_2s_ease-in-out_infinite]" ></div>}
                                         </button>
+
+                                        {/* Book a call before applying — reveals an inline Cal.com calendar */}
+                                        {!showCal && (
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowCal(true)}
+                                                className="group relative overflow-hidden mt-8 max-w-full text-center leading-snug px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
+                                            >
+                                                <span className="relative z-10">Still have questions? Book a call before you apply.</span>
+                                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                                            </button>
+                                        )}
+                                        {showCal && (
+                                            <div ref={calRef} className="w-full mt-8 overflow-hidden">
+                                                <div id="my-cal-inline" style={{ width: '100%', minHeight: '620px', overflow: 'scroll' }}></div>
+                                            </div>
+                                        )}
                                     </div>
                                 </form>
                             ) : (
