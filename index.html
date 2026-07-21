@@ -712,7 +712,7 @@
                     handle: "@bible_alive",
                     href: "https://www.youtube.com/@bible_alive",
                     avatar: "https://unavatar.io/youtube/bible_alive",
-                    stat: "550K+ Subscribers",
+                    stat: "575K+ Subscribers",
                     tags: ["Channel Strategy", "Video Editing", "Thumbnails", "Scripting"],
                     body: "Built and scaled one of the fastest-growing Christian apologetics channels on YouTube. Full production, strategy, and growth system from the ground up."
                 },
@@ -730,7 +730,7 @@
                     handle: "@counterpointstudios",
                     href: "https://www.youtube.com/@counterpointstudios",
                     avatar: "https://unavatar.io/youtube/counterpointstudios",
-                    stat: "26K+ Subscribers",
+                    stat: "30K+ Subscribers",
                     tags: ["Channel Build", "Full Production", "On-Site Filming"],
                     body: "Built the Counterpoint channel from scratch. End-to-end production including on-site filming with multiple 4K cameras, editing, and full distribution."
                 }
@@ -949,7 +949,7 @@
                                         End-to-end podcast production for the Counterpoint show. 3 angles of 4K footage with up to 11 guests at one time. Audio editing, show notes, and clip distribution across TikTok, Instagram, X, and Facebook.
                                     </p>
                                     <div className="flex flex-wrap gap-2">
-                                        {["4K Multi-Cam", "Up to 11 Guests", "Audio Editing", "Show Notes", "TikTok", "Instagram", "X / Twitter", "Facebook"].map((tag, ti) => (
+                                        {["4K Multi-Cam", "Audio Editing", "TikTok", "Instagram", "X / Twitter", "Facebook"].map((tag, ti) => (
                                             <span key={ti} className="font-data text-[9px] text-white/40 bg-white/5 border border-white/10 rounded px-2 py-1 uppercase tracking-wider">{tag}</span>
                                         ))}
                                     </div>
@@ -1581,7 +1581,10 @@
                 });
                 window.Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
                 if (calRef.current) {
-                    gsap.from(calRef.current, { height: 0, opacity: 0, duration: 0.6, ease: "power3.out" });
+                    // Animate opacity/position only — never height. A height tween leaves the
+                    // wrapper locked at a fixed pixel value, which clips Cal's time-slot panel
+                    // (and traps scroll) on mobile once a date is selected.
+                    gsap.from(calRef.current, { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" });
                 }
             }, [showCal]);
 
@@ -1773,8 +1776,8 @@
                                             </button>
                                         )}
                                         {showCal && (
-                                            <div ref={calRef} className="w-full mt-8 overflow-hidden">
-                                                <div id="my-cal-inline" style={{ width: '100%', minHeight: '620px', overflow: 'scroll' }}></div>
+                                            <div ref={calRef} className="w-full mt-8">
+                                                <div id="my-cal-inline" style={{ width: '100%', minHeight: '620px' }}></div>
                                             </div>
                                         )}
                                     </div>
