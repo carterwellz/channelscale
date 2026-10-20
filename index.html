@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChannelScale | Full-Stack Content Marketing</title>
+    <title>ChannelScale | Done-For-You Podcast Production</title>
     <meta name="description"
-        content="ChannelScale is Carter Wells. A full-stack content marketer on retainer. YouTube strategy, podcast production, social media management, and short-form clips for brands and founders who are serious about content.">
+        content="You hit record. ChannelScale handles everything after: full episode edits, YouTube packaging, and 20-30 captioned clips a month, posted for you. Done-for-you podcast production from Carter Wells.">
 
     <!-- Open Graph (LinkedIn / iMessage / etc) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ChannelScale | Full-Stack Content Marketing">
+    <meta property="og:title" content="ChannelScale | Done-For-You Podcast Production">
     <meta property="og:description"
-        content="ChannelScale is Carter Wells. A full-stack content marketer on retainer. YouTube strategy, podcast production, social media management, and short-form clips for brands and founders who are serious about content.">
+        content="You hit record. ChannelScale handles everything after: full episode edits, YouTube packaging, and 20-30 captioned clips a month, posted for you. Done-for-you podcast production from Carter Wells.">
     <meta property="og:image" content="/Website%20Preview.jpg">
-    <meta property="og:image:alt" content="ChannelScale - Full-Stack Content Marketing">
+    <meta property="og:image:alt" content="ChannelScale - Done-For-You Podcast Production">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ChannelScale | Full-Stack Content Marketing">
+    <meta name="twitter:title" content="ChannelScale | Done-For-You Podcast Production">
     <meta name="twitter:description"
-        content="ChannelScale is Carter Wells. A full-stack content marketer on retainer. YouTube strategy, podcast production, social media management, and short-form clips for brands and founders who are serious about content.">
+        content="You hit record. ChannelScale handles everything after: full episode edits, YouTube packaging, and 20-30 captioned clips a month, posted for you. Done-for-you podcast production from Carter Wells.">
     <meta name="twitter:image" content="/Website%20Preview.jpg">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23FD0033%22/></svg>">
@@ -187,9 +187,10 @@
                         <>
                             <HeroSection />
                             <StatsSection />
-                            <StrategicIntakeSection />
-                            <WhySocialSection />
+                            <OfferSection navigateToForm={navigateToForm} />
+                            <ResultsSection setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
                             <ProcessSection />
+                            <StrategicIntakeSection />
                             <HomeFAQSection setCurrentPage={setCurrentPage} />
                         </>
                     ) : currentPage === 'work' ? (
@@ -256,7 +257,7 @@
                                 onClick={() => handleNavClick('services')}
                                 className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap flex-shrink-0 ${currentPage === 'services' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
                             >
-                                [SERVICES]
+                                [THE_OFFER]
                             </button>
                             <button
                                 onClick={() => handleNavClick('about')}
@@ -309,7 +310,7 @@
                             onClick={() => handleNavClick('services')}
                             className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'services' ? 'text-[#FD0033]' : 'text-white/60'}`}
                         >
-                            [SERVICES]
+                            [THE_OFFER]
                         </button>
                         <button
                             onClick={() => handleNavClick('about')}
@@ -383,10 +384,10 @@
                                 </div>
                                 <div className="md:col-span-8 flex flex-col gap-6">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light">
-                                        I built ChannelScale to solve the operational drag that kills high-level content. Social media management does not solve the full picture. An outside marketing team without in-house creative production loses the touch. But when you bring the creative, the direction, and the strategy under one roof, it functions like a single machine.
+                                        I built ChannelScale for people with a show worth watching and no time to finish it. Recording is the part you are good at. Everything after it, syncing angles, cutting, cleaning audio, packaging, clipping and posting, is where most podcasts stall. That part is what we do.
                                     </p>
                                     <p className="font-data text-sm md:text-base text-[#F8FAFC]/70 leading-relaxed bg-[#0A0A0B] p-6 border border-white/5 rounded-lg shadow-inner">
-                                        I have been making content since 2016. Professionally for six years across graphic design, documentary cinematography, and video editing. Over the last two years I built out the internal workflows and assembled a team, running everything quietly for my own portfolio. Now I am opening it up. If you have ever tried to get your branding, strategy, and creative to actually work together without it consuming your schedule, we have already solved that problem.
+                                        I have been making content since 2016. Professionally for six years across graphic design, documentary cinematography, and video editing. Over the last two years I built the workflows that run my own shows: a multicam editing pipeline, an automated clip system and a packaging process for titles and thumbnails. I assembled a team around them and ran everything quietly for my own portfolio. Now I am opening that operation up to a small number of podcasts.
                                     </p>
                                 </div>
                             </div>
@@ -402,7 +403,7 @@
                                     </p>
                                     <div className="p-6 border-l-4 border-[#FD0033] bg-[#FD0033]/10">
                                         <p className="font-heading text-xl md:text-3xl text-[#F8FAFC] font-extrabold tracking-tight">
-                                            "Applying these strategies to a brand that can capitalize on lead generation makes this a <span className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.8)]">no-brainer</span> for any high-level voice."
+                                            "If your show is worth recording, it is worth <span className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.8)]">finishing properly</span>."
                                         </p>
                                     </div>
                                 </div>
@@ -416,7 +417,7 @@
                                 </div>
                                 <div className="md:col-span-8 relative z-10">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light">
-                                        ChannelScale operates as a specialized content marketing studio. YouTube, podcast, social. Whatever the format, you get the output of a full team with the quality control of a single proven director. I personally review and finalize every strategy and frame. Let's partner together to scale your channel.
+                                        ChannelScale is a done-for-you podcast studio. You get the output of a full post-production team with the quality control of a single director. I personally review the work on every show before it ships, so the standard on episode 40 matches episode 1.
                                     </p>
                                 </div>
                             </div>
@@ -464,10 +465,10 @@
                         {/* Header */}
                         <div className="config-animate text-center mb-20 border-b border-white/10 pb-16">
                             <h1 className="font-emphasis text-[9.5vw] sm:text-6xl md:text-[6rem] lg:text-[7rem] tracking-tight uppercase leading-[0.85] mb-6 text-[#F8FAFC] drop-shadow-[0_0_15px_rgba(253,0,51,0.15)] break-words break-all sm:break-normal">
-                                <span className="text-[#FD0033] opacity-50">[</span>SERVICES<span className="text-[#FD0033] opacity-50">]</span>
+                                <span className="text-[#FD0033] opacity-50">[</span>THE OFFER<span className="text-[#FD0033] opacity-50">]</span>
                             </h1>
                             <p className="font-data text-[#F8FAFC]/50 tracking-widest uppercase text-sm md:text-base">
-                                Creative. Direction. Strategy. One roof.
+                                Everything after you hit record.
                             </p>
                         </div>
 
@@ -478,118 +479,113 @@
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#FD0033] blur-[120px] opacity-10 pointer-events-none"></div>
                                 <div className="relative z-10 space-y-6">
                                     <p className="font-body text-xl md:text-2xl text-[#F8FAFC] leading-relaxed font-light border-l-4 border-[#FD0033] pl-6">
-                                        ChannelScale is built to solve the operational drag that kills high-level content.
+                                        You record the episode. We handle everything after.
                                     </p>
                                     <p className="font-body text-lg text-[#F8FAFC]/70 leading-relaxed font-light">
-                                        Social media management alone does not solve the full picture. An outside marketing team without in-house creative production loses the voice. But when you bring the creative, the direction, and the strategy under one roof, it functions like a single machine. Same voice. Same goal. Every time.
+                                        Most podcasters spend more hours editing, packaging and posting than they spend recording. ChannelScale takes all of it for one monthly price: the edit, the YouTube packaging, the clips and the posting. One team, one point of contact, the same standard every week.
                                     </p>
                                 </div>
                             </div>
 
-                            {/* Flexible engagement callout */}
+                            {/* One offer callout */}
                             <div className="config-animate flex items-start gap-5 bg-white/[0.03] border border-white/10 rounded-xl p-7 md:p-10">
                                 <div className="w-1.5 h-full min-h-[48px] bg-[#FD0033] rounded-full flex-shrink-0 mt-1"></div>
                                 <div>
-                                    <p className="font-heading font-bold text-lg md:text-xl text-[#F8FAFC] mb-2 uppercase tracking-wide">As much or as little as you need.</p>
+                                    <p className="font-heading font-bold text-lg md:text-xl text-[#F8FAFC] mb-2 uppercase tracking-wide">One offer. One monthly price.</p>
                                     <p className="font-body text-[#F8FAFC]/70 leading-relaxed">
-                                        Partners can plug into the full operation or bring us in for a single service. Want us to run your entire content engine? Done. Just need your YouTube edited? Also done. We scope what you actually need and build from there.
+                                        Partnerships start at $4,000 per month on a six-month term. Your quote is set on the call by episode length, camera count and the platforms we post to. Interview, co-hosted, solo and talking-head shows all get the same deliverable.
                                     </p>
                                 </div>
                             </div>
 
-                            {/* Service cards */}
+                            {/* Deliverables */}
                             <div className="config-animate">
+                                <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.3em] mb-8">What you get every month</p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="play" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">YouTube Production</h4>
-                                        </div>
-                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            Full end-to-end YouTube operation. Channel strategy, branding, thumbnail design, title writing, scripting, and video editing. The anchor of your entire content presence.
-                                        </p>
-                                    </div>
-                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
-                                        <div className="flex items-center gap-4 mb-3">
                                             <i data-lucide="film" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Video Editing</h4>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">4 Full Episode Edits</h4>
                                         </div>
                                         <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            Post-production for any format. Short form social clips, long-form YouTube videos, branded commercials, and podcast edits. If it was filmed, we can build it.
+                                            Every camera angle synced and cut as a multicam. Audio cleaned and leveled, color corrected, pacing tightened. A finished episode ready for YouTube and every podcast app.
                                         </p>
                                     </div>
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="camera" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">On-Site Production</h4>
+                                            <i data-lucide="image" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">YouTube Packaging</h4>
                                         </div>
                                         <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            We come to you. Cinema-grade capture for branded series, documentaries, event coverage, and high-stakes shoots. Setup to final edit, handled entirely by us.
-                                        </p>
-                                    </div>
-                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
-                                        <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="mic" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Podcast Production</h4>
-                                        </div>
-                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            Full podcast build from the ground up. Recording setup, editing, show notes, clip extraction, and distribution across every major platform. You talk. We handle everything else.
-                                        </p>
-                                    </div>
-                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
-                                        <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="smartphone" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Social Media Management</h4>
-                                        </div>
-                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            Full account management across every major platform. Posting, scheduling, community engagement, and growth strategy. Your presence stays active and consistent without you lifting a finger.
+                                            A researched title, a custom thumbnail, timestamped chapters, a written description and tags on every upload. The packaging decides whether anyone clicks.
                                         </p>
                                     </div>
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
                                             <i data-lucide="scissors" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Social Media Clipping</h4>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">20-30 Clips a Month</h4>
                                         </div>
                                         <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            We pull the best moments from your long-form content and distribute them across every major platform systematically. Your reach compounds without extra effort on your end.
+                                            The strongest moments from each episode, cut vertical, framed on the speaker and captioned. Built to bring new listeners back to the full episode.
                                         </p>
                                     </div>
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="globe" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Web Apps & Digital Funnels</h4>
+                                            <i data-lucide="send" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Posting & Scheduling</h4>
                                         </div>
                                         <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            Custom web applications built to turn your social audience into real business. Lead capture pages, booking systems, and conversion funnels designed specifically around your brand and offer.
+                                            Episodes and clips scheduled and published to YouTube, Shorts, Instagram, TikTok, X and Facebook. Your channels stay active every week.
                                         </p>
                                     </div>
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="mail" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Email & Text Automations</h4>
+                                            <i data-lucide="archive" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Back Catalog Relaunch</h4>
                                         </div>
                                         <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            Marketing systems that run without you. Email sequences, SMS campaigns, and automated follow-up flows built to move your audience from viewer to paying client.
+                                            During month one we mine your old episodes for clips and repackaged uploads, so the channel has momentum before the first new episode ships.
                                         </p>
                                     </div>
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="cpu" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Internal Tools Access</h4>
+                                            <i data-lucide="bar-chart-3" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Monthly Report</h4>
                                         </div>
                                         <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            Partners get access to our full internal toolkit. Content generators, caption tools, lead generation systems, and custom performance dashboards built for your business.
+                                            Views, watch time, click-through rate and which clips traveled, in plain language, with what we are changing next month.
                                         </p>
                                     </div>
                                     <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
                                         <div className="flex items-center gap-4 mb-3">
-                                            <i data-lucide="user" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
-                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Strategy & Consulting</h4>
+                                            <i data-lucide="mic" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Solo & Talking-Head Shows</h4>
                                         </div>
                                         <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
-                                            1-on-1 sessions on content strategy, platform direction, and channel audits. Before we build anything, we figure out exactly what needs to be built and why.
+                                            Recording alone or straight to camera? Same edit, same packaging, same clips. If it is a show you record regularly, it fits.
                                         </p>
                                     </div>
+                                    <div className="border-l-4 border-white/10 pl-6 hover:border-[#FD0033] transition-colors group">
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <i data-lucide="user-check" className="w-6 h-6 text-[#FD0033] group-hover:drop-shadow-[0_0_8px_rgba(253,0,51,0.8)] transition-all flex-shrink-0"></i>
+                                            <h4 className="font-emphasis text-2xl tracking-wide uppercase text-[#F8FAFC]">Director Review</h4>
+                                        </div>
+                                        <p className="font-body text-[#F8FAFC]/70 font-light leading-relaxed">
+                                            Carter reviews the work on every show before it ships. You get a full post-production team with one person accountable for the result.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Guarantees */}
+                            <div className="config-animate grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="border border-[#FD0033] bg-[#FD0033]/[0.06] rounded-xl p-8">
+                                    <p className="font-emphasis text-3xl uppercase tracking-wide text-[#F8FAFC] mb-3">7-day turnaround</p>
+                                    <p className="font-body text-[#F8FAFC]/70 leading-relaxed">Your first edited episode is back within 7 days of receiving the files, or that month is free.</p>
+                                </div>
+                                <div className="border border-white/10 bg-white/[0.03] rounded-xl p-8">
+                                    <p className="font-emphasis text-3xl uppercase tracking-wide text-[#F8FAFC] mb-3">7-day full refund</p>
+                                    <p className="font-body text-[#F8FAFC]/70 leading-relaxed">If the first week of work misses what you expected, tell us within 7 days and you get every dollar back.</p>
                                 </div>
                             </div>
                         </div>
@@ -958,7 +954,7 @@
 
                             {/* Custom Builds & Tools */}
                             <div className="work-animate">
-                                <SectionHeader icon="wrench" label="Custom Builds & Tools" description="Custom web apps, internal tools, and dashboards built for specific business problems." />
+                                <SectionHeader icon="wrench" label="The Tools Behind the Service" description="In-house systems we built to edit, clip and post faster than a freelancer can. They run behind every client show." />
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     {/* SlicePost — wider */}
                                     <div className="bg-white/[0.02] border border-white/8 rounded-xl p-6 hover:border-white/20 transition-colors group md:col-span-2 flex flex-col">
@@ -1097,14 +1093,15 @@
             };
 
             const faqs = [
-                { q: "Who is ChannelScale for?", a: "We partner with entrepreneurs, businesses, and personal brands who are ready to use video content as their primary marketing engine. Most of our clients are sitting on untapped authority. They just need the system to capture and distribute it. Whether it is long-form YouTube, a branded podcast, or a social presence that actually converts, we build the operation around what fits your business." },
-                { q: "How much do ChannelScale services cost?", a: "Pricing depends on what you need help with. Some clients come to us for a one-time YouTube audit or strategy call. Others hire us to manage their YouTube channel, podcast, or social media content on an ongoing basis. One-time services start at $100. Ongoing services are custom priced based on the amount of content, platforms involved, and how much of the process you want us to handle. Once we understand your goals, we will recommend the best fit and provide clear pricing before any work begins." },
-                { q: "How is this different from hiring a standard editor or freelancer?", a: "Hiring freelancers means dealing with the headaches of teaching your brand. You deal with the risk of people flaking. You deal with overseas taxes and management responsibilities. At ChannelScale everything is in-house. It is cohesive. You don’t have to worry about hiring or tax headaches. We are the manager so you don’t have to be." },
-                { q: "Why create original content like a podcast if I’m just a business?", a: "Everyone is consuming content. Instead of putting your marketing dollars toward slapping your name on other people’s platforms, build a media company that does the marketing for you. One that can pay itself back. When done well it is an endless cycle. Your content attracts an audience, that audience converts to clients, those clients fund more content. A podcast or YouTube channel is not a marketing expense. It is a compounding asset." },
-                { q: "I’ve tried YouTube before and it didn’t work. Why will this?", a: "That is exactly why this will work. You already know the pain points of doing this alone. You know the benefit of a successful channel. We take all that pain out and implement proven strategies. This allows you to focus 100% on what you do best while we run the engine." },
-                { q: "How much of my time will this actually take?", a: "It takes as little or as much time as you want. Most of our partners only spend a couple of hours a month filming themselves and checking in on progress. We handle the heavy lifting of the output." },
-                { q: "Do I need a massive audience to see lead generation results?", a: "No. Influence is not about view counts. It is about view quality. We focus on niche domination to ensure your views are coming from potential high-ticket clients. A smaller, highly targeted audience outperforms a large disengaged one every time." },
-                { q: "Why are world-class athletes and celebrities investing in video content?", a: "Cristiano Ronaldo, Tom Brady, and Hailey Bieber all have full production teams running their YouTube channels. These are not passion projects. They are deliberate media operations built to control their narrative and own their audience. They understand that video content is a different beast. It is not about mindless scrolling. It is about packaging content that people intentionally click on and watch for an hour. The value of that attention is unmatched and they are not leaving it on the table." }
+                { q: "Who is ChannelScale for?", a: "Podcasts and video shows that already make money, either directly or by bringing in clients for the business behind them. Founders, coaches, experts and creators who are good on the mic and done spending their week in an editing timeline. Interview shows, co-hosted shows, solo shows and talking-head channels all get the same deliverable." },
+                { q: "What do I get each month?", a: "Four full episodes edited (camera sync, multicam cut, audio cleanup, color). YouTube packaging for each one: title, custom thumbnail, chapters, description and tags. 20-30 vertical clips, captioned and posted to YouTube Shorts, Instagram, TikTok, X and Facebook. A monthly report on what worked and what we are changing." },
+                { q: "How much does it cost?", a: "Partnerships start at $4,000 per month on a six-month term. The exact number depends on episode length, how many cameras you record with and how many platforms we post to. You get a clear quote on the call before anything starts." },
+                { q: "What if it is not what I expected?", a: "Two guarantees. Your first edited episode is back within 7 days of us receiving the files, or that month is free. And if the first week of work misses what you expected, tell us within 7 days for a full refund." },
+                { q: "How much of my time does this take?", a: "Recording the episode and uploading the files. After onboarding, everything else is ours. If you want to approve titles and thumbnails before they go live you can, and if you would rather we just run it, we will." },
+                { q: "I have years of old episodes. Can you use them?", a: "Yes, and we start there. During month one we go through your back catalog, pull the strongest moments and relaunch them as clips and repackaged uploads. Your channel has momentum before the first new episode ships." },
+                { q: "Do you film the show?", a: "You record wherever you record now, in a studio, at home or remotely over Riverside or Zoom. Send us every camera angle and the separate audio tracks if you have them. If your setup needs work, we will tell you exactly what to change on the onboarding call." },
+                { q: "How is this different from hiring a freelance editor?", a: "A freelancer edits. You still write the titles, make the thumbnails, pick the clips, caption them, post them and chase the deadlines. ChannelScale owns all of it, with one team and one point of contact, on a fixed schedule. Our in-house tools for multicam editing and clipping are why we can deliver this volume every month." },
+                { q: "Do you guarantee views?", a: "We guarantee what we control: turnaround, volume and quality. Views depend on your topic, your guests and how long you keep showing up. What we can say is that every show on our results page grew after the edit and packaging changed." },
             ];
 
             return (
@@ -1157,7 +1154,7 @@
                         {/* 4. Final Direct Action */}
                         <div className="faq-animate mt-32 text-center pt-16 border-t border-white/10">
                             <h2 className="font-emphasis text-4xl md:text-5xl tracking-tight uppercase mb-10 text-[#F8FAFC]">
-                                INITIALIZE YOUR AUDIT.
+                                READY TO STOP EDITING?
                             </h2>
                             <div className="flex justify-center">
                                 <button
@@ -1506,12 +1503,12 @@
                                 className="font-emphasis text-[#F8FAFC] tracking-wide mb-6 leading-[0.95] uppercase"
                                 style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}
                             >
-                                We build your <span ref={highlightRef} className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">social media</span> into a <span className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">marketing machine</span> while you stick to what you do best.
+                                You hit record. <span ref={highlightRef} className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">We handle everything after.</span>
                             </h1>
 
                             {/* Sub-heading */}
                             <p className="font-data text-white/70 leading-relaxed" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
-                                Total production and strategy for high-level voices and brands.
+                                Done-for-you podcast production. Every episode edited, packaged for YouTube and cut into 20-30 clips a month, posted for you.
                             </p>
                         </div>
                     </div>
@@ -1532,15 +1529,15 @@
                             onClick={() => document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                             className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
                         >
-                            <span className="relative z-10">See if you qualify</span>
+                            <span className="relative z-10">Apply to work with us</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                         </button>
-                        <p className="font-data text-white/40 text-xs tracking-widest uppercase">No commitment. 15-minute call.</p>
+                        <p className="font-data text-white/40 text-xs tracking-widest uppercase">First episode back in 7 days or the month is free.</p>
                     </div>
 
                     {/* Brand Marquee */}
                     <div className="z-10 relative w-full mt-14 md:mt-16">
-                        <p className="font-data text-white/60 text-xs font-bold uppercase tracking-[0.3em] text-center mb-8">Brands we have worked with</p>
+                        <p className="font-data text-white/60 text-xs font-bold uppercase tracking-[0.3em] text-center mb-8">Brands and shows we have worked with</p>
                         <div className="relative w-full overflow-hidden">
                             <div ref={marqueeRef} className="flex" style={{ willChange: "transform" }}>
                                 {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
@@ -1688,12 +1685,12 @@
 
                                     {/* Business narrative */}
                                     <div className="space-y-5">
-                                        <textarea name="business_narrative" required placeholder="Tell us about your business*" rows="4" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all resize-none placeholder:text-white/30"></textarea>
+                                        <textarea name="business_narrative" required placeholder="Tell us about your show and the business behind it*" rows="4" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all resize-none placeholder:text-white/30"></textarea>
                                     </div>
 
                                     {/* Revenue */}
                                     <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Monthly Revenue (Approximate):</p>
+                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Monthly Revenue, Show or Business (Approximate):</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['< $10k/mo', '$10k-$50k/mo', '$50k-$100k/mo', '$100k-$250k/mo', '$250k+/mo'].map((opt, i) => (
                                                 <label key={i} className="flex items-center gap-3 cursor-pointer group">
@@ -1709,7 +1706,7 @@
 
                                     {/* Marketing Spend */}
                                     <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Marketing Spend (Last 30 Days):</p>
+                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Current Monthly Spend on Editing & Production:</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['Under $1k', '$1k-$3k', '$3k-$10k', '$10k-$50k', '$50k+'].map((opt, i) => (
                                                 <label key={i} className="flex items-center gap-3 cursor-pointer group">
@@ -1725,7 +1722,7 @@
 
                                     {/* Posting History */}
                                     <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">How long have you been posting video content?</p>
+                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">How long have you been recording your show?</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['Never', '6 Months', '1 Year+', '5 Years+'].map((opt, i) => (
                                                 <label key={i} className="flex items-center gap-3 cursor-pointer group">
@@ -1741,7 +1738,7 @@
 
                                     {/* Deployment Timeline */}
                                     <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">When will you start on social media?</p>
+                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">When do you want to start?</p>
                                         <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
                                             {['Now', 'Within 30 days', '30 days or more'].map((opt, i) => (
                                                 <label key={i} className="flex items-center gap-3 cursor-pointer group">
@@ -1771,7 +1768,7 @@
                                                 onClick={() => setShowCal(true)}
                                                 className="group relative overflow-hidden mt-8 max-w-full text-center leading-snug px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
                                             >
-                                                <span className="relative z-10">Still have questions? Book a call before you apply.</span>
+                                                <span className="relative z-10">Still have questions? Book a call first.</span>
                                                 <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                                             </button>
                                         )}
@@ -2357,12 +2354,12 @@
             );
         }
 
-        const WhySocialSection = () => {
+        const OfferSection = ({ navigateToForm }) => {
             const sectionRef = useRef(null);
             useLayoutEffect(() => {
                 let ctx = gsap.context(() => {
-                    gsap.from(".why-card", {
-                        y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
+                    gsap.from(".offer-card", {
+                        y: 40, opacity: 0, duration: 0.7, stagger: 0.1, ease: "power3.out",
                         scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
                     });
                 }, sectionRef);
@@ -2372,52 +2369,170 @@
             React.useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
 
             const cards = [
-                {
-                    icon: "users",
-                    label: "Audience Reality",
-                    headline: "Your buyers are already watching",
-                    body: "90% of households earning $100K+ are active on social media daily. The average person spends 2.5+ hours scrolling. They aren't going to find you. You have to appear."
-                },
-                {
-                    icon: "search",
-                    label: "Discovery Shift",
-                    headline: "The feed is the new search engine",
-                    body: "Social drives visibility far beyond the platforms themselves — surfacing in Google results, AI answers, and everywhere your audience goes to find solutions."
-                },
-                {
-                    icon: "trending-up",
-                    label: "Attention Economy",
-                    headline: "One view is worth more than one cold email",
-                    body: "A single piece of content that hooks a new viewer builds trust at scale. Trust converts to inbound. Inbound converts to revenue. Cold outreach doesn't compound — content does."
-                },
-                {
-                    icon: "repeat-2",
-                    label: "Content Leverage",
-                    headline: "One piece of content. Infinite distribution.",
-                    body: "A 10-minute interview becomes 6 short clips, 4 captions, 2 blog posts, and 1 email. Most brands create once and stop. We build systems that multiply the asset."
-                },
+                { icon: "film", label: "Full episodes", headline: "4 episodes edited every month", body: "We sync every camera angle, cut the multicam, clean the audio and color the footage. You get a finished episode ready to publish." },
+                { icon: "image", label: "YouTube packaging", headline: "Titles, thumbnails, chapters", body: "Every upload ships with a researched title, a custom thumbnail, chapters, a description and tags. Packaging is what gets the click." },
+                { icon: "scissors", label: "Clips everywhere", headline: "20-30 clips a month", body: "The best moments of every episode cut vertical, captioned and posted to YouTube Shorts, Instagram, TikTok, X and Facebook." },
+                { icon: "archive", label: "Month one", headline: "Your back catalog, relaunched", body: "Old episodes are full of moments nobody has seen. During onboarding we mine your archive so the channel has momentum before the first new episode ships." },
+                { icon: "calendar-check", label: "Posting", headline: "Scheduled and posted for you", body: "Episodes and clips go live on a set schedule across every platform, the week they are finished." },
+                { icon: "bar-chart-3", label: "Reporting", headline: "A monthly report you can read", body: "What got watched, what got clicked, which clips traveled, and what we are changing next month." },
             ];
 
             return (
-                <section ref={sectionRef} className="py-24 px-4 md:px-12 relative z-10">
+                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5">
                     <div className="max-w-5xl mx-auto">
-                        <div className="mb-12">
-                            <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.3em] mb-3">Why It Works</p>
-                            <h2 className="font-emphasis text-4xl md:text-5xl uppercase tracking-wide text-[#F8FAFC] leading-none">
-                                The Case For<br className="hidden md:block" /> Serious Content
+                        <div className="mb-12 max-w-3xl">
+                            <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.3em] mb-3">The Offer</p>
+                            <h2 className="font-emphasis text-5xl md:text-7xl uppercase tracking-wide text-[#F8FAFC] leading-[0.9] mb-6">
+                                Everything after you<br className="hidden md:block" /> <span className="text-[#FD0033]">hit record.</span>
                             </h2>
+                            <p className="font-body text-lg md:text-xl text-[#F8FAFC]/70 leading-relaxed">
+                                You record the show and drop the raw files in a shared folder. We turn every episode into a finished YouTube upload and a month of clips on every platform.
+                            </p>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {cards.map((card, i) => (
-                                <div key={i} className="why-card bg-white/[0.025] border border-white/8 rounded-2xl p-7 hover:border-white/15 transition-colors duration-300 group">
+                                <div key={i} className="offer-card bg-white/[0.025] border border-white/8 rounded-2xl p-7 hover:border-[#FD0033]/40 transition-colors duration-300 group">
                                     <div className="w-10 h-10 rounded-lg bg-[#FD0033]/10 border border-[#FD0033]/20 flex items-center justify-center mb-5 group-hover:bg-[#FD0033]/15 transition-colors">
-                                        <i data-lucide={card.icon} className="w-4.5 h-4.5 text-[#FD0033]" style={{width:'18px',height:'18px'}}></i>
+                                        <i data-lucide={card.icon} className="text-[#FD0033]" style={{width:'18px',height:'18px'}}></i>
                                     </div>
                                     <p className="font-data text-[#FD0033]/70 text-[10px] uppercase tracking-[0.25em] mb-2">{card.label}</p>
                                     <h3 className="font-emphasis text-2xl uppercase tracking-wide text-[#F8FAFC] mb-3 leading-tight">{card.headline}</h3>
                                     <p className="font-body text-[#F8FAFC]/55 text-sm leading-relaxed">{card.body}</p>
                                 </div>
                             ))}
+                        </div>
+
+                        {/* Guarantees */}
+                        <div className="offer-card mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div className="flex items-start gap-4 border border-[#FD0033] bg-[#FD0033]/[0.06] rounded-2xl p-7 shadow-[0_0_30px_rgba(253,0,51,0.12)]">
+                                <i data-lucide="timer" className="text-[#FD0033] flex-shrink-0 mt-1" style={{width:'22px',height:'22px'}}></i>
+                                <div>
+                                    <p className="font-emphasis text-2xl uppercase tracking-wide text-[#F8FAFC] mb-2">7-day turnaround guarantee</p>
+                                    <p className="font-body text-sm text-[#F8FAFC]/65 leading-relaxed">Your first edited episode is back within 7 days of receiving the files, or that month is free.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4 border border-white/10 bg-white/[0.025] rounded-2xl p-7">
+                                <i data-lucide="shield-check" className="text-[#FD0033] flex-shrink-0 mt-1" style={{width:'22px',height:'22px'}}></i>
+                                <div>
+                                    <p className="font-emphasis text-2xl uppercase tracking-wide text-[#F8FAFC] mb-2">7-day full refund</p>
+                                    <p className="font-body text-sm text-[#F8FAFC]/65 leading-relaxed">If the first week of work misses what you expected, tell us within 7 days and you get every dollar back.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-14 flex justify-center">
+                            <button
+                                onClick={navigateToForm}
+                                className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
+                            >
+                                <span className="relative z-10">Apply to work with us</span>
+                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const ResultsSection = ({ setCurrentPage, navigateToForm }) => {
+            const sectionRef = useRef(null);
+            useLayoutEffect(() => {
+                let ctx = gsap.context(() => {
+                    gsap.from(".result-card", {
+                        y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
+                        scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
+                    });
+                }, sectionRef);
+                return () => ctx.revert();
+            }, []);
+
+            React.useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
+
+            const results = [
+                {
+                    client: "Counterpoint Studios",
+                    meta: "Debate podcast - 30K+ subscribers",
+                    headline: "1M+ watch hours on a show we built from zero",
+                    body: "Three 4K angles and up to 11 guests per episode, synced, cut and packaged in-house. Every episode is clipped and posted across TikTok, Instagram, X and Facebook through our own clip pipeline.",
+                    before: null,
+                },
+                {
+                    client: "@GiveMeAnAnswer",
+                    meta: "Campus Q&A channel",
+                    headline: "10K to 2.8M views on the same footage",
+                    body: "We re-edited and repackaged existing conversations with new titles and thumbnails. Same conversation, new edit and packaging.",
+                    before: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/bEFORE/Screenshot%202026-06-11%20213030.png", beforeViews: "10K",
+                    after: "GiveMeAnAnwer%20Cliffe%20BEfore%20and%20after/AFTER/Screenshot%202026-06-11%20212839.png", afterViews: "2.8M",
+                },
+                {
+                    client: "Bowmar Bowhunting",
+                    meta: "2.6M+ subscribers",
+                    headline: "30K to 573K views per upload",
+                    body: "Long-form edits and packaging for one of the most followed hunting brands on YouTube, produced on a weekly schedule.",
+                    before: "Bowmar%20before%20and%20after/Before/Screenshot%202026-06-11%20152133.png", beforeViews: "30K",
+                    after: "Bowmar%20before%20and%20after/After/Screenshot%202026-06-11%20152455.png", afterViews: "573K",
+                },
+            ];
+
+            return (
+                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5 bg-[#050505]">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="mb-12 max-w-3xl">
+                            <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.3em] mb-3">Results</p>
+                            <h2 className="font-emphasis text-5xl md:text-6xl uppercase tracking-wide text-[#F8FAFC] leading-[0.9] mb-6">
+                                Shows we have <span className="text-[#FD0033]">edited and grown</span>
+                            </h2>
+                            <p className="font-body text-lg text-[#F8FAFC]/70 leading-relaxed">
+                                Same team, same pipeline, same standard your show gets.
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-6">
+                            {results.map((r, i) => (
+                                <div key={i} className="result-card grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10 bg-white/[0.02] border border-white/8 hover:border-white/20 rounded-2xl p-7 md:p-10 transition-colors">
+                                    <div className={r.before ? "md:col-span-2" : "md:col-span-5"}>
+                                        <p className="font-heading font-bold text-[#F8FAFC] text-lg">{r.client}</p>
+                                        <p className="font-data text-[10px] text-white/40 uppercase tracking-widest mb-5">{r.meta}</p>
+                                        <h3 className="font-emphasis text-3xl md:text-4xl uppercase tracking-wide text-[#FD0033] leading-tight mb-4">{r.headline}</h3>
+                                        <p className="font-body text-[#F8FAFC]/60 leading-relaxed">{r.body}</p>
+                                    </div>
+                                    {r.before && (
+                                        <div className="md:col-span-3 grid grid-cols-2 gap-4">
+                                            <div className="flex flex-col gap-2">
+                                                <div className="relative rounded-lg overflow-hidden h-[150px] md:h-[190px] bg-[#0A0A0B]">
+                                                    <img src={r.before} alt="Before" loading="lazy" className="w-full h-full object-contain object-top" />
+                                                    <span className="absolute top-2 left-2 font-data text-[10px] font-bold uppercase tracking-widest bg-black/85 text-white px-2 py-1 rounded">Before</span>
+                                                </div>
+                                                <span className="font-data text-sm font-bold text-white/50">{r.beforeViews} views</span>
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <div className="relative rounded-lg overflow-hidden h-[150px] md:h-[190px] bg-[#0A0A0B]">
+                                                    <img src={r.after} alt="After" loading="lazy" className="w-full h-full object-contain object-top" />
+                                                    <span className="absolute top-2 left-2 font-data text-[10px] font-bold uppercase tracking-widest bg-[#FD0033] text-white px-2 py-1 rounded">After</span>
+                                                </div>
+                                                <span className="font-data text-sm font-bold text-[#FD0033]">{r.afterViews} views</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <button
+                                onClick={navigateToForm}
+                                className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
+                            >
+                                <span className="relative z-10">Apply to work with us</span>
+                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                            </button>
+                            <button
+                                onClick={() => { setCurrentPage('work'); window.scrollTo(0, 0); }}
+                                className="font-data text-sm text-signal hover:text-white transition-colors uppercase tracking-widest"
+                            >
+                                See all our work →
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -2439,20 +2554,20 @@
             const steps = [
                 {
                     num: "1",
-                    title: "Audit & Strategy",
-                    body: "We start by getting a full picture of your brand. Then we build the custom plan. Content style, platform specifics, website overhaul, dashboard builds, and custom internal apps. Whatever a custom fit looks like for your business, that is what we build.",
+                    title: "Onboard & Relaunch",
+                    body: "A kickoff call to learn your show, your audience and what the show is for. We set up a shared upload folder and your posting schedule, then go through your back catalog and start publishing the best moments from it right away.",
                     icon: "compass"
                 },
                 {
                     num: "2",
-                    title: "Build & Produce",
-                    body: "We build custom workflows so your content operation runs without eating your time. Then we get to work on what we do best. Using our in-house internal tools and workflows that have helped build million+ subscriber YouTube channels, billion+ video views, and thousands of high-ticket leads. Stunning content that pulls in leads and eyeballs with no day-to-day.",
+                    title: "You Record. We Build.",
+                    body: "Record the way you already do and upload the raw angles and audio. We sync, edit, clean the audio, write the title, design the thumbnail, add chapters and description, then cut and caption the clips. Your first episode is back within 7 days.",
                     icon: "video"
                 },
                 {
                     num: "3",
-                    title: "Manage & Grow",
-                    body: "The longer we work together, the sharper everything gets. More data means better decisions. Better decisions mean better content. We optimize every part of the pipeline to push performance higher and more efficiently. We are here to partner with you as an extension of your business, not just bystanders.",
+                    title: "Post, Report, Improve",
+                    body: "Everything goes out on schedule across YouTube, Shorts, Instagram, TikTok, X and Facebook. Each month you get a report on what got watched and clicked, and we adjust titles, thumbnails and clip selection from the data.",
                     icon: "activity"
                 }
             ];
@@ -2465,7 +2580,7 @@
                             <div className="h-[1px] bg-white/10 flex-1"></div>
                         </div>
                         <h2 className="font-heading text-4xl md:text-6xl font-extrabold text-white tracking-tight uppercase leading-none mb-16">
-                            We scale your business<br /><span className="text-signal">with content.</span>
+                            Three steps.<br /><span className="text-signal">One of them is yours.</span>
                         </h2>
 
                         <div className="flex flex-col gap-6">
@@ -2498,7 +2613,7 @@
                                 onClick={() => document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                                 className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
                             >
-                                <span className="relative z-10">See if you qualify</span>
+                                <span className="relative z-10">Apply to work with us</span>
                                 <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                             </button>
                         </div>
@@ -2522,12 +2637,12 @@
             }, []);
 
             const homeFaqs = [
-                { q: "Who is ChannelScale for?", a: "We partner with entrepreneurs, businesses, and personal brands who are ready to use video content as their primary marketing engine. Most of our clients are sitting on untapped authority. They just need the system to capture and distribute it. Whether it is long-form YouTube, a branded podcast, or a social presence that actually converts, we build the operation around what fits your business." },
-                { q: "Why social media?", a: "Unlike most marketing strategies, social media lets you build real relationships with potential clients at scale. It is word-of-mouth and referral marketing, but the stage is global. Your audience is already there watching content every day. If you are not showing up consistently, someone in your space is." },
-                { q: "Do I need a massive audience to see lead generation results?", a: "No. Influence is not about view counts. It is about view quality. We focus on niche domination to ensure your views are coming from potential high-ticket clients. A smaller, highly targeted audience outperforms a large disengaged one every time." },
-                { q: "How do I know this will work for me?", a: "Start with a conversation. We'll talk through your business, your goals, and what growth actually looks like for you. We only work with clients where we genuinely see a clear path to results. If we don't think the fit is right, we will tell you straight." },
-                { q: "How is this different from hiring a standard editor or freelancer?", a: "Hiring freelancers means dealing with the headaches of teaching your brand. You deal with the risk of people flaking. You deal with overseas taxes and management responsibilities. At ChannelScale everything is in-house. It is cohesive. You don't have to worry about hiring or tax headaches. We are the manager so you don't have to be." },
-                { q: "How much of my time will this actually take?", a: "It takes as little or as much time as you want. Most of our partners only spend a couple of hours a month filming themselves and checking in on progress. We handle the heavy lifting of the output." },
+                { q: "Who is ChannelScale for?", a: "Podcasts and video shows that already make money, either directly or by bringing in clients for the business behind them. Founders, coaches, experts and creators who are good on the mic and done spending their week in an editing timeline. Interview shows, co-hosted shows, solo shows and talking-head channels all get the same deliverable." },
+                { q: "What do I get each month?", a: "Four full episodes edited (camera sync, multicam cut, audio cleanup, color). YouTube packaging for each one: title, custom thumbnail, chapters, description and tags. 20-30 vertical clips, captioned and posted to YouTube Shorts, Instagram, TikTok, X and Facebook. A monthly report on what worked and what we are changing." },
+                { q: "How much does it cost?", a: "Partnerships start at $4,000 per month on a six-month term. The exact number depends on episode length, how many cameras you record with and how many platforms we post to. You get a clear quote on the call before anything starts." },
+                { q: "What if it is not what I expected?", a: "Two guarantees. Your first edited episode is back within 7 days of us receiving the files, or that month is free. And if the first week of work misses what you expected, tell us within 7 days for a full refund." },
+                { q: "How much of my time does this take?", a: "Recording the episode and uploading the files. After onboarding, everything else is ours. If you want to approve titles and thumbnails before they go live you can, and if you would rather we just run it, we will." },
+                { q: "I have years of old episodes. Can you use them?", a: "Yes, and we start there. During month one we go through your back catalog, pull the strongest moments and relaunch them as clips and repackaged uploads. Your channel has momentum before the first new episode ships." },
             ];
 
             return (
@@ -2592,7 +2707,7 @@
                                 <span className="font-heading font-extrabold text-lg tracking-tighter text-white">CHANNELSCALE</span>
                             </div>
                             <p className="font-data text-white/40 text-[10px] uppercase tracking-widest max-w-xs">
-                                Full-Stack Content Marketing.
+                                Done-For-You Podcast Production.
                             </p>
                         </div>
 
