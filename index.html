@@ -13,7 +13,7 @@
     <meta property="og:title" content="ChannelScale | Done-For-You Podcast Production">
     <meta property="og:description"
         content="You hit record. ChannelScale handles everything after: full episode edits, YouTube packaging, and 20-30 captioned clips a month, posted for you. Done-for-you podcast production from Carter Wells.">
-    <meta property="og:image" content="/Website%20Preview.jpg">
+    <meta property="og:image" content="/images/Website%20Preview.jpg">
     <meta property="og:image:alt" content="ChannelScale - Done-For-You Podcast Production">
 
     <!-- Twitter Card -->
@@ -21,7 +21,7 @@
     <meta name="twitter:title" content="ChannelScale | Done-For-You Podcast Production">
     <meta name="twitter:description"
         content="You hit record. ChannelScale handles everything after: full episode edits, YouTube packaging, and 20-30 captioned clips a month, posted for you. Done-for-you podcast production from Carter Wells.">
-    <meta name="twitter:image" content="/Website%20Preview.jpg">
+    <meta name="twitter:image" content="/images/Website%20Preview.jpg">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23FD0033%22/></svg>">
     
@@ -103,6 +103,38 @@
         .logo-item.logo-outline img:hover {
             filter: drop-shadow(0 0 0 1px rgba(255,255,255,0.8)) brightness(2.5);
         }
+        .cs-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03);
+            border-radius: 9999px; padding: 0.45rem 1rem;
+            font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.2em;
+            text-transform: uppercase; color: rgba(255,255,255,0.7);
+        }
+        .cs-dot { width: 6px; height: 6px; border-radius: 9999px; background: #FD0033; box-shadow: 0 0 10px #FD0033; }
+        .cs-title {
+            font-family: "Bebas Neue", sans-serif; text-transform: uppercase; color: #fff;
+            font-size: clamp(2.75rem, 6.5vw, 5.5rem); line-height: 0.92; letter-spacing: 0.005em;
+        }
+        .cs-card {
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 24px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012));
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .cs-card:hover { border-color: rgba(255,255,255,0.16); }
+        .cs-btn-primary, .cs-btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.6rem; border-radius: 9999px;
+            font-family: "Inter", sans-serif; font-weight: 600; font-size: 15px;
+            padding: 0.8rem 1.4rem; white-space: nowrap;
+            transition: transform 0.2s cubic-bezier(0.25,1,0.5,1), background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .cs-btn-primary { background: #FD0033; color: #fff; box-shadow: 0 8px 30px -8px rgba(253,0,51,0.7), inset 0 1px 0 rgba(255,255,255,0.25); }
+        .cs-btn-primary:hover { background: #ff1a47; transform: translateY(-1px); box-shadow: 0 12px 40px -8px rgba(253,0,51,0.85), inset 0 1px 0 rgba(255,255,255,0.25); }
+        .cs-btn-primary svg { transition: transform 0.2s ease; }
+        .cs-btn-primary:hover svg { transform: translateX(3px); }
+        .cs-btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: #fff; background: rgba(255,255,255,0.03); }
+        .cs-btn-ghost:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.06); }
+        .cs-btn-lg { padding: 1.05rem 1.9rem; font-size: 16px; }
+        .cs-btn-sm { padding: 0.55rem 1rem; font-size: 14px; }
         .results-carousel-track {
             display: flex;
             width: max-content;
@@ -133,11 +165,6 @@
     <script async src="//www.instagram.com/embed.js"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-    <!-- Wistia VSL Player -->
-    <script src="https://fast.wistia.com/player.js" async></script>
-    <script src="https://fast.wistia.com/embed/2phmix67ds.js" async type="module"></script>
-    <style>wistia-player[media-id='2phmix67ds']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/2phmix67ds/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
-
     <!-- Cal.com Embed -->
     <script type="text/javascript">
       (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -161,7 +188,6 @@
             const [currentPage, setCurrentPage] = useState('home');
 
             useEffect(() => {
-                // Get Started icons
                 lucide.createIcons();
                 window.scrollTo(0, 0); // scroll to top when page changes
             }, [currentPage]);
@@ -178,9 +204,6 @@
 
             return (
                 <div className="relative w-full">
-                    {/* Architectural Grid Background */}
-                    <div className="fixed inset-0 bg-grid-pattern bg-[size:40px_40px] pointer-events-none opacity-20"></div>
-
                     <NavBar setCurrentPage={setCurrentPage} currentPage={currentPage} navigateToForm={navigateToForm} />
 
                     {currentPage === 'home' ? (
@@ -190,8 +213,9 @@
                             <OfferSection navigateToForm={navigateToForm} />
                             <ResultsSection setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
                             <ProcessSection />
-                            <StrategicIntakeSection />
                             <HomeFAQSection setCurrentPage={setCurrentPage} />
+                            <StrategicIntakeSection />
+                            <MobileApplyBar />
                         </>
                     ) : currentPage === 'work' ? (
                         <WorkPage setCurrentPage={setCurrentPage} navigateToForm={navigateToForm} />
@@ -213,127 +237,6 @@
                 </div>
             );
         };
-
-        const NavBar = ({ setCurrentPage, currentPage, navigateToForm }) => {
-            const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-            const handleNavClick = (page) => {
-                setCurrentPage(page);
-                setIsMobileMenuOpen(false);
-            };
-
-            const handleGetStartedClick = () => {
-                if (navigateToForm) {
-                    navigateToForm();
-                } else {
-                    setCurrentPage('home');
-                }
-                setIsMobileMenuOpen(false);
-            };
-
-            return (
-                <>
-                    <nav className="fixed top-0 w-full z-40 p-4 md:p-6 flex justify-between items-center glass-panel border-b border-t-0 border-x-0 !border-white/10 mix-blend-plus-lighter bg-obsidian/90 backdrop-blur-lg">
-                        <div className="flex items-center gap-2 md:gap-3 cursor-pointer flex-shrink-0" onClick={() => handleNavClick('home')}>
-                            <div className="w-3 h-3 rounded-full bg-signal shadow-[0_0_15px_#FD0033] animate-pulse flex-shrink-0"></div>
-                            <span className="font-heading font-extrabold text-base md:text-xl tracking-tighter text-white hover:text-white/80 transition-colors flex-shrink-0">CHANNELSCALE</span>
-                        </div>
-
-                        {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-6 justify-end w-full pl-4">
-                            <button
-                                onClick={() => handleNavClick('home')}
-                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap ${currentPage === 'home' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
-                            >
-                                [HOME]
-                            </button>
-                            <button
-                                onClick={() => handleNavClick('work')}
-                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap flex-shrink-0 ${currentPage === 'work' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
-                            >
-                                [OUR_WORK]
-                            </button>
-                            <button
-                                onClick={() => handleNavClick('services')}
-                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap flex-shrink-0 ${currentPage === 'services' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
-                            >
-                                [THE_OFFER]
-                            </button>
-                            <button
-                                onClick={() => handleNavClick('about')}
-                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap flex-shrink-0 ${currentPage === 'about' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
-                            >
-                                [DIRECTOR]
-                            </button>
-                            <button
-                                onClick={() => handleNavClick('faq')}
-                                className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none whitespace-nowrap ${currentPage === 'faq' ? 'text-[#FD0033] drop-shadow-[0_0_8px_rgba(253,0,51,0.5)]' : 'text-white/60'}`}
-                            >
-                                [FAQ]
-                            </button>
-                            <button onClick={handleGetStartedClick} className="btn-magnetic group relative overflow-hidden px-6 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors flex-shrink-0">
-                                <span className="relative z-10 font-data text-sm font-bold uppercase tracking-wider">Get Started</span>
-                                <div className="absolute inset-0 bg-signal translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                            </button>
-                        </div>
-
-                        {/* Mobile Menu Toggle Button */}
-                        <div className="flex md:hidden items-center justify-end w-full pl-4">
-                            <button
-                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                                className="text-white hover:text-[#FD0033] transition-colors focus:outline-none p-2"
-                            >
-                                {isMobileMenuOpen ? (
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                ) : (
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                                )}
-                            </button>
-                        </div>
-                    </nav>
-
-                    {/* Mobile Dropdown Panel */}
-                    <div className={`fixed top-[64px] left-0 w-full bg-obsidian/95 backdrop-blur-xl border-b border-white/10 z-30 md:hidden flex flex-col items-center py-6 shadow-2xl transition-all duration-300 origin-top overflow-hidden ${isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
-                        <button
-                            onClick={() => handleNavClick('home')}
-                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'home' ? 'text-[#FD0033]' : 'text-white/60'}`}
-                        >
-                            [HOME]
-                        </button>
-                        <button
-                            onClick={() => handleNavClick('work')}
-                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'work' ? 'text-[#FD0033]' : 'text-white/60'}`}
-                        >
-                            [OUR_WORK]
-                        </button>
-                        <button
-                            onClick={() => handleNavClick('services')}
-                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'services' ? 'text-[#FD0033]' : 'text-white/60'}`}
-                        >
-                            [THE_OFFER]
-                        </button>
-                        <button
-                            onClick={() => handleNavClick('about')}
-                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'about' ? 'text-[#FD0033]' : 'text-white/60'}`}
-                        >
-                            [DIRECTOR]
-                        </button>
-                        <button
-                            onClick={() => handleNavClick('faq')}
-                            className={`font-data text-sm uppercase tracking-widest transition-colors hover:text-[#FD0033] focus:outline-none py-4 w-full text-center border-b border-white/5 ${currentPage === 'faq' ? 'text-[#FD0033]' : 'text-white/60'}`}
-                        >
-                            [FAQ]
-                        </button>
-                        <div className="pt-6 pb-2 w-full px-8 flex justify-center">
-                            <button onClick={handleGetStartedClick} className="w-full max-w-xs group relative overflow-hidden px-4 py-3 rounded-full border border-signal text-signal hover:text-obsidian transition-colors">
-                                <span className="relative z-10 font-data text-sm font-bold uppercase tracking-wider">Get Started</span>
-                                <div className="absolute inset-0 bg-signal translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                            </button>
-                        </div>
-                    </div>
-                </>
-            );
-        }
 
         const AboutPage = ({ setCurrentPage, navigateToForm }) => {
             const pageRef = useRef(null);
@@ -365,11 +268,10 @@
 
                             {/* Right Column: Title Block */}
                             <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                                <h1 className="font-emphasis text-[16vw] sm:text-7xl md:text-[8rem] tracking-tight uppercase leading-[0.85] mb-6 text-[#F8FAFC] drop-shadow-[0_0_15px_rgba(253,0,51,0.15)]">
-                                    <span className="text-[#FD0033] opacity-50">[</span>DIRECTOR<span className="text-[#FD0033] opacity-50">]</span>
-                                </h1>
+                                <span className="cs-eyebrow mb-6"><span className="cs-dot"></span>Founder and director</span>
+                                <h1 className="font-emphasis uppercase leading-[0.88] mb-6 text-white" style={{ fontSize: 'clamp(3.25rem, 10vw, 8rem)' }}>Carter Wells</h1>
                                 <p className="font-data text-[#F8FAFC]/70 tracking-widest uppercase text-sm md:text-base mb-6 border-l-4 border-[#FD0033] pl-4">
-                                    Carter Wells // <span className="text-[#F8FAFC]">ChannelScale Founder</span>
+                                    Film degree. <span className="text-[#F8FAFC]">PGA Tour, Iowa Hawkeyes, NWSL.</span>
                                 </p>
                             </div>
                         </div>
@@ -426,14 +328,9 @@
 
                         {/* Action Area */}
                         <div className="about-animate mt-32 flex justify-center pt-8">
-                            <button
-                                onClick={navigateToForm || (() => setCurrentPage('home'))}
-                                className="group relative flex items-center justify-center px-10 py-6 border border-white/20 rounded hover:border-[#FD0033] bg-[#0A0A0B] transition-all duration-300 hover:shadow-[0_0_40px_rgba(253,0,51,0.4)] overflow-hidden"
-                            >
-                                <span className="relative z-10 font-data text-xs md:text-sm tracking-[0.2em] uppercase text-[#F8FAFC] group-hover:text-[#FD0033] transition-colors">
-                                    Get Started
-                                </span>
-                                <div className="absolute inset-0 bg-[#FD0033]/5 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out pointer-events-none"></div>
+                            <button onClick={navigateToForm || (() => setCurrentPage('home'))} className="cs-btn-primary cs-btn-lg">
+                                <span>Apply to work with us</span>
+                                <ArrowIcon />
                             </button>
                         </div>
 
@@ -464,9 +361,8 @@
 
                         {/* Header */}
                         <div className="config-animate text-center mb-20 border-b border-white/10 pb-16">
-                            <h1 className="font-emphasis text-[9.5vw] sm:text-6xl md:text-[6rem] lg:text-[7rem] tracking-tight uppercase leading-[0.85] mb-6 text-[#F8FAFC] drop-shadow-[0_0_15px_rgba(253,0,51,0.15)] break-words break-all sm:break-normal">
-                                <span className="text-[#FD0033] opacity-50">[</span>THE OFFER<span className="text-[#FD0033] opacity-50">]</span>
-                            </h1>
+                            <span className="cs-eyebrow mb-6"><span className="cs-dot"></span>Done-for-you podcast production</span>
+                            <h1 className="font-emphasis uppercase leading-[0.88] mb-6 text-white" style={{ fontSize: 'clamp(3.25rem, 10vw, 8rem)' }}>The offer</h1>
                             <p className="font-data text-[#F8FAFC]/50 tracking-widest uppercase text-sm md:text-base">
                                 Everything after you hit record.
                             </p>
@@ -592,13 +488,9 @@
 
                         {/* Action Area */}
                         <div className="config-animate mt-28 flex justify-center pt-8 border-t border-white/10">
-                            <button
-                                onClick={navigateToForm || (() => setCurrentPage('home'))}
-                                className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
-                            >
-                                <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
-                                    Get Started
-                                </span>
+                            <button onClick={navigateToForm || (() => setCurrentPage('home'))} className="cs-btn-primary cs-btn-lg">
+                                <span>Apply to work with us</span>
+                                <ArrowIcon />
                             </button>
                         </div>
 
@@ -738,9 +630,8 @@
 
                         {/* Header */}
                         <div className="work-animate text-center mb-20 border-b border-white/10 pb-16">
-                            <h1 className="font-emphasis text-[9.5vw] sm:text-6xl md:text-[6rem] lg:text-[7rem] tracking-tight uppercase leading-[0.85] mb-6 text-[#F8FAFC] drop-shadow-[0_0_15px_rgba(253,0,51,0.15)] break-words break-all sm:break-normal">
-                                <span className="text-[#FD0033] opacity-50">[</span>OUR WORK<span className="text-[#FD0033] opacity-50">]</span>
-                            </h1>
+                            <span className="cs-eyebrow mb-6"><span className="cs-dot"></span>Portfolio</span>
+                            <h1 className="font-emphasis uppercase leading-[0.88] mb-6 text-white" style={{ fontSize: 'clamp(3.25rem, 10vw, 8rem)' }}>Our work</h1>
                             <p className="font-data text-[#F8FAFC]/50 tracking-widest uppercase text-sm md:text-base">
                                 Real clients. Real results. Real work.
                             </p>
@@ -1037,13 +928,9 @@
 
                         {/* CTA */}
                         <div className="work-animate mt-28 flex justify-center pt-8 border-t border-white/10">
-                            <button
-                                onClick={navigateToForm || (() => setCurrentPage('home'))}
-                                className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
-                            >
-                                <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
-                                    Get Started
-                                </span>
+                            <button onClick={navigateToForm || (() => setCurrentPage('home'))} className="cs-btn-primary cs-btn-lg">
+                                <span>Apply to work with us</span>
+                                <ArrowIcon />
                             </button>
                         </div>
 
@@ -1110,9 +997,8 @@
 
                         {/* 1. Header */}
                         <div className="faq-animate text-center mb-16 md:mb-24 border-b border-white/10 pb-16">
-                            <h1 className="font-emphasis text-[18vw] sm:text-6xl md:text-[6rem] lg:text-[7rem] tracking-tight uppercase leading-[0.85] mb-6 text-[#F8FAFC] drop-shadow-[0_0_15px_rgba(253,0,51,0.15)]">
-                                <span className="text-[#FD0033] opacity-50">[</span>FAQ<span className="text-[#FD0033] opacity-50">]</span>
-                            </h1>
+                            <span className="cs-eyebrow mb-6"><span className="cs-dot"></span>Common questions</span>
+                            <h1 className="font-emphasis uppercase leading-[0.88] mb-6 text-white" style={{ fontSize: 'clamp(3.25rem, 10vw, 8rem)' }}>FAQ</h1>
                             <p className="font-data text-[#F8FAFC]/70 tracking-widest uppercase text-sm md:text-lg">
                                 Frequently Asked Questions
                             </p>
@@ -1157,13 +1043,9 @@
                                 READY TO STOP EDITING?
                             </h2>
                             <div className="flex justify-center">
-                                <button
-                                    onClick={navigateToForm || (() => setCurrentPage('home'))}
-                                    className="group relative flex items-center justify-center px-12 py-6 border border-[#FD0033] bg-[#FD0033]/10 hover:bg-[#FD0033] transition-all duration-300 shadow-[0_0_30px_rgba(253,0,51,0.2)] hover:shadow-[0_0_60px_rgba(253,0,51,0.6)] overflow-hidden rounded-lg"
-                                >
-                                    <span className="relative z-10 font-data text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#F8FAFC] group-hover:text-[#0A0A0B] transition-colors">
-                                        Get Started
-                                    </span>
+                                <button onClick={navigateToForm || (() => setCurrentPage('home'))} className="cs-btn-primary cs-btn-lg">
+                                    <span>Apply to work with us</span>
+                                    <ArrowIcon />
                                 </button>
                             </div>
                         </div>
@@ -1209,7 +1091,7 @@
                                 className="group relative flex items-center justify-center px-8 py-4 border border-white/20 rounded hover:border-[#FD0033] bg-[#0A0A0B] transition-all duration-300"
                             >
                                 <span className="relative z-10 font-data text-xs tracking-widest uppercase text-white group-hover:text-[#FD0033]">
-                                    [RETURN_TO_HOME]
+                                    Back to home
                                 </span>
                             </button>
                         </div>
@@ -1390,94 +1272,129 @@
             </LegalPageLayout>
         );
 
+        // ── Shared UI ─────────────────────────────────────────────────────
+        const scrollToForm = () => document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const ArrowIcon = ({ className = "w-4 h-4" }) => (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
+        );
+        const ShieldIcon = ({ className = "w-5 h-5" }) => (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
+        );
+        const CheckIcon = ({ className = "w-4 h-4" }) => (
+            <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+        );
+
+        const ApplyButton = ({ onClick = scrollToForm, label = "Apply to work with us", className = "" }) => (
+            <button onClick={onClick} className={`cs-btn-primary ${className}`}>
+                <span>{label}</span>
+                <ArrowIcon />
+            </button>
+        );
+
+        const SectionIntro = ({ eyebrow, title, sub, center = false }) => (
+            <div className={`mb-14 md:mb-16 ${center ? 'text-center mx-auto flex flex-col items-center' : ''} max-w-3xl`}>
+                <span className="cs-eyebrow"><span className="cs-dot"></span>{eyebrow}</span>
+                <h2 className="cs-title mt-6">{title}</h2>
+                {sub && <p className="font-body text-lg md:text-xl text-white/60 leading-relaxed mt-6">{sub}</p>}
+            </div>
+        );
+
+        // ── Navigation ────────────────────────────────────────────────────
+        const NavBar = ({ setCurrentPage, currentPage, navigateToForm }) => {
+            const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+            const links = [
+                { page: 'work', label: 'Work' },
+                { page: 'services', label: 'Offer' },
+                { page: 'about', label: 'About' },
+                { page: 'faq', label: 'FAQ' },
+            ];
+
+            const handleNavClick = (page) => {
+                setCurrentPage(page);
+                setIsMobileMenuOpen(false);
+            };
+
+            const handleApply = () => {
+                navigateToForm();
+                setIsMobileMenuOpen(false);
+            };
+
+            return (
+                <header className="fixed top-0 inset-x-0 z-40 px-3 md:px-6 pt-3 md:pt-4">
+                    <nav className="max-w-6xl mx-auto flex items-center justify-between rounded-full border border-white/10 bg-[#0A0A0B]/75 backdrop-blur-xl pl-5 pr-2 py-2 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)]">
+                        <button className="flex items-center gap-2.5 flex-shrink-0" onClick={() => handleNavClick('home')}>
+                            <span className="w-2.5 h-2.5 rounded-full bg-signal shadow-[0_0_12px_#FD0033]"></span>
+                            <span className="font-heading text-[15px] md:text-base tracking-tight text-white">CHANNELSCALE</span>
+                        </button>
+
+                        <div className="hidden md:flex items-center gap-1">
+                            {links.map(l => (
+                                <button
+                                    key={l.page}
+                                    onClick={() => handleNavClick(l.page)}
+                                    className={`px-4 py-2 rounded-full font-body text-sm font-medium transition-colors ${currentPage === l.page ? 'text-white bg-white/[0.07]' : 'text-white/60 hover:text-white'}`}
+                                >
+                                    {l.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="flex items-center gap-1.5">
+                            <button onClick={handleApply} className="cs-btn-primary cs-btn-sm">
+                                <span>Apply</span>
+                                <ArrowIcon className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                className="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-white/80 hover:bg-white/5"
+                                aria-label="Menu"
+                            >
+                                {isMobileMenuOpen ? (
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
+                                ) : (
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 8h16M4 16h16" /></svg>
+                                )}
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div className={`md:hidden max-w-6xl mx-auto mt-2 rounded-3xl bg-[#0A0A0B]/95 backdrop-blur-xl overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-[420px] opacity-100 border border-white/10' : 'max-h-0 opacity-0 pointer-events-none invisible'}`}>
+                        <div className="p-2 flex flex-col">
+                            {[{ page: 'home', label: 'Home' }, ...links].map(l => (
+                                <button
+                                    key={l.page}
+                                    onClick={() => handleNavClick(l.page)}
+                                    className={`text-left px-5 py-4 rounded-2xl font-body text-base font-medium ${currentPage === l.page ? 'text-white bg-white/[0.06]' : 'text-white/70'}`}
+                                >
+                                    {l.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </header>
+            );
+        };
+
+        // ── Home: Hero ────────────────────────────────────────────────────
         const HeroSection = () => {
             const heroRef = useRef(null);
-            const videoRef = useRef(null);
-            const headerRef = useRef(null);
-            const highlightRef = useRef(null);
 
             useLayoutEffect(() => {
                 let ctx = gsap.context(() => {
-                    // Headline Flicker / Glitch for main structure
-                    gsap.set(headerRef.current, { opacity: 0 });
-                    gsap.to(headerRef.current, {
-                        keyframes: [
-                            { opacity: 1, duration: 0.05 },
-                            { opacity: 0, duration: 0.05 },
-                            { opacity: 1, duration: 0.05 },
-                            { opacity: 0.4, duration: 0.1 },
-                            { opacity: 1, duration: 0.2 }
-                        ],
-                        ease: "none",
-                        delay: 0.2
-                    });
-
-                    // Followed closely by the RED filaments turning on
-                    gsap.set(highlightRef.current, { opacity: 0 });
-                    gsap.to(highlightRef.current, {
-                        keyframes: [
-                            { opacity: 1, duration: 0.05 },
-                            { opacity: 0, duration: 0.05 },
-                            { opacity: 1, duration: 0.05 },
-                            { opacity: 0.4, duration: 0.1 },
-                            { opacity: 1, duration: 0.2 }
-                        ],
-                        ease: "none",
-                        delay: 0.7 // Offset 0.5s after the base text starts
-                    });
-
-                    // Video Entrance
-                    gsap.from(videoRef.current, {
-                        y: 40,
-                        scale: 0.95,
-                        opacity: 0,
-                        duration: 1.5,
-                        ease: "power3.out",
-                        delay: 0.6
-                    });
-
-                    // Parallax Lift on Scroll
-                    gsap.to(headerRef.current, {
-                        y: -120, // Negative space lift
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: heroRef.current,
-                            start: "top top",
-                            end: "bottom top",
-                            scrub: true
-                        }
-                    });
-
+                    gsap.from(".hero-in", { y: 32, opacity: 0, duration: 1, stagger: 0.09, ease: "power3.out", delay: 0.05 });
                 }, heroRef);
                 return () => ctx.revert();
             }, []);
 
-            const marqueeRef = React.useRef(null);
-
-            React.useEffect(() => {
-                const el = marqueeRef.current;
-                if (!el) return;
-                let pos = 0;
-                let raf;
-                const speed = window.innerWidth < 768 ? 0.7 : 0.2;
-                const step = () => {
-                    pos -= speed;
-                    const cycle = el.scrollWidth / 4;
-                    if (pos <= -cycle) pos = 0;
-                    el.style.transform = `translateX(${pos}px)`;
-                    raf = requestAnimationFrame(step);
-                };
-                raf = requestAnimationFrame(step);
-                return () => cancelAnimationFrame(raf);
-            }, []);
-
             const logos = [
                 { src: "./client-logos/Bowmar.png", alt: "Bowmar" },
-                { src: "./client-logos/COUNTERPOINT%20LOGO%20png.png", alt: "Counterpoint Studios", height: 78 },
+                { src: "./client-logos/COUNTERPOINT%20LOGO%20png.png", alt: "Counterpoint Studios", height: 70 },
                 { src: "./client-logos/NWSL_logo.svg.png", alt: "NWSL" },
                 { src: "./client-logos/pgatouru_1920_logo.png", alt: "PGA Tour" },
                 { src: "./client-logos/Tigerhawk-black.png", alt: "Iowa Hawkeyes", invert: true },
-                { src: "./client-logos/logo_octagon-e1566483030603.png", alt: "Octagon", height: 78 },
+                { src: "./client-logos/logo_octagon-e1566483030603.png", alt: "Octagon", height: 70 },
                 { src: "./client-logos/IHSAA%20logo.png", alt: "IHSAA" },
                 { src: "./client-logos/Morgan_%26_Morgan_Logo.svg.png", alt: "Morgan & Morgan" },
                 { src: "./client-logos/Quittr%20Logo.png", alt: "Quittr" },
@@ -1485,63 +1402,63 @@
                 { src: "./client-logos/ZocDoc_logo.png", alt: "ZocDoc" },
             ];
 
+            const strip = [
+                { value: "4", label: "Episodes edited every month" },
+                { value: "20-30", label: "Clips cut, captioned, posted" },
+                { value: "5", label: "Platforms, posted for you" },
+                { value: "7 days", label: "To your first episode" },
+            ];
+
             return (
-                <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center text-center px-4 pt-24 md:pt-32 pb-8 md:pb-16">
-                    {/* Cinematic BG element */}
-                    <div className="absolute inset-0 z-[-1] overflow-hidden">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-signal blur-[180px] rounded-full mix-blend-screen opacity-10 animate-pulse"></div>
+                <section ref={heroRef} className="relative overflow-hidden pt-36 md:pt-44 pb-16 md:pb-20 px-4">
+                    {/* Backdrop: red bloom + fading grid */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute left-1/2 top-[-10%] -translate-x-1/2 w-[1100px] max-w-[140vw] h-[700px] rounded-full bg-signal opacity-[0.16] blur-[140px]"></div>
+                        <div className="absolute inset-0 bg-grid-pattern bg-[size:64px_64px] opacity-60" style={{ maskImage: 'radial-gradient(ellipse 70% 55% at 50% 30%, black, transparent)', WebkitMaskImage: 'radial-gradient(ellipse 70% 55% at 50% 30%, black, transparent)' }}></div>
                     </div>
 
-                    {/* Dark gradient overlay for readability against background */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-obsidian/90 via-obsidian/50 to-transparent z-0 pointer-events-none mix-blend-multiply"></div>
+                    <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
+                        <span className="hero-in cs-eyebrow"><span className="cs-dot"></span>Done-for-you podcast production</span>
 
-                    {/* High-Impact Hero Headline - Dual Tone System Layout */}
-                    <div ref={headerRef} className="z-20 relative w-full flex flex-col items-center mb-10 md:mb-12 opacity-0 px-4 pt-[4vh] md:pt-[12vh]">
-                        <div className="flex flex-col items-start text-left max-w-[1000px] w-full border-l-4 border-[#FD0033] pl-6 py-2">
-                            {/* Main Heading */}
-                            <h1
-                                className="font-emphasis text-[#F8FAFC] tracking-wide mb-6 leading-[0.95] uppercase"
-                                style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}
-                            >
-                                You hit record. <span ref={highlightRef} className="text-[#FD0033] drop-shadow-[0_0_15px_rgba(253,0,51,0.6)]">We handle everything after.</span>
-                            </h1>
+                        <h1 className="hero-in font-emphasis uppercase text-white leading-[0.86] mt-8" style={{ fontSize: 'clamp(3.75rem, 11.2vw, 10.5rem)', letterSpacing: '0.004em' }}>
+                            <span className="block">Record once.</span>
+                            <span className="block text-signal drop-shadow-[0_0_40px_rgba(253,0,51,0.35)]">Show up everywhere.</span>
+                        </h1>
 
-                            {/* Sub-heading */}
-                            <p className="font-data text-white/70 leading-relaxed" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
-                                Done-for-you podcast production. Every episode edited, packaged for YouTube and cut into 20-30 clips a month, posted for you.
-                            </p>
+                        <p className="hero-in font-body text-lg md:text-2xl text-white/65 leading-relaxed max-w-3xl mt-8 md:mt-10">
+                            We edit, package and post your podcast. Every month you get 4 finished episodes on YouTube and 20-30 clips across Shorts, Instagram, TikTok, X and Facebook. You just hit record.
+                        </p>
+
+                        <div className="hero-in flex flex-col sm:flex-row items-center gap-3 mt-10 w-full sm:w-auto">
+                            <ApplyButton className="cs-btn-lg w-full sm:w-auto justify-center" />
+                            <button onClick={() => document.getElementById('results')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="cs-btn-ghost cs-btn-lg w-full sm:w-auto justify-center">
+                                See the results
+                            </button>
+                        </div>
+
+                        <p className="hero-in flex items-center gap-2 mt-6 font-body text-sm text-white/55">
+                            <ShieldIcon className="w-4 h-4 text-signal flex-shrink-0" />
+                            First episode back in 7 days, or the month is free.
+                        </p>
+
+                        {/* Offer strip */}
+                        <div className="hero-in w-full max-w-5xl mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden">
+                            {strip.map((s, i) => (
+                                <div key={i} className={`px-5 py-6 md:py-8 flex flex-col items-center gap-1.5 ${i % 2 === 1 ? 'border-l border-white/10' : ''} ${i > 1 ? 'border-t md:border-t-0 border-white/10' : ''} ${i === 2 ? 'md:border-l' : ''}`}>
+                                    <span className="font-emphasis text-4xl md:text-5xl text-white tracking-wide leading-none">{s.value}</span>
+                                    <span className="font-data text-[10px] md:text-[11px] text-white/45 uppercase tracking-[0.18em] text-center leading-snug">{s.label}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Centered VSL Video Player */}
-                    <div className="z-10 relative flex w-full items-center justify-center max-w-[1100px]">
-                        <div ref={videoRef} className="w-full aspect-video rounded-[16px] overflow-hidden bg-[#0A0A0B] border border-white/10 shadow-[0_0_60px_rgba(253,0,51,0.25)] relative flex items-center justify-center group">
-
-                            {/* Wistia VSL Player */}
-                            <wistia-player media-id="2phmix67ds" aspect="1.7777777777777777" style={{ width: '100%', height: '100%' }}></wistia-player>
-
-                        </div>
-                    </div>
-
-                    {/* SEE IF YOU QUALIFY CTA */}
-                    <div className="z-10 relative mt-10 md:mt-12 flex flex-col items-center gap-4">
-                        <button
-                            onClick={() => document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                            className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
-                        >
-                            <span className="relative z-10">Apply to work with us</span>
-                            <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                        </button>
-                        <p className="font-data text-white/40 text-xs tracking-widest uppercase">First episode back in 7 days or the month is free.</p>
-                    </div>
-
-                    {/* Brand Marquee */}
-                    <div className="z-10 relative w-full mt-14 md:mt-16">
-                        <p className="font-data text-white/60 text-xs font-bold uppercase tracking-[0.3em] text-center mb-8">Brands and shows we have worked with</p>
-                        <div className="relative w-full overflow-hidden">
-                            <div ref={marqueeRef} className="flex" style={{ willChange: "transform" }}>
-                                {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
-                                    <div key={i} className={`logo-item${logo.outline ? " logo-outline" : ""} flex-shrink-0 flex items-center justify-center`} style={{ padding: window.innerWidth < 768 ? "0 20px" : "0 64px" }}>
+                    {/* Logo marquee */}
+                    <div className="relative z-10 w-full mt-16 md:mt-20">
+                        <p className="font-data text-white/40 text-[11px] uppercase tracking-[0.3em] text-center mb-8">Brands and shows we have worked with</p>
+                        <div className="overflow-hidden" style={{ maskImage: 'linear-gradient(90deg, transparent, black 12%, black 88%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, black 12%, black 88%, transparent)' }}>
+                            <div className="results-carousel-track items-center">
+                                {[...logos, ...logos].map((logo, i) => (
+                                    <div key={i} className={`logo-item${logo.outline ? " logo-outline" : ""} flex-shrink-0 flex items-center justify-center px-6 md:px-12`}>
                                         <img
                                             src={logo.src}
                                             alt={logo.alt}
@@ -1557,809 +1474,48 @@
                     </div>
                 </section>
             );
-        }
+        };
 
-        const StrategicIntakeSection = () => {
-            const [isSubmitting, setIsSubmitting] = useState(false);
-            const [isSuccess, setIsSuccess] = useState(false);
-            const [showCal, setShowCal] = useState(false);
-            const formContainerRef = useRef(null);
-            const calRef = useRef(null);
-            const calInitedRef = useRef(false);
-
-            // Mount the inline Cal.com calendar once the user reveals it
-            useEffect(() => {
-                if (!showCal || calInitedRef.current || !window.Cal) return;
-                calInitedRef.current = true;
-                window.Cal("inline", {
-                    elementOrSelector: "#my-cal-inline",
-                    calLink: "carterw/30min",
-                    config: { layout: "month_view", overlayCalendar: "true" },
-                });
-                window.Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
-                if (calRef.current) {
-                    // Animate opacity/position only — never height. A height tween leaves the
-                    // wrapper locked at a fixed pixel value, which clips Cal's time-slot panel
-                    // (and traps scroll) on mobile once a date is selected.
-                    gsap.from(calRef.current, { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" });
-                }
-            }, [showCal]);
-
-            const handleSubmit = async (e) => {
-                e.preventDefault();
-                setIsSubmitting(true);
-
-                try {
-                    const formData = new FormData(e.target);
-                    const payload = Object.fromEntries(formData.entries());
-                    const response = await fetch("https://n8n-production-a00d.up.railway.app/webhook/d9fbe289-a8eb-4236-b47d-99ac3f7d1794", {
-                        method: "POST",
-                        body: JSON.stringify(payload),
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        gsap.to(formContainerRef.current, {
-                            opacity: 0,
-                            scale: 0.95,
-                            duration: 0.4,
-                            onComplete: () => {
-                                setIsSuccess(true);
-                                setTimeout(() => {
-                                    const section = document.getElementById('intake-form');
-                                    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                }, 50);
-                                gsap.fromTo(formContainerRef.current,
-                                    { opacity: 0, scale: 1.05 },
-                                    {
-                                        opacity: 1, scale: 1, duration: 0.6, ease: "power3.out", onComplete: () => {
-                                            if (window.lucide) window.lucide.createIcons();
-                                        }
-                                    }
-                                );
-                            }
-                        });
-                    } else {
-                        setIsSubmitting(false);
-                        alert("Transmission failed. Please try again or check your data.");
-                    }
-                } catch (error) {
-                    setIsSubmitting(false);
-                    alert("Transmission error. Please check your connection.");
-                }
-            };
-
-            return (
-                <section id="intake-form" className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5 bg-[#050505] overflow-hidden">
-                    {/* Subtle Film Grain Texture */}
-                    <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-screen bg-repeat" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noise\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.8\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noise)\"/%3E%3C/svg%3E')" }}></div>
-
-                    <div className="max-w-4xl mx-auto relative z-10 bg-obsidian/60 backdrop-blur-[24px] border border-white/10 rounded-[24px] p-6 md:p-12 shadow-[0_0_80px_rgba(0,0,0,0.5)] min-h-[600px] flex flex-col justify-center">
-
-                        <div ref={formContainerRef} className="w-full">
-                            {!isSuccess ? (
-                                <form onSubmit={handleSubmit} className="space-y-12">
-                                    {/* Heading */}
-                                    <div className="mb-2">
-                                        <h2 className="font-emphasis text-4xl md:text-5xl text-white tracking-tight uppercase leading-none">Apply to work with us</h2>
-                                    </div>
-
-                                    {/* Name */}
-                                    <div className="space-y-5">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <input type="text" name="first_name" required placeholder="First Name*" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
-                                            <input type="text" name="last_name" required placeholder="Last Name*" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
-                                        </div>
-                                    </div>
-
-                                    {/* Contact */}
-                                    <div className="space-y-5">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <input type="email" name="business_email" required placeholder="Business Email*" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30" />
-                                            <input
-                                                type="tel"
-                                                name="phone_number"
-                                                required
-                                                placeholder="Phone Number*"
-                                                className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all placeholder:text-white/30"
-                                                onChange={(e) => {
-                                                    const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
-                                                    let fmt = digits;
-                                                    if (digits.length > 6) fmt = `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
-                                                    else if (digits.length > 3) fmt = `(${digits.slice(0,3)}) ${digits.slice(3)}`;
-                                                    e.target.value = fmt;
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="mt-4">
-                                            <select name="preferred_communication" required className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white/50 font-body focus:outline-none transition-all appearance-none cursor-pointer">
-                                                <option value="" disabled selected>Preferred Communication Method*</option>
-                                                <option value="Email">Email</option>
-                                                <option value="Phone/SMS">Phone / SMS</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    {/* Business narrative */}
-                                    <div className="space-y-5">
-                                        <textarea name="business_narrative" required placeholder="Tell us about your show and the business behind it*" rows="4" className="w-full bg-[#030303] border border-white/10 focus:border-[#FD0033] rounded-lg px-5 py-4 text-white font-body focus:outline-none focus:ring-1 focus:ring-[#FD0033] transition-all resize-none placeholder:text-white/30"></textarea>
-                                    </div>
-
-                                    {/* Revenue */}
-                                    <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Monthly Revenue, Show or Business (Approximate):</p>
-                                        <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
-                                            {['< $10k/mo', '$10k-$50k/mo', '$50k-$100k/mo', '$100k-$250k/mo', '$250k+/mo'].map((opt, i) => (
-                                                <label key={i} className="flex items-center gap-3 cursor-pointer group">
-                                                    <input type="radio" name="revenue_scale" value={opt} required className="hidden peer" />
-                                                    <div className="w-5 h-5 rounded-full border-2 border-white/20 peer-checked:border-[#FD0033] flex items-center justify-center transition-all shadow-[0_0_0_transparent] peer-checked:shadow-[0_0_12px_rgba(253,0,51,0.8)]">
-                                                        <div className="w-2.5 h-2.5 rounded-full bg-[#FD0033] opacity-0 peer-checked:opacity-100 scale-50 peer-checked:scale-100 transition-all duration-300"></div>
-                                                    </div>
-                                                    <span className="text-white/50 peer-checked:text-white font-body text-base transition-colors group-hover:text-white/80">{opt}</span>
-                                                </label>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Marketing Spend */}
-                                    <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">Current Monthly Spend on Editing & Production:</p>
-                                        <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
-                                            {['Under $1k', '$1k-$3k', '$3k-$10k', '$10k-$50k', '$50k+'].map((opt, i) => (
-                                                <label key={i} className="flex items-center gap-3 cursor-pointer group">
-                                                    <input type="radio" name="marketing_spend" value={opt} required className="hidden peer" />
-                                                    <div className="w-5 h-5 rounded-full border-2 border-white/20 peer-checked:border-[#FD0033] flex items-center justify-center transition-all shadow-[0_0_0_transparent] peer-checked:shadow-[0_0_12px_rgba(253,0,51,0.8)]">
-                                                        <div className="w-2.5 h-2.5 rounded-full bg-[#FD0033] opacity-0 peer-checked:opacity-100 scale-50 peer-checked:scale-100 transition-all duration-300"></div>
-                                                    </div>
-                                                    <span className="text-white/50 peer-checked:text-white font-body text-base transition-colors group-hover:text-white/80">{opt}</span>
-                                                </label>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Posting History */}
-                                    <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">How long have you been recording your show?</p>
-                                        <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
-                                            {['Never', '6 Months', '1 Year+', '5 Years+'].map((opt, i) => (
-                                                <label key={i} className="flex items-center gap-3 cursor-pointer group">
-                                                    <input type="radio" name="posting_history" value={opt} required className="hidden peer" />
-                                                    <div className="w-5 h-5 rounded-full border-2 border-white/20 peer-checked:border-[#FD0033] flex items-center justify-center transition-all shadow-[0_0_0_transparent] peer-checked:shadow-[0_0_12px_rgba(253,0,51,0.8)]">
-                                                        <div className="w-2.5 h-2.5 rounded-full bg-[#FD0033] opacity-0 peer-checked:opacity-100 scale-50 peer-checked:scale-100 transition-all duration-300"></div>
-                                                    </div>
-                                                    <span className="text-white/50 peer-checked:text-white font-body text-base transition-colors group-hover:text-white/80">{opt}</span>
-                                                </label>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Deployment Timeline */}
-                                    <div className="space-y-5">
-                                        <p className="text-white/90 font-heading text-lg tracking-wide uppercase">When do you want to start?</p>
-                                        <div className="flex flex-wrap gap-4 md:gap-8 mt-3">
-                                            {['Now', 'Within 30 days', '30 days or more'].map((opt, i) => (
-                                                <label key={i} className="flex items-center gap-3 cursor-pointer group">
-                                                    <input type="radio" name="deployment_timeline" value={opt} required className="hidden peer" />
-                                                    <div className="w-5 h-5 rounded-full border-2 border-white/20 peer-checked:border-[#FD0033] flex items-center justify-center transition-all shadow-[0_0_0_transparent] peer-checked:shadow-[0_0_12px_rgba(253,0,51,0.8)]">
-                                                        <div className="w-2.5 h-2.5 rounded-full bg-[#FD0033] opacity-0 peer-checked:opacity-100 scale-50 peer-checked:scale-100 transition-all duration-300"></div>
-                                                    </div>
-                                                    <span className="text-white/50 peer-checked:text-white font-body text-base transition-colors group-hover:text-white/80">{opt}</span>
-                                                </label>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Center massive Action Interface */}
-                                    <div className="pt-12 mt-12 border-t border-white/10 flex flex-col items-center">
-                                        <button type="submit" disabled={isSubmitting} className={`group relative w-full md:w-[80%] mx-auto bg-[#FD0033] text-white font-heading font-extrabold text-xl sm:text-2xl md:text-3xl tracking-[0.1em] uppercase py-8 px-2 rounded flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(253,0,51,0.5)] transition-all ${isSubmitting ? 'scale-[1.02] shadow-[0_0_80px_rgba(253,0,51,0.8)] animate-pulse cursor-wait' : 'hover:scale-[1.03] hover:shadow-[0_0_100px_rgba(253,0,51,0.8)] cursor-pointer'}`}>
-                                            <span className="relative z-10 break-all text-center">{isSubmitting ? 'Submitting...' : 'Submit'}</span>
-
-                                            {/* Scanning light animation overlay */}
-                                            {!isSubmitting && <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-[30%] -left-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-300 skew-x-[-20deg] animate-[scan_2s_ease-in-out_infinite]" ></div>}
-                                        </button>
-
-                                        {/* Book a call before applying — reveals an inline Cal.com calendar */}
-                                        {!showCal && (
-                                            <button
-                                                type="button"
-                                                onClick={() => setShowCal(true)}
-                                                className="group relative overflow-hidden mt-8 max-w-full text-center leading-snug px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
-                                            >
-                                                <span className="relative z-10">Still have questions? Book a call first.</span>
-                                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                                            </button>
-                                        )}
-                                        {showCal && (
-                                            <div ref={calRef} className="w-full mt-8">
-                                                <div id="my-cal-inline" style={{ width: '100%', minHeight: '620px' }}></div>
-                                            </div>
-                                        )}
-                                    </div>
-                                </form>
-                            ) : (
-                                <div className="flex flex-col items-center justify-center py-16 text-center w-full">
-                                    <h3 className="font-emphasis text-5xl md:text-7xl text-white tracking-tight uppercase leading-none mb-8">Application Submitted</h3>
-                                    <p className="font-body text-steel/70 max-w-lg mx-auto text-base md:text-lg leading-relaxed">
-                                        Thank you for your submission.<br />
-                                        If we believe we can create meaningful growth, we'll contact you within 1–2 business days to schedule a call.
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    <style dangerouslySetInnerHTML={{
-                        __html: `
-                        @keyframes scan {
-                            0% { left: -50%; }
-                            100% { left: 150%; }
-                        }
-                    `}} />
-                </section >
-            );
-        }
-
-        const FeaturesSection = () => {
-            const sectionRef = useRef(null);
-
-            useLayoutEffect(() => {
-                let ctx = gsap.context(() => {
-                    // Floating animations for module icons and elements
-                    gsap.to(".floating-icon", {
-                        y: -10,
-                        duration: 2,
-                        repeat: -1,
-                        yoyo: true,
-                        ease: "power1.inOut",
-                        stagger: {
-                            each: 0.5,
-                            from: "random"
-                        }
-                    });
-
-                    // Pulse animations for signals
-                    gsap.to(".pulse-signal", {
-                        opacity: 0.4,
-                        scale: 1.1,
-                        duration: 1.5,
-                        repeat: -1,
-                        yoyo: true,
-                        ease: "none"
-                    });
-
-                    // Scanning line animation
-                    gsap.to(".scanning-line", {
-                        x: "300%",
-                        duration: 3,
-                        repeat: -1,
-                        ease: "linear"
-                    });
-                }, sectionRef);
-                return () => ctx.revert();
-            }, []);
-
-            return (
-                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="flex items-center gap-4 mb-20 animate-pulse">
-                            <i data-lucide="crosshairs" className="w-5 h-5 text-signal"></i>
-                            <span className="font-data text-signal text-sm uppercase tracking-wider">production_modules</span>
-                            <div className="h-[1px] bg-white/10 flex-1"></div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                            {/* Module 1 */}
-                            <div className="glass-panel p-8 rounded-[2rem] flex flex-col gap-6 relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-signal blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
-                                <div className="flex justify-between items-start">
-                                    <div className="floating-icon p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
-                                        <i data-lucide="cpu" className="w-6 h-6 text-signal"></i>
-                                    </div>
-                                    <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.01</span>
-                                </div>
-                                <div>
-                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">[CONTENT_STRATEGY]</h3>
-                                    <p className="font-data text-xs text-white/50 leading-relaxed shadow-sm">
-                                        Mapping your brand's message to algorithm-ready content... <br />
-                                        <span className="text-obsidian bg-signal px-1 rounded inline-block mt-2 font-bold pulse-signal">High Retentivity Detected</span>
-                                    </p>
-                                </div>
-                                {/* Mock UI */}
-                                <div className="mt-8 pt-4 border-t border-white/10 flex flex-col gap-2 font-data text-[10px] text-white/30">
-                                    <div className="flex justify-between">
-                                        <span>Hook Density</span>
-                                        <span className="text-signal animate-pulse">94%</span>
-                                    </div>
-                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden relative">
-                                        <div className="h-full bg-signal w-[94%] relative">
-                                            <div className="absolute inset-0 bg-white/20 scanning-line w-full"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Module 2 */}
-                            <div className="glass-panel p-8 rounded-[2rem] flex flex-col gap-6 relative overflow-hidden group md:translate-y-8">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-signal blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
-                                <div className="flex justify-between items-start">
-                                    <div className="floating-icon p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
-                                        <i data-lucide="bar-chart-2" className="w-6 h-6 text-signal"></i>
-                                    </div>
-                                    <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.02</span>
-                                </div>
-                                <div>
-                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">[DISTRIBUTION_ENGINE]</h3>
-                                    <p className="font-data text-xs text-white/50 leading-relaxed shadow-sm">
-                                        Auto-routing every long-form asset into clips, reels, and shorts across every platform.
-                                    </p>
-                                </div>
-                                {/* Interactive Graph Mock */}
-                                <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                                    <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:shadow-[0_0_10px_rgba(255,255,255,0.2)] transition-shadow">
-                                        <i data-lucide="user" className="w-4 h-4 text-white/60"></i>
-                                    </div>
-                                    <div className="flex-1 h-[1px] bg-gradient-to-r from-white/10 via-signal to-white/10 relative overflow-hidden">
-                                        <div className="absolute top-0 bottom-0 bg-white/50 scanning-line w-1/4 blur-sm"></div>
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-obsidian px-2 animate-bounce">
-                                            <i data-lucide="play-circle" className="w-5 h-5 text-signal"></i>
-                                        </div>
-                                    </div>
-                                    <div className="w-8 h-8 rounded-full bg-signal/20 border border-signal/50 flex items-center justify-center pulse-signal">
-                                        <i data-lucide="dollar-sign" className="w-4 h-4 text-signal"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Module 3 */}
-                            <div className="glass-panel p-8 rounded-[2rem] flex flex-col gap-6 relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-signal blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
-                                <div className="flex justify-between items-start">
-                                    <div className="floating-icon p-3 bg-white/5 rounded-xl border border-white/10 group-hover:border-signal/50 transition-colors">
-                                        <i data-lucide="film" className="w-6 h-6 text-signal"></i>
-                                    </div>
-                                    <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60">SYS.03</span>
-                                </div>
-                                <div>
-                                    <h3 className="font-heading font-extrabold text-2xl text-white mb-3">[PODCAST_ARCHITECTURE]</h3>
-                                    <p className="font-data text-xs text-white/50 leading-relaxed shadow-sm">
-                                        Raw conversations into high-retention, multi-platform audio and video assets.
-                                    </p>
-                                </div>
-                                {/* Timeline Mock */}
-                                <div className="mt-8 pt-6 border-t border-white/10 relative">
-                                    <div className="w-[2px] h-10 bg-signal absolute left-1/3 top-4 shadow-[0_0_15px_#FD0033] z-10 animate-pulse scanning-line-v"></div>
-                                    <div className="flex flex-col gap-1.5 opacity-60">
-                                        <div className="w-full h-3 bg-white/5 rounded overflow-hidden flex relative">
-                                            <div className="w-1/3 bg-signal/20 relative overflow-hidden">
-                                                <div className="absolute inset-0 bg-signal/20 animate-[pulse_2s_infinite]"></div>
-                                            </div>
-                                        </div>
-                                        <div className="w-2/3 h-2 bg-white/10 rounded ml-4"></div>
-                                        <div className="w-1/2 h-2 bg-white/10 rounded ml-10"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <style dangerouslySetInnerHTML={{ __html: `
-                        @keyframes scanning-line-v {
-                             0% { left: 10%; }
-                             100% { left: 90%; }
-                        }
-                        .scanning-line-v {
-                            animation: scanning-line-v 4s ease-in-out infinite alternate;
-                        }
-                    `}} />
-                </section>
-            );
-        }
-
-        const WhoThisIsForSection = () => {
-            return (
-                <section className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5 bg-[#050505]">
-                    {/* Dark gradient mapping to features */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-obsidian/50 z-[-1]"></div>
-
-                    <div className="max-w-6xl mx-auto">
-
-                        {/* Heading & Intro */}
-                        <div className="mb-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-end">
-                            <div className="md:col-span-5 relative">
-                                <div className="absolute -left-6 top-0 w-1 h-full bg-signal"></div>
-                                <h2 className="font-heading text-4xl md:text-6xl font-extrabold text-white tracking-tight uppercase leading-none">
-                                    Who This <br /><span className="text-signal">Is For</span>
-                                </h2>
-                            </div>
-                            <div className="md:col-span-7">
-                                <p className="font-body text-base md:text-lg text-steel/80 leading-relaxed max-w-2xl font-normal">
-                                    ChannelScale is the retainer partner for founders and brands who need a full-stack content operator. Not a freelancer. Not an agency of strangers. You get one person who owns your entire content pipeline.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* 3-Column Vertical Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-
-                            {/* Blade 01: THE BRANDS */}
-                            <div className="group relative w-full aspect-[3/5] bg-obsidian/80 backdrop-blur-[20px] border border-white/5 hover:border-signal/50 rounded-[24px] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(253,0,51,0.15)] hover:-translate-y-2">
-                                {/* Hover background glow */}
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-signal blur-[120px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"></div>
-
-                                <div>
-                                    <div className="flex justify-between items-start mb-12">
-                                        <div className="p-4 bg-white/5 rounded-2xl border border-white/10 group-hover:border-signal/50 transition-colors group-hover:-translate-y-1 transform duration-300">
-                                            <i data-lucide="building-2" className="w-8 h-8 text-signal"></i>
-                                        </div>
-                                        <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60 border border-white/10">SYS.04</span>
-                                    </div>
-                                    <h3 className="font-emphasis text-4xl text-white mb-4 tracking-wide group-hover:text-signal transition-colors duration-300">THE BRANDS</h3>
-                                    <p className="font-body text-sm text-steel/70 leading-relaxed font-medium">
-                                        Establishing corporate authority through YouTube, podcast, and social. We build the content infrastructure that positions your brand as the authority in your space.
-                                    </p>
-                                </div>
-
-                                {/* Inner Graphic -> Progress Bar */}
-                                <div className="mt-8 pt-6 border-t border-white/10 relative">
-                                    <span className="font-data text-[10px] uppercase text-signal mb-2 block tracking-widest">Channel Authority</span>
-                                    <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden relative">
-                                        <div className="h-full bg-signal w-[0%] group-hover:w-[88%] transition-all duration-1000 ease-out relative">
-                                            <div className="absolute right-0 top-0 bottom-0 w-4 bg-white mix-blend-overlay opacity-50 blur-[2px]"></div>
-                                        </div>
-                                    </div>
-                                    <div className="absolute right-0 top-6 pt-0.5 font-data text-xs text-white group-hover:text-signal transition-colors opacity-0 group-hover:opacity-100 delay-500 duration-300">88%</div>
-                                </div>
-                            </div>
-
-                            {/* Blade 02: THE BUSINESS OWNERS */}
-                            <div className="group relative w-full aspect-[3/5] bg-obsidian/80 backdrop-blur-[20px] border border-white/5 hover:border-signal/50 rounded-[24px] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(253,0,51,0.15)] hover:-translate-y-2 md:translate-y-8">
-                                {/* Hover background glow */}
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-signal blur-[120px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"></div>
-
-                                <div>
-                                    <div className="flex justify-between items-start mb-12">
-                                        <div className="p-4 bg-white/5 rounded-2xl border border-white/10 group-hover:border-signal/50 transition-colors group-hover:-translate-y-1 transform duration-300">
-                                            <i data-lucide="briefcase" className="w-8 h-8 text-signal"></i>
-                                        </div>
-                                        <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60 border border-white/10">SYS.05</span>
-                                    </div>
-                                    <h3 className="font-emphasis text-4xl text-white mb-4 tracking-wide group-hover:text-signal transition-colors duration-300">THE BUSINESS OWNERS</h3>
-                                    <p className="font-body text-sm text-steel/70 leading-relaxed font-medium">
-                                        Turning founder expertise into a self-sustaining content engine. Podcast episodes, long-form YouTube, clips, and daily social. All managed without your daily input.
-                                    </p>
-                                </div>
-
-                                {/* Inner Graphic -> Pulse Wave */}
-                                <div className="mt-8 pt-6 border-t border-white/10 relative">
-                                    <span className="font-data text-[10px] uppercase text-signal mb-2 block tracking-widest">Lead Velocity</span>
-                                    <div className="flex items-center gap-1 h-6 items-end mt-4">
-                                        {[20, 35, 15, 60, 40, 80, 50, 100, 70, 90, 85].map((h, i) => (
-                                            <div key={i} className={`flex-1 bg-white/10 rounded-t-sm transition-all duration-500`} style={{ height: '4px' }}>
-                                                <div className="w-full bg-signal rounded-t-sm transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] h-0 group-hover:h-full" style={{ height: `0%`, transitionDelay: `${i * 50}ms` }} data-h={h}></div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Blade 03: THE MEDIA ESTATES */}
-                            <div className="group relative w-full aspect-[3/5] bg-obsidian/80 backdrop-blur-[20px] border border-white/5 hover:border-signal/50 rounded-[24px] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_rgba(253,0,51,0.15)] hover:-translate-y-2">
-                                {/* Hover background glow */}
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-signal blur-[120px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"></div>
-
-                                <div>
-                                    <div className="flex justify-between items-start mb-12">
-                                        <div className="p-4 bg-white/5 rounded-2xl border border-white/10 group-hover:border-signal/50 transition-colors group-hover:-translate-y-1 transform duration-300">
-                                            <i data-lucide="crown" className="w-8 h-8 text-signal"></i>
-                                        </div>
-                                        <span className="font-data text-[10px] px-2 py-1 bg-white/5 rounded text-white/60 border border-white/10">SYS.06</span>
-                                    </div>
-                                    <h3 className="font-emphasis text-4xl text-white mb-4 tracking-wide group-hover:text-signal transition-colors duration-300">THE MEDIA ESTATES</h3>
-                                    <p className="font-body text-sm text-steel/70 leading-relaxed font-medium">
-                                        Scaling existing media operations. High-volume clip repurposing, show production, multi-platform distribution, and data-backed packaging for creators ready to operate like a studio.
-                                    </p>
-                                </div>
-
-                                {/* Inner Graphic -> Legacy Timeline Scrubbing */}
-                                <div className="mt-8 pt-6 border-t border-white/10 relative overflow-hidden">
-                                    <span className="font-data text-[10px] uppercase text-signal mb-4 block tracking-widest">Legacy Timeline</span>
-                                    <div className="relative w-full h-8 flex items-center">
-                                        <div className="absolute left-0 right-0 h-[2px] bg-white/10 rounded overflow-hidden">
-                                            <div className="h-full bg-signal w-0 group-hover:w-full transition-all duration-[2000ms] ease-linear"></div>
-                                        </div>
-                                        <div className="absolute -translate-y-1/2 top-1/2 w-1.5 h-6 bg-white rounded-full shadow-[0_0_10px_#FD0033] opacity-0 group-hover:opacity-100 left-0 group-hover:left-[calc(100%-6px)] transition-all duration-[2000ms] ease-linear z-10"></div>
-
-                                        {/* Timeline Nodes */}
-                                        <div className="absolute top-1/2 -translate-y-1/2 left-[25%] w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-signal group-hover:shadow-[0_0_8px_#FD0033] transition-all delay-[500ms] duration-300 z-0"></div>
-                                        <div className="absolute top-1/2 -translate-y-1/2 left-[50%] w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-signal group-hover:shadow-[0_0_8px_#FD0033] transition-all delay-[1000ms] duration-300 z-0"></div>
-                                        <div className="absolute top-1/2 -translate-y-1/2 left-[75%] w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-signal group-hover:shadow-[0_0_8px_#FD0033] transition-all delay-[1500ms] duration-300 z-0"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-
-        const ManifestoSection = () => {
-            const sectionRef = useRef(null);
-            const textRef1 = useRef(null);
-            const textRef2 = useRef(null);
-
-            useLayoutEffect(() => {
-                let ctx = gsap.context(() => {
-                    gsap.from(textRef1.current, {
-                        scrollTrigger: {
-                            trigger: sectionRef.current,
-                            start: "top 70%",
-                        },
-                        opacity: 0,
-                        x: -80,
-                        duration: 1.5,
-                        ease: "power3.out"
-                    });
-                    gsap.from(textRef2.current, {
-                        scrollTrigger: {
-                            trigger: sectionRef.current,
-                            start: "top 50%",
-                        },
-                        opacity: 0,
-                        x: 80,
-                        duration: 1.5,
-                        ease: "power3.out",
-                        delay: 0.2
-                    });
-                }, sectionRef);
-                return () => ctx.revert();
-            }, []);
-
-            return (
-                <section ref={sectionRef} className="py-24 md:py-48 bg-[#030303] px-4 overflow-hidden border-y border-white/5 relative">
-                    {/* Background noise texture specific to this dark section */}
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.03%22/%3E%3C/svg%3E')] opacity-30 pointer-events-none"></div>
-
-                    <div className="max-w-6xl mx-auto flex flex-col justify-center min-h-[40vh] relative z-10">
-                        <h2 ref={textRef1} className="font-heading font-extrabold text-[8vw] md:text-[6vw] leading-[1.1] text-white/20 uppercase tracking-tight">
-                            Your brand is a <br className="hidden md:block" />
-                            <span className="text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)" }}>ghost town.</span>
-                        </h2>
-                        <h2 ref={textRef2} className="font-heading font-extrabold text-[9vw] md:text-[7vw] leading-[1.1] text-white mt-8 uppercase text-right md:text-left tracking-tight">
-                            ChannelScale makes it <br className="hidden md:block" />
-                            a <span className="text-signal">Headquarters.</span>
-                        </h2>
-                    </div>
-                </section>
-            );
-        }
-
-        const PortfolioSection = () => {
-            return (
-                <section className="py-24 md:py-32 relative z-10 border-t border-white/5 bg-[#050505] overflow-hidden">
-                    <div className="max-w-6xl mx-auto px-4 md:px-12">
-                        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-6">
-                            <div className="relative">
-                                <div className="absolute -left-6 top-0 w-1 h-full bg-[#FD0033]"></div>
-                                <h2 className="font-heading text-4xl md:text-6xl font-extrabold text-white tracking-tight uppercase leading-none mb-2">
-                                    PORTFOLIO
-                                </h2>
-                                <p className="font-body text-steel/60 tracking-wider uppercase text-sm font-semibold">
-                                    YouTube Channels We Have Worked With
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* 3-Column Portfolio Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-
-                            {/* Module 04: BIBLE ALIVE */}
-                            <a href="https://www.youtube.com/@bible_alive" target="_blank" rel="noopener noreferrer" className="cursor-pointer group relative w-full aspect-[3/4] bg-obsidian/90 backdrop-blur-[20px] border border-white/5 hover:border-[#FD0033]/60 rounded-[20px] p-8 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_0_80px_rgba(253,0,51,0.3)] hover:scale-[1.02] hover:-translate-y-1 hover:bg-[#0c0c0e]">
-                                <div className="flex flex-col items-center mt-8 z-10 relative">
-                                    <div className="relative w-28 h-28 mb-6">
-                                        <div className="absolute inset-0 rounded-full border-[3px] border-[#FD0033] opacity-50 shadow-[0_0_20px_#FD0033] group-hover:scale-110 group-hover:opacity-100 transition-all duration-500 z-0 animate-[spin_10s_linear_infinite]"></div>
-                                        <div className="w-full h-full rounded-full bg-obsidian border-4 border-[#0c0c0e] relative z-10 overflow-hidden flex items-center justify-center p-4">
-                                            <i data-lucide="book-open" className="w-12 h-12 text-white/80 group-hover:text-white transition-colors"></i>
-                                        </div>
-                                    </div>
-                                    <h3 className="font-data font-bold text-white text-lg tracking-wider mb-1 group-hover:text-[#FD0033] transition-colors">@bible_alive</h3>
-                                    <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-1">550K+ SUBS</p>
-                                </div>
-
-                                <div className="mt-auto pt-6 border-t border-white/5 relative z-10 flex flex-col gap-3">
-                                    <div className="flex justify-between items-center">
-                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">YouTube Views</span>
-                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">330M+</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Watch Time Hours</span>
-                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">5.8M+</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            {/* Module 05: BOWMAR BOWHUNTING */}
-                            <a href="https://www.youtube.com/@BowmarBowhunting" target="_blank" rel="noopener noreferrer" className="cursor-pointer group relative w-full aspect-[3/4] bg-obsidian/90 backdrop-blur-[20px] border border-white/5 hover:border-[#FD0033]/60 rounded-[20px] p-8 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_0_80px_rgba(253,0,51,0.3)] hover:scale-[1.02] hover:-translate-y-1 hover:bg-[#0c0c0e]">
-                                <div className="flex flex-col items-center mt-8 z-10 relative">
-                                    <div className="relative w-28 h-28 mb-6">
-                                        <div className="absolute inset-0 rounded-full border-[3px] border-[#FD0033] opacity-50 shadow-[0_0_20px_#FD0033] group-hover:scale-110 group-hover:opacity-100 transition-all duration-500 z-0 animate-[spin_8s_linear_infinite_reverse]"></div>
-                                        <div className="w-full h-full rounded-full bg-obsidian border-4 border-[#0c0c0e] relative z-10 overflow-hidden flex items-center justify-center p-4">
-                                            <i data-lucide="target" className="w-12 h-12 text-white/80 group-hover:text-white transition-colors"></i>
-                                        </div>
-                                    </div>
-                                    <h3 className="font-data font-bold text-white text-lg tracking-wider mb-1 group-hover:text-[#FD0033] transition-colors">@bowmarbowhunting</h3>
-                                    <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-2">2.6M+ SUBSCRIBERS</p>
-                                </div>
-                            </a>
-
-                            {/* Module 06: COUNTERPOINT */}
-                            <a href="https://www.youtube.com/@counterpointstudios" target="_blank" rel="noopener noreferrer" className="cursor-pointer group relative w-full aspect-[3/4] bg-obsidian/90 backdrop-blur-[20px] border border-white/5 hover:border-[#FD0033]/60 rounded-[20px] p-8 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_0_80px_rgba(253,0,51,0.3)] hover:scale-[1.02] hover:-translate-y-1 hover:bg-[#0c0c0e]">
-                                <div className="flex flex-col items-center mt-8 z-10 relative">
-                                    <div className="relative w-28 h-28 mb-6">
-                                        <div className="absolute inset-0 rounded-full border-[3px] border-[#FD0033] opacity-50 shadow-[0_0_20px_#FD0033] group-hover:scale-110 group-hover:opacity-100 transition-all duration-500 z-0 animate-[spin_12s_linear_infinite]"></div>
-                                        <div className="w-full h-full rounded-full bg-obsidian border-4 border-[#0c0c0e] relative z-10 overflow-hidden flex items-center justify-center p-4">
-                                            <i data-lucide="radio" className="w-12 h-12 text-white/80 group-hover:text-white transition-colors"></i>
-                                        </div>
-                                    </div>
-                                    <h3 className="font-data font-bold text-white text-lg tracking-wider mb-1 group-hover:text-[#FD0033] transition-colors">@counterpointstudios</h3>
-                                    <p className="font-emphasis text-3xl text-[#FD0033] tracking-widest mb-2">26K+ SUBS</p>
-                                </div>
-
-                                <div className="mt-auto pt-6 border-t border-white/5 relative z-10 flex flex-col gap-3">
-                                    <div className="flex justify-between items-center">
-                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Video Episodes</span>
-                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">25+</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span className="font-data text-[10px] uppercase text-white/50 tracking-widest">Watch Hours</span>
-                                        <span className="font-data text-[10px] text-[#FD0033] font-bold">1M+</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-
-        const ProtocolSection = () => {
-            const containerRef = useRef(null);
-            const cardsRef = useRef([]);
-
-            useLayoutEffect(() => {
-                let ctx = gsap.context(() => {
-                    const cards = cardsRef.current;
-
-                    cards.forEach((card, index) => {
-                        // Pin each card when it reaches the top
-                        ScrollTrigger.create({
-                            trigger: card,
-                            start: "top top+=100", // Start pinning 100px from top
-                            endTrigger: containerRef.current,
-                            end: "bottom bottom",
-                            pin: true,
-                            pinSpacing: false,
-                            id: `card-${index}`
-                        });
-
-                        // Create the scale down/blur effect as the NEXT card scrolls up
-                        if (index < cards.length - 1) {
-                            gsap.to(card, {
-                                scrollTrigger: {
-                                    trigger: cards[index + 1],
-                                    start: "top bottom",
-                                    end: "top top+=100",
-                                    scrub: true,
-                                },
-                                scale: 0.9,
-                                filter: "blur(8px)",
-                                opacity: 0.4,
-                                y: -20, // Give it a slight upward shift while scaling
-                            });
-                        }
-                    });
-                }, containerRef);
-                return () => ctx.revert();
-            }, []);
-
-            return (
-                <section ref={containerRef} className="py-32 px-4 pb-[30vh] relative z-20 bg-obsidian border-t border-signal/10">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="flex items-center gap-4 mb-24 md:mb-40">
-                            <i data-lucide="layers" className="w-5 h-5 text-signal"></i>
-                            <span className="font-data text-signal text-sm uppercase tracking-wider">the_stack_protocol</span>
-                            <div className="h-[1px] bg-white/10 flex-1"></div>
-                        </div>
-
-                        <div className="flex flex-col gap-[30vh] md:gap-[50vh]">
-                            {/* Card 1 */}
-                            <div ref={el => cardsRef.current[0] = el} className="glass-panel !bg-[#0c0c0e] p-10 md:p-20 rounded-[3rem] border-t border-white/10 shadow-[0_-20px_40px_rgba(0,0,0,0.8)] origin-top backdrop-blur-3xl relative">
-                                <div className="absolute top-10 right-10 pointer-events-none opacity-10">
-                                    <i data-lucide="compass" className="w-32 h-32 text-signal"></i>
-                                </div>
-                                <span className="font-data text-xs text-signal tracking-[0.3em] uppercase border border-signal/30 px-3 py-1 rounded-full">Strategic Content Roadmap</span>
-                                <h2 className="font-emphasis text-[12vw] md:text-[8rem] mt-6 mb-8 leading-none text-white tracking-widest">STRATEGY</h2>
-                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Content Strategy & Planning</h3>
-                                <p className="font-body font-medium text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                    We build the content plan before we touch a camera. Topic selection, format decisions, platform fit, and a publishing cadence that actually makes sense for your business.
-                                </p>
-                            </div>
-
-                            {/* Card 2 */}
-                            <div ref={el => cardsRef.current[1] = el} className="glass-panel !bg-[#0c0c0e] p-10 md:p-20 rounded-[3rem] border-t border-signal/30 shadow-[0_-20px_40px_rgba(0,0,0,0.8)] origin-top backdrop-blur-3xl relative">
-                                <div className="absolute top-10 right-10 pointer-events-none opacity-10">
-                                    <i data-lucide="video" className="w-32 h-32 text-signal"></i>
-                                </div>
-                                <span className="font-data text-xs text-signal tracking-[0.3em] uppercase border border-signal/30 px-3 py-1 rounded-full">Executive Studio Design</span>
-                                <h2 className="font-emphasis text-[12vw] md:text-[8rem] mt-6 mb-8 leading-none text-white tracking-widest">PRODUCTION</h2>
-                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Cinema-Grade Production</h3>
-                                <p className="font-body font-medium text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                    We build your studio setup from scratch, film on-site when needed, and edit everything to a standard that reflects the quality of your actual business. No stock footage. No cookie-cutter edits.
-                                </p>
-                            </div>
-
-                            {/* Card 3 */}
-                            <div ref={el => cardsRef.current[2] = el} className="glass-panel !bg-[#0c0c0e] p-10 md:p-20 rounded-[3rem] border-t border-white/10 shadow-[0_-20px_80px_rgba(253,0,51,0.05)] origin-top backdrop-blur-3xl relative">
-                                <div className="absolute top-10 right-10 pointer-events-none opacity-10">
-                                    <i data-lucide="activity" className="w-32 h-32 text-signal"></i>
-                                </div>
-                                <span className="font-data text-xs text-signal tracking-[0.3em] uppercase border border-signal/30 px-3 py-1 rounded-full">High-CTR Packaging</span>
-                                <h2 className="font-emphasis text-[12vw] md:text-[8rem] mt-6 mb-8 leading-none text-white tracking-widest">MANAGEMENT</h2>
-                                <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white mb-4">Channel Management & Growth</h3>
-                                <p className="font-body font-medium text-white/50 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                    Thumbnails, titles, publish timing, A/B tests, and performance tracking. We run the channel as an operator, not a contractor. Every decision is tied back to what actually drives views and converts them into clients.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-
+        // ── Home: Track record ────────────────────────────────────────────
         const StatsSection = () => {
             const sectionRef = useRef(null);
             useLayoutEffect(() => {
                 let ctx = gsap.context(() => {
                     gsap.from(".stat-item", {
-                        y: 30, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
-                        scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
+                        y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
+                        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" }
                     });
                 }, sectionRef);
                 return () => ctx.revert();
             }, []);
 
             const stats = [
-                { value: "1.4B+", label: "Combined social views", icon: "eye" },
-                { value: "3M+", label: "YouTube subscribers managed", icon: "users" },
-                { value: "2.8M+", label: "Website visits driven", icon: "trending-up" },
+                { value: "1.4B+", label: "Combined social views" },
+                { value: "3M+", label: "YouTube subscribers managed" },
+                { value: "1M+", label: "Watch hours on Counterpoint" },
             ];
 
             return (
-                <section ref={sectionRef} className="py-16 md:py-20 px-4 md:px-12 border-t border-white/5 bg-[#050505]">
-                    <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+                <section ref={sectionRef} className="relative z-10 px-4 md:px-12 py-16 md:py-24 border-y border-white/[0.06] bg-[#060607]">
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 md:divide-x divide-white/[0.08]">
                         {stats.map((s, i) => (
-                            <div key={i} className="stat-item flex flex-col items-center text-center p-6 rounded-2xl border border-white/5 bg-obsidian/60 hover:border-signal/30 transition-colors group">
-                                <div className="mb-3 p-3 rounded-xl bg-signal/10 border border-signal/20 group-hover:border-signal/40 transition-colors">
-                                    <i data-lucide={s.icon} className="w-5 h-5 text-signal"></i>
-                                </div>
-                                <span className="font-emphasis text-4xl md:text-5xl text-white tracking-wide mb-2 group-hover:text-signal transition-colors duration-300">{s.value}</span>
-                                <span className="font-data text-[10px] text-white/50 uppercase tracking-widest leading-tight">{s.label}</span>
+                            <div key={i} className="stat-item flex flex-col items-center text-center px-6">
+                                <span className="font-emphasis text-6xl md:text-7xl lg:text-8xl text-white tracking-wide leading-none">{s.value}</span>
+                                <span className="font-data text-[11px] text-white/45 uppercase tracking-[0.2em] mt-3">{s.label}</span>
                             </div>
                         ))}
                     </div>
                 </section>
             );
-        }
+        };
 
+        // ── Home: The offer ───────────────────────────────────────────────
         const OfferSection = ({ navigateToForm }) => {
             const sectionRef = useRef(null);
             useLayoutEffect(() => {
                 let ctx = gsap.context(() => {
                     gsap.from(".offer-card", {
-                        y: 40, opacity: 0, duration: 0.7, stagger: 0.1, ease: "power3.out",
+                        y: 40, opacity: 0, duration: 0.8, stagger: 0.07, ease: "power3.out",
                         scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
                     });
                 }, sectionRef);
@@ -2368,91 +1524,114 @@
 
             React.useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
 
-            const cards = [
-                { icon: "film", label: "Full episodes", headline: "4 episodes edited every month", body: "We sync every camera angle, cut the multicam, clean the audio and color the footage. You get a finished episode ready to publish." },
-                { icon: "image", label: "YouTube packaging", headline: "Titles, thumbnails, chapters", body: "Every upload ships with a researched title, a custom thumbnail, chapters, a description and tags. Packaging is what gets the click." },
-                { icon: "scissors", label: "Clips everywhere", headline: "20-30 clips a month", body: "The best moments of every episode cut vertical, captioned and posted to YouTube Shorts, Instagram, TikTok, X and Facebook." },
-                { icon: "archive", label: "Month one", headline: "Your back catalog, relaunched", body: "Old episodes are full of moments nobody has seen. During onboarding we mine your archive so the channel has momentum before the first new episode ships." },
-                { icon: "calendar-check", label: "Posting", headline: "Scheduled and posted for you", body: "Episodes and clips go live on a set schedule across every platform, the week they are finished." },
-                { icon: "bar-chart-3", label: "Reporting", headline: "A monthly report you can read", body: "What got watched, what got clicked, which clips traveled, and what we are changing next month." },
+            const small = [
+                { icon: "image", label: "YouTube packaging", headline: "Titles, thumbnails, chapters", body: "A researched title, a custom thumbnail, chapters, a description and tags on every upload. Packaging is what earns the click." },
+                { icon: "scissors", label: "Clips", headline: "20-30 clips a month", body: "The strongest moments of every episode, cut vertical, framed on the speaker and captioned." },
+                { icon: "send", label: "Posting", headline: "Scheduled and posted for you", body: "Shorts, Instagram, TikTok, X and Facebook on a set schedule, the week each episode is finished." },
+                { icon: "archive", label: "Month one", headline: "Your back catalog, relaunched", body: "We mine your old episodes for clips and repackaged uploads, so the channel has momentum before your next one ships." },
+                { icon: "bar-chart-3", label: "Reporting", headline: "A monthly report you can read", body: "What got watched, what got clicked, which clips traveled, and what we change next month." },
             ];
 
-            return (
-                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="mb-12 max-w-3xl">
-                            <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.3em] mb-3">The Offer</p>
-                            <h2 className="font-emphasis text-5xl md:text-7xl uppercase tracking-wide text-[#F8FAFC] leading-[0.9] mb-6">
-                                Everything after you<br className="hidden md:block" /> <span className="text-[#FD0033]">hit record.</span>
-                            </h2>
-                            <p className="font-body text-lg md:text-xl text-[#F8FAFC]/70 leading-relaxed">
-                                You record the show and drop the raw files in a shared folder. We turn every episode into a finished YouTube upload and a month of clips on every platform.
-                            </p>
-                        </div>
+            const hires = ["Long-form editor", "Thumbnail designer", "Clip editor", "Social media manager"];
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                            {cards.map((card, i) => (
-                                <div key={i} className="offer-card bg-white/[0.025] border border-white/8 rounded-2xl p-7 hover:border-[#FD0033]/40 transition-colors duration-300 group">
-                                    <div className="w-10 h-10 rounded-lg bg-[#FD0033]/10 border border-[#FD0033]/20 flex items-center justify-center mb-5 group-hover:bg-[#FD0033]/15 transition-colors">
-                                        <i data-lucide={card.icon} className="text-[#FD0033]" style={{width:'18px',height:'18px'}}></i>
+            return (
+                <section id="offer" ref={sectionRef} className="relative z-10 py-24 md:py-36 px-4 md:px-12">
+                    <div className="max-w-6xl mx-auto">
+                        <SectionIntro
+                            eyebrow="The offer"
+                            title={<>Everything after<br className="hidden sm:block" /> you <span className="text-signal">hit record.</span></>}
+                            sub="Drop the raw files in a shared folder. We turn every episode into a finished YouTube upload and a month of clips on every platform."
+                        />
+
+                        <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+                            {/* Hero card */}
+                            <div className="offer-card cs-card md:col-span-4 p-8 md:p-10 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
+                                <span className="absolute -right-4 -bottom-14 font-emphasis text-[16rem] md:text-[20rem] leading-none text-signal/[0.12] select-none pointer-events-none">4</span>
+                                <div className="relative">
+                                    <p className="font-data text-signal text-[11px] uppercase tracking-[0.25em]">Full episodes</p>
+                                    <h3 className="font-heading text-3xl md:text-4xl text-white tracking-tight leading-[1.05] mt-4 max-w-md">4 episodes edited every month</h3>
+                                </div>
+                                <p className="relative font-body text-white/60 leading-relaxed max-w-md mt-8">Every camera angle synced and cut as a multicam. Audio cleaned and leveled, color corrected, pacing tightened. Ready for YouTube and every podcast app.</p>
+                            </div>
+
+                            {small.map((c, i) => (
+                                <div key={i} className="offer-card cs-card md:col-span-2 p-7 flex flex-col">
+                                    <div className="w-10 h-10 rounded-xl bg-signal/10 border border-signal/20 flex items-center justify-center">
+                                        <i data-lucide={c.icon} className="text-signal" style={{ width: '18px', height: '18px' }}></i>
                                     </div>
-                                    <p className="font-data text-[#FD0033]/70 text-[10px] uppercase tracking-[0.25em] mb-2">{card.label}</p>
-                                    <h3 className="font-emphasis text-2xl uppercase tracking-wide text-[#F8FAFC] mb-3 leading-tight">{card.headline}</h3>
-                                    <p className="font-body text-[#F8FAFC]/55 text-sm leading-relaxed">{card.body}</p>
+                                    <p className="font-data text-white/40 text-[10px] uppercase tracking-[0.25em] mt-6">{c.label}</p>
+                                    <h3 className="font-heading text-xl text-white tracking-tight mt-2">{c.headline}</h3>
+                                    <p className="font-body text-sm text-white/55 leading-relaxed mt-3">{c.body}</p>
                                 </div>
                             ))}
-                        </div>
 
-                        {/* Guarantees */}
-                        <div className="offer-card mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div className="flex items-start gap-4 border border-[#FD0033] bg-[#FD0033]/[0.06] rounded-2xl p-7 shadow-[0_0_30px_rgba(253,0,51,0.12)]">
-                                <i data-lucide="timer" className="text-[#FD0033] flex-shrink-0 mt-1" style={{width:'22px',height:'22px'}}></i>
-                                <div>
-                                    <p className="font-emphasis text-2xl uppercase tracking-wide text-[#F8FAFC] mb-2">7-day turnaround guarantee</p>
-                                    <p className="font-body text-sm text-[#F8FAFC]/65 leading-relaxed">Your first edited episode is back within 7 days of receiving the files, or that month is free.</p>
+                            {/* Replaces four hires */}
+                            <div className="offer-card cs-card md:col-span-4 p-8 md:p-10 flex flex-col lg:flex-row lg:items-center gap-8">
+                                <div className="flex-1">
+                                    <p className="font-data text-signal text-[11px] uppercase tracking-[0.25em]">One team</p>
+                                    <h3 className="font-heading text-2xl md:text-3xl text-white tracking-tight leading-tight mt-3">One retainer covers four hires.</h3>
+                                    <p className="font-body text-sm text-white/55 leading-relaxed mt-3 max-w-sm">One point of contact, and Carter reviews every show before it ships.</p>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 lg:w-[340px] lg:flex-shrink-0">
+                                    {hires.map(h => (
+                                        <div key={h} className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                                            <CheckIcon className="w-4 h-4 text-signal flex-shrink-0" />
+                                            <span className="font-body text-sm text-white/80">{h}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                            <div className="flex items-start gap-4 border border-white/10 bg-white/[0.025] rounded-2xl p-7">
-                                <i data-lucide="shield-check" className="text-[#FD0033] flex-shrink-0 mt-1" style={{width:'22px',height:'22px'}}></i>
-                                <div>
-                                    <p className="font-emphasis text-2xl uppercase tracking-wide text-[#F8FAFC] mb-2">7-day full refund</p>
-                                    <p className="font-body text-sm text-[#F8FAFC]/65 leading-relaxed">If the first week of work misses what you expected, tell us within 7 days and you get every dollar back.</p>
-                                </div>
-                            </div>
                         </div>
 
-                        <div className="mt-14 flex justify-center">
-                            <button
-                                onClick={navigateToForm}
-                                className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
-                            >
-                                <span className="relative z-10">Apply to work with us</span>
-                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                            </button>
+                        {/* Price + guarantees */}
+                        <div className="offer-card mt-4 rounded-[28px] border border-signal/40 bg-[radial-gradient(120%_140%_at_0%_0%,rgba(253,0,51,0.16),rgba(10,10,11,0.6)_55%)] p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 shadow-[0_30px_80px_-30px_rgba(253,0,51,0.45)]">
+                            <div className="flex flex-col">
+                                <p className="font-data text-white/50 text-[11px] uppercase tracking-[0.25em]">Partnerships start at</p>
+                                <p className="font-emphasis text-7xl md:text-8xl text-white leading-none tracking-wide mt-4 whitespace-nowrap">$4,000<span className="text-white/40 text-4xl md:text-5xl">/mo</span></p>
+                                <p className="font-body text-white/60 leading-relaxed mt-5 max-w-md">Six-month partnership. Your exact quote is set on the call by episode length, camera count and the platforms we post to.</p>
+                                <div className="mt-8">
+                                    <ApplyButton onClick={navigateToForm} className="cs-btn-lg" />
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-4 justify-center">
+                                {[
+                                    { title: "7-day turnaround guarantee", body: "Your first edited episode is back within 7 days of us receiving the files, or that month is free." },
+                                    { title: "7-day full refund", body: "If the first week of work misses what you expected, tell us within 7 days and you get every dollar back." },
+                                ].map((g, i) => (
+                                    <div key={i} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-[#0A0A0B]/60 p-6">
+                                        <div className="w-10 h-10 rounded-full bg-signal/15 flex items-center justify-center flex-shrink-0">
+                                            <ShieldIcon className="w-5 h-5 text-signal" />
+                                        </div>
+                                        <div>
+                                            <p className="font-heading text-lg text-white tracking-tight">{g.title}</p>
+                                            <p className="font-body text-sm text-white/60 leading-relaxed mt-1.5">{g.body}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
             );
         };
 
+        // ── Home: Results ─────────────────────────────────────────────────
         const ResultsSection = ({ setCurrentPage, navigateToForm }) => {
             const sectionRef = useRef(null);
             useLayoutEffect(() => {
                 let ctx = gsap.context(() => {
                     gsap.from(".result-card", {
-                        y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
+                        y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out",
                         scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
                     });
                 }, sectionRef);
                 return () => ctx.revert();
             }, []);
 
-            React.useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
-
             const results = [
                 {
                     client: "Counterpoint Studios",
-                    meta: "Debate podcast - 30K+ subscribers",
+                    meta: "Debate podcast, 30K+ subscribers",
                     headline: "1M+ watch hours on a show we built from zero",
                     body: "Three 4K angles and up to 11 guests per episode, synced, cut and packaged in-house. Every episode is clipped and posted across TikTok, Instagram, X and Facebook through our own clip pipeline.",
                     before: null,
@@ -2476,62 +1655,46 @@
             ];
 
             return (
-                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 relative z-10 border-t border-white/5 bg-[#050505]">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="mb-12 max-w-3xl">
-                            <p className="font-data text-[#FD0033] text-xs uppercase tracking-[0.3em] mb-3">Results</p>
-                            <h2 className="font-emphasis text-5xl md:text-6xl uppercase tracking-wide text-[#F8FAFC] leading-[0.9] mb-6">
-                                Shows we have <span className="text-[#FD0033]">edited and grown</span>
-                            </h2>
-                            <p className="font-body text-lg text-[#F8FAFC]/70 leading-relaxed">
-                                Same team, same pipeline, same standard your show gets.
-                            </p>
-                        </div>
+                <section id="results" ref={sectionRef} className="relative z-10 py-24 md:py-36 px-4 md:px-12 border-t border-white/[0.06] bg-[#060607]">
+                    <div className="max-w-6xl mx-auto">
+                        <SectionIntro
+                            eyebrow="Results"
+                            title={<>Shows we have <span className="text-signal">edited and grown.</span></>}
+                            sub="Same team, same pipeline, same standard your show gets."
+                        />
 
-                        <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-4">
                             {results.map((r, i) => (
-                                <div key={i} className="result-card grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-10 bg-white/[0.02] border border-white/8 hover:border-white/20 rounded-2xl p-7 md:p-10 transition-colors">
-                                    <div className={r.before ? "md:col-span-2" : "md:col-span-5"}>
-                                        <p className="font-heading font-bold text-[#F8FAFC] text-lg">{r.client}</p>
-                                        <p className="font-data text-[10px] text-white/40 uppercase tracking-widest mb-5">{r.meta}</p>
-                                        <h3 className="font-emphasis text-3xl md:text-4xl uppercase tracking-wide text-[#FD0033] leading-tight mb-4">{r.headline}</h3>
-                                        <p className="font-body text-[#F8FAFC]/60 leading-relaxed">{r.body}</p>
+                                <div key={i} className="result-card cs-card grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 p-7 md:p-10">
+                                    <div className={r.before ? "md:col-span-2 flex flex-col" : "md:col-span-5 flex flex-col md:flex-row md:items-end md:justify-between gap-6"}>
+                                        <div>
+                                            <p className="font-heading text-lg text-white tracking-tight">{r.client}</p>
+                                            <p className="font-data text-[10px] text-white/40 uppercase tracking-[0.2em] mt-1">{r.meta}</p>
+                                            <h3 className="font-emphasis text-4xl md:text-5xl uppercase tracking-wide text-signal leading-[0.95] mt-6 max-w-xl">{r.headline}</h3>
+                                        </div>
+                                        <p className={`font-body text-white/60 leading-relaxed ${r.before ? 'mt-5' : 'md:max-w-md'}`}>{r.body}</p>
                                     </div>
                                     {r.before && (
-                                        <div className="md:col-span-3 grid grid-cols-2 gap-4">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="relative rounded-lg overflow-hidden h-[150px] md:h-[190px] bg-[#0A0A0B]">
-                                                    <img src={r.before} alt="Before" loading="lazy" className="w-full h-full object-contain object-top" />
-                                                    <span className="absolute top-2 left-2 font-data text-[10px] font-bold uppercase tracking-widest bg-black/85 text-white px-2 py-1 rounded">Before</span>
+                                        <div className="md:col-span-3 grid grid-cols-2 gap-3 md:gap-4">
+                                            {[{ src: r.before, tag: "Before", views: r.beforeViews, hot: false }, { src: r.after, tag: "After", views: r.afterViews, hot: true }].map((s, k) => (
+                                                <div key={k} className="flex flex-col gap-2.5">
+                                                    <div className={`relative rounded-xl overflow-hidden h-[150px] md:h-[200px] bg-[#0A0A0B] border ${s.hot ? 'border-signal/40' : 'border-white/10'}`}>
+                                                        <img src={s.src} alt={s.tag} loading="lazy" className="w-full h-full object-contain object-top" />
+                                                        <span className={`absolute top-2 left-2 font-data text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md ${s.hot ? 'bg-signal text-white' : 'bg-black/85 text-white'}`}>{s.tag}</span>
+                                                    </div>
+                                                    <span className={`font-emphasis text-2xl tracking-wide ${s.hot ? 'text-signal' : 'text-white/45'}`}>{s.views} views</span>
                                                 </div>
-                                                <span className="font-data text-sm font-bold text-white/50">{r.beforeViews} views</span>
-                                            </div>
-                                            <div className="flex flex-col gap-2">
-                                                <div className="relative rounded-lg overflow-hidden h-[150px] md:h-[190px] bg-[#0A0A0B]">
-                                                    <img src={r.after} alt="After" loading="lazy" className="w-full h-full object-contain object-top" />
-                                                    <span className="absolute top-2 left-2 font-data text-[10px] font-bold uppercase tracking-widest bg-[#FD0033] text-white px-2 py-1 rounded">After</span>
-                                                </div>
-                                                <span className="font-data text-sm font-bold text-[#FD0033]">{r.afterViews} views</span>
-                                            </div>
+                                            ))}
                                         </div>
                                     )}
                                 </div>
                             ))}
                         </div>
 
-                        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <button
-                                onClick={navigateToForm}
-                                className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
-                            >
-                                <span className="relative z-10">Apply to work with us</span>
-                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                            </button>
-                            <button
-                                onClick={() => { setCurrentPage('work'); window.scrollTo(0, 0); }}
-                                className="font-data text-sm text-signal hover:text-white transition-colors uppercase tracking-widest"
-                            >
-                                See all our work →
+                        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+                            <ApplyButton onClick={navigateToForm} className="cs-btn-lg" />
+                            <button onClick={() => { setCurrentPage('work'); window.scrollTo(0, 0); }} className="cs-btn-ghost cs-btn-lg">
+                                See all our work
                             </button>
                         </div>
                     </div>
@@ -2539,97 +1702,58 @@
             );
         };
 
+        // ── Home: Process ─────────────────────────────────────────────────
         const ProcessSection = () => {
             const sectionRef = useRef(null);
             useLayoutEffect(() => {
                 let ctx = gsap.context(() => {
                     gsap.from(".process-step", {
-                        y: 30, duration: 0.7, stagger: 0.12, ease: "power3.out",
-                        scrollTrigger: { trigger: sectionRef.current, start: "top 90%" }
+                        y: 40, opacity: 0, duration: 0.8, stagger: 0.12, ease: "power3.out",
+                        scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
                     });
                 }, sectionRef);
                 return () => ctx.revert();
             }, []);
 
             const steps = [
-                {
-                    num: "1",
-                    title: "Onboard & Relaunch",
-                    body: "A kickoff call to learn your show, your audience and what the show is for. We set up a shared upload folder and your posting schedule, then go through your back catalog and start publishing the best moments from it right away.",
-                    icon: "compass"
-                },
-                {
-                    num: "2",
-                    title: "You Record. We Build.",
-                    body: "Record the way you already do and upload the raw angles and audio. We sync, edit, clean the audio, write the title, design the thumbnail, add chapters and description, then cut and caption the clips. Your first episode is back within 7 days.",
-                    icon: "video"
-                },
-                {
-                    num: "3",
-                    title: "Post, Report, Improve",
-                    body: "Everything goes out on schedule across YouTube, Shorts, Instagram, TikTok, X and Facebook. Each month you get a report on what got watched and clicked, and we adjust titles, thumbnails and clip selection from the data.",
-                    icon: "activity"
-                }
+                { num: "01", title: "Onboard and relaunch", body: "A kickoff call to learn your show and what it is for. We set up a shared upload folder and your posting schedule, then start publishing the best moments from your back catalog." },
+                { num: "02", title: "You record. We build.", body: "Record the way you already do and upload the raw angles and audio. We edit, package and clip it. Your first episode is back within 7 days." },
+                { num: "03", title: "Post, report, improve", body: "Everything goes out on schedule. Each month you get a report on what got watched and clicked, and we adjust titles, thumbnails and clips from the data." },
             ];
 
             return (
-                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 border-t border-white/5 bg-[#0A0A0B]">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="flex items-center gap-4 mb-6">
-                            <span className="font-data text-signal text-xs uppercase tracking-[0.3em]">How it works</span>
-                            <div className="h-[1px] bg-white/10 flex-1"></div>
-                        </div>
-                        <h2 className="font-heading text-4xl md:text-6xl font-extrabold text-white tracking-tight uppercase leading-none mb-16">
-                            Three steps.<br /><span className="text-signal">One of them is yours.</span>
-                        </h2>
-
-                        <div className="flex flex-col gap-6">
-                            {steps.map((step, i) => (
-                                <div key={i} className="process-step group relative flex flex-col md:flex-row md:items-center gap-8 p-10 md:p-14 rounded-2xl border border-white/8 hover:border-signal/40 bg-[#0d0d0f] hover:bg-[#111114] transition-all duration-300 overflow-hidden">
-                                    <div className="absolute top-0 right-0 w-64 h-64 bg-signal blur-[120px] opacity-0 group-hover:opacity-8 transition-opacity duration-700 pointer-events-none"></div>
-
-                                    {/* Step number */}
-                                    <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-2xl border border-white/10 group-hover:border-signal/40 bg-white/3 transition-colors">
-                                        <span className="font-emphasis text-5xl md:text-6xl text-white/20 group-hover:text-signal/40 transition-colors leading-none">{step.num}</span>
+                <section ref={sectionRef} className="relative z-10 py-24 md:py-36 px-4 md:px-12 border-t border-white/[0.06]">
+                    <div className="max-w-6xl mx-auto">
+                        <SectionIntro
+                            eyebrow="How it works"
+                            title={<>Three steps. <span className="text-signal">One of them is yours.</span></>}
+                        />
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {steps.map((s, i) => (
+                                <div key={i} className={`process-step cs-card p-8 md:p-9 flex flex-col ${i === 1 ? 'md:border-signal/40 md:bg-[linear-gradient(180deg,rgba(253,0,51,0.08),rgba(255,255,255,0.01))]' : ''}`}>
+                                    <div className="flex items-center justify-between">
+                                        <span className={`font-emphasis text-6xl leading-none ${i === 1 ? 'text-signal' : 'text-white/20'}`}>{s.num}</span>
+                                        {i === 1 && <span className="font-data text-[10px] uppercase tracking-[0.2em] text-signal border border-signal/40 rounded-full px-3 py-1">Your part</span>}
                                     </div>
-
-                                    {/* Divider */}
-                                    <div className="hidden md:block w-px self-stretch bg-white/5 group-hover:bg-signal/20 transition-colors"></div>
-
-                                    {/* Content */}
-                                    <div className="flex-1 flex flex-col gap-3">
-                                        <div className="flex items-center gap-3 mb-1">
-                                            <i data-lucide={step.icon} className="w-5 h-5 text-signal flex-shrink-0"></i>
-                                            <h3 className="font-heading font-extrabold text-2xl md:text-3xl text-white group-hover:text-signal transition-colors duration-300">{step.title}</h3>
-                                        </div>
-                                        <p className="font-body text-base md:text-lg text-white/55 leading-relaxed max-w-2xl">{step.body}</p>
-                                    </div>
+                                    <h3 className="font-heading text-2xl text-white tracking-tight mt-10">{s.title}</h3>
+                                    <p className="font-body text-white/55 leading-relaxed mt-3">{s.body}</p>
                                 </div>
                             ))}
-                        </div>
-
-                        <div className="mt-14 flex justify-center">
-                            <button
-                                onClick={() => document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                                className="group relative overflow-hidden px-10 py-5 bg-signal text-obsidian font-data font-bold uppercase tracking-widest text-base rounded-full hover:shadow-[0_0_40px_rgba(253,0,51,0.5)] transition-all duration-300 hover:scale-105"
-                            >
-                                <span className="relative z-10">Apply to work with us</span>
-                                <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                            </button>
                         </div>
                     </div>
                 </section>
             );
-        }
+        };
 
+        // ── Home: FAQ ─────────────────────────────────────────────────────
         const HomeFAQSection = ({ setCurrentPage }) => {
-            const [openIndex, setOpenIndex] = React.useState(null);
+            const [openIndex, setOpenIndex] = React.useState(0);
             const sectionRef = useRef(null);
 
             useLayoutEffect(() => {
                 let ctx = gsap.context(() => {
                     gsap.from(".home-faq-item", {
-                        y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out",
+                        y: 20, opacity: 0, duration: 0.6, stagger: 0.07, ease: "power2.out",
                         scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
                     });
                 }, sectionRef);
@@ -2646,91 +1770,292 @@
             ];
 
             return (
-                <section ref={sectionRef} className="py-24 md:py-32 px-4 md:px-12 border-t border-white/5 bg-[#050505]">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="flex items-center gap-4 mb-6">
-                            <span className="font-data text-signal text-xs uppercase tracking-[0.3em]">Common questions</span>
-                            <div className="h-[1px] bg-white/10 flex-1"></div>
+                <section ref={sectionRef} className="relative z-10 py-24 md:py-36 px-4 md:px-12 border-t border-white/[0.06] bg-[#060607]">
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div className="lg:col-span-4">
+                            <span className="cs-eyebrow"><span className="cs-dot"></span>Common questions</span>
+                            <h2 className="cs-title mt-6">Questions, <span className="text-signal">answered.</span></h2>
+                            <button
+                                onClick={() => { setCurrentPage('faq'); window.scrollTo(0, 0); }}
+                                className="mt-8 inline-flex items-center gap-2 font-body text-sm font-medium text-white/70 hover:text-white transition-colors"
+                            >
+                                See all questions <ArrowIcon />
+                            </button>
                         </div>
-                        <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-white tracking-tight uppercase leading-none mb-12">
-                            You've got questions.<br /><span className="text-signal">We've got answers.</span>
-                        </h2>
-
-                        <div className="flex flex-col divide-y divide-white/5">
+                        <div className="lg:col-span-8 flex flex-col gap-3">
                             {homeFaqs.map((faq, i) => (
-                                <div key={i} className="home-faq-item">
+                                <div key={i} className={`home-faq-item rounded-2xl border transition-colors ${openIndex === i ? 'border-white/15 bg-white/[0.035]' : 'border-white/[0.07] bg-white/[0.015] hover:border-white/15'}`}>
                                     <button
                                         onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                                        className="w-full flex justify-between items-center py-6 text-left group"
+                                        className="w-full flex justify-between items-center gap-6 px-6 py-5 text-left"
                                     >
-                                        <span className="font-heading font-bold text-lg text-white group-hover:text-signal transition-colors pr-6">{faq.q}</span>
-                                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 ${openIndex === i ? 'border-signal bg-signal/10 rotate-45' : 'group-hover:border-signal/50'}`}>
-                                            <i data-lucide="plus" className={`w-4 h-4 transition-colors ${openIndex === i ? 'text-signal' : 'text-white/50 group-hover:text-signal'}`}></i>
-                                        </div>
+                                        <span className="font-body font-semibold text-base md:text-lg text-white">{faq.q}</span>
+                                        <span className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${openIndex === i ? 'border-signal bg-signal text-white rotate-45' : 'border-white/15 text-white/60'}`}>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+                                        </span>
                                     </button>
                                     {openIndex === i && (
-                                        <div className="pb-6 pr-12">
-                                            <p className="font-body text-base text-white/60 leading-relaxed">{faq.a}</p>
-                                        </div>
+                                        <p className="px-6 pb-6 -mt-1 font-body text-base text-white/60 leading-relaxed">{faq.a}</p>
                                     )}
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </section>
+            );
+        };
 
-                        <div className="mt-12 flex flex-col sm:flex-row items-center gap-4 pt-8 border-t border-white/5">
-                            <button
-                                onClick={() => { setCurrentPage('faq'); window.scrollTo(0, 0); }}
-                                className="font-data text-sm text-signal hover:text-white transition-colors uppercase tracking-widest"
-                            >
-                                See all questions →
-                            </button>
+        // ── Home: Application form ────────────────────────────────────────
+        const ChoiceGroup = ({ name, label, options }) => (
+            <fieldset>
+                <legend className="font-body text-sm font-medium text-white/80 mb-3">{label}</legend>
+                <div className="flex flex-wrap gap-2">
+                    {options.map(opt => (
+                        <label key={opt} className="cursor-pointer">
+                            <input type="radio" name={name} value={opt} required className="peer sr-only" />
+                            <span className="inline-block rounded-full border border-white/12 bg-white/[0.03] px-4 py-2.5 font-body text-sm text-white/65 transition-all hover:border-white/30 hover:text-white peer-checked:border-signal peer-checked:bg-signal/15 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-signal/60">{opt}</span>
+                        </label>
+                    ))}
+                </div>
+            </fieldset>
+        );
+
+        const StrategicIntakeSection = () => {
+            const [isSubmitting, setIsSubmitting] = useState(false);
+            const [isSuccess, setIsSuccess] = useState(false);
+            const [error, setError] = useState('');
+            const [showCal, setShowCal] = useState(false);
+            const formContainerRef = useRef(null);
+            const calRef = useRef(null);
+            const calInitedRef = useRef(false);
+
+            // Mount the inline Cal.com calendar once the user reveals it
+            useEffect(() => {
+                if (!showCal || calInitedRef.current || !window.Cal) return;
+                calInitedRef.current = true;
+                window.Cal("inline", {
+                    elementOrSelector: "#my-cal-inline",
+                    calLink: "carterw/30min",
+                    config: { layout: "month_view", overlayCalendar: "true" },
+                });
+                window.Cal("ui", { theme: "dark", hideEventTypeDetails: false, layout: "month_view" });
+                if (calRef.current) {
+                    // Animate opacity/position only, never height. A height tween leaves the
+                    // wrapper locked at a fixed pixel value, which clips Cal's time-slot panel
+                    // (and traps scroll) on mobile once a date is selected.
+                    gsap.from(calRef.current, { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" });
+                    calRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, [showCal]);
+
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                setError('');
+
+                try {
+                    const formData = new FormData(e.target);
+                    const payload = Object.fromEntries(formData.entries());
+                    const response = await fetch("https://n8n-production-a00d.up.railway.app/webhook/d9fbe289-a8eb-4236-b47d-99ac3f7d1794", {
+                        method: "POST",
+                        body: JSON.stringify(payload),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        gsap.to(formContainerRef.current, {
+                            opacity: 0, y: 10, duration: 0.3,
+                            onComplete: () => {
+                                setIsSuccess(true);
+                                document.getElementById('intake-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                gsap.fromTo(formContainerRef.current, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" });
+                            }
+                        });
+                    } else {
+                        setIsSubmitting(false);
+                        setError("Your application did not go through. Please try again in a moment.");
+                    }
+                } catch (err) {
+                    setIsSubmitting(false);
+                    setError("We could not reach the server. Check your connection and try again.");
+                }
+            };
+
+            const inputCls = "w-full bg-[#0A0A0B] border border-white/10 focus:border-signal rounded-xl px-4 py-3.5 text-white font-body text-[15px] focus:outline-none focus:ring-2 focus:ring-signal/25 transition-all placeholder:text-white/30";
+
+            const nextSteps = [
+                { n: "01", t: "Apply", d: "Tell us about your show and the business behind it." },
+                { n: "02", t: "Call", d: "30 minutes to scope episodes, cameras and platforms." },
+                { n: "03", t: "Onboard", d: "Upload your files. First episode back within 7 days." },
+            ];
+
+            return (
+                <section id="intake-form" className="relative z-10 py-24 md:py-36 px-4 md:px-12 border-t border-white/[0.06] overflow-hidden scroll-mt-20">
+                    <div className="absolute left-1/2 bottom-[-20%] -translate-x-1/2 w-[900px] max-w-[140vw] h-[500px] rounded-full bg-signal opacity-[0.10] blur-[140px] pointer-events-none"></div>
+
+                    <div className="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                        {/* Left: pitch */}
+                        <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
+                            <span className="cs-eyebrow"><span className="cs-dot"></span>Apply</span>
+                            <h2 className="cs-title mt-6">Let's get your show <span className="text-signal">everywhere.</span></h2>
+                            <p className="font-body text-lg text-white/60 leading-relaxed mt-6">Two minutes to apply. If it is a fit, we reach out within 1-2 business days to book a call.</p>
+                            <div className="mt-10 flex flex-col gap-5">
+                                {nextSteps.map(s => (
+                                    <div key={s.n} className="flex gap-4">
+                                        <span className="font-data text-xs text-signal mt-1">{s.n}</span>
+                                        <div>
+                                            <p className="font-heading text-lg text-white tracking-tight">{s.t}</p>
+                                            <p className="font-body text-sm text-white/55 mt-0.5">{s.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="flex items-center gap-2 mt-10 font-body text-sm text-white/55">
+                                <ShieldIcon className="w-4 h-4 text-signal flex-shrink-0" />
+                                7-day turnaround guarantee and 7-day full refund.
+                            </p>
+                        </div>
+
+                        {/* Right: form */}
+                        <div className="lg:col-span-7">
+                            <div ref={formContainerRef} className="rounded-[28px] border border-white/10 bg-[#0D0D0F]/80 backdrop-blur-xl p-6 md:p-10 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.9)]">
+                                {!isSuccess ? (
+                                    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <input type="text" name="first_name" required placeholder="First name" className={inputCls} />
+                                            <input type="text" name="last_name" required placeholder="Last name" className={inputCls} />
+                                            <input type="email" name="business_email" required placeholder="Business email" className={inputCls} />
+                                            <input
+                                                type="tel"
+                                                name="phone_number"
+                                                required
+                                                placeholder="Phone number"
+                                                className={inputCls}
+                                                onChange={(e) => {
+                                                    const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                                    let fmt = digits;
+                                                    if (digits.length > 6) fmt = `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+                                                    else if (digits.length > 3) fmt = `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+                                                    e.target.value = fmt;
+                                                }}
+                                            />
+                                            <select name="preferred_communication" required defaultValue="" className={`${inputCls} sm:col-span-2 appearance-none cursor-pointer invalid:text-white/30`}>
+                                                <option value="" disabled>Preferred way to reach you</option>
+                                                <option value="Email">Email</option>
+                                                <option value="Phone/SMS">Phone / SMS</option>
+                                            </select>
+                                            <textarea name="business_narrative" required placeholder="Tell us about your show and the business behind it" rows="4" className={`${inputCls} sm:col-span-2 resize-none`}></textarea>
+                                        </div>
+
+                                        <ChoiceGroup name="revenue_scale" label="Monthly revenue, show or business (approximate)" options={['< $10k/mo', '$10k-$50k/mo', '$50k-$100k/mo', '$100k-$250k/mo', '$250k+/mo']} />
+                                        <ChoiceGroup name="marketing_spend" label="Current monthly spend on editing and production" options={['Under $1k', '$1k-$3k', '$3k-$10k', '$10k-$50k', '$50k+']} />
+                                        <ChoiceGroup name="posting_history" label="How long have you been recording your show?" options={['Never', '6 Months', '1 Year+', '5 Years+']} />
+                                        <ChoiceGroup name="deployment_timeline" label="When do you want to start?" options={['Now', 'Within 30 days', '30 days or more']} />
+
+                                        {error && <p role="alert" className="rounded-xl border border-signal/40 bg-signal/10 px-4 py-3 font-body text-sm text-white">{error}</p>}
+
+                                        <div className="flex flex-col gap-4 pt-2">
+                                            <button type="submit" disabled={isSubmitting} className={`cs-btn-primary cs-btn-lg w-full justify-center ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}>
+                                                <span>{isSubmitting ? 'Sending...' : 'Submit application'}</span>
+                                                {!isSubmitting && <ArrowIcon />}
+                                            </button>
+                                            {!showCal && (
+                                                <button type="button" onClick={() => setShowCal(true)} className="font-body text-sm text-white/55 hover:text-white transition-colors">
+                                                    Rather talk first? <span className="underline underline-offset-4 decoration-white/30">Book a call</span>
+                                                </button>
+                                            )}
+                                        </div>
+                                    </form>
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center py-14 text-center">
+                                        <div className="w-14 h-14 rounded-full bg-signal/15 border border-signal/40 flex items-center justify-center">
+                                            <CheckIcon className="w-6 h-6 text-signal" />
+                                        </div>
+                                        <h3 className="cs-title mt-8 !text-4xl md:!text-5xl">Application received.</h3>
+                                        <p className="font-body text-white/60 max-w-md mx-auto text-base md:text-lg leading-relaxed mt-5">
+                                            Thanks for applying. If it looks like a fit, we will reach out within 1-2 business days to schedule a call.
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                            {showCal && !isSuccess && (
+                                <div ref={calRef} className="w-full mt-6 rounded-[28px] border border-white/10 bg-[#0D0D0F]/80 p-2 md:p-4 scroll-mt-24">
+                                    <div id="my-cal-inline" style={{ width: '100%', minHeight: '620px' }}></div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>
             );
-        }
+        };
 
+        // ── Home: mobile apply bar ────────────────────────────────────────
+        const MobileApplyBar = () => {
+            const [visible, setVisible] = useState(false);
+            useEffect(() => {
+                const onScroll = () => {
+                    const form = document.getElementById('intake-form');
+                    const formTop = form ? form.getBoundingClientRect().top : Infinity;
+                    setVisible(window.scrollY > 700 && formTop > window.innerHeight * 0.6);
+                };
+                onScroll();
+                window.addEventListener('scroll', onScroll, { passive: true });
+                return () => window.removeEventListener('scroll', onScroll);
+            }, []);
+
+            return (
+                <div className={`md:hidden fixed bottom-3 inset-x-3 z-40 transition-all duration-300 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0 pointer-events-none'}`}>
+                    <div className="flex items-center justify-between gap-3 rounded-full border border-white/10 bg-[#0A0A0B]/90 backdrop-blur-xl pl-5 pr-1.5 py-1.5 shadow-[0_10px_40px_-5px_rgba(0,0,0,0.9)]">
+                        <span className="font-body text-[13px] text-white/70 leading-tight">First episode in 7 days</span>
+                        <ApplyButton label="Apply" className="cs-btn-sm" />
+                    </div>
+                </div>
+            );
+        };
+
+        // ── Footer ────────────────────────────────────────────────────────
         const SiteFooter = ({ setCurrentPage }) => {
-            const handleLegalClick = (e, page) => {
+            const go = (e, page) => {
                 e.preventDefault();
                 setCurrentPage(page);
                 window.scrollTo(0, 0);
             };
 
             return (
-                <footer className="w-full bg-[#030303] border-t border-white/5 py-12 px-4 md:px-12 z-40 relative">
-                    <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
-                        {/* Brand Signature */}
-                        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                            <div className="flex items-center gap-2 mb-3">
-                                <div className="w-2 h-2 rounded-full bg-[#FD0033] shadow-[0_0_10px_#FD0033]"></div>
-                                <span className="font-heading font-extrabold text-lg tracking-tighter text-white">CHANNELSCALE</span>
+                <footer className="relative z-10 w-full border-t border-white/[0.06] bg-[#050505] px-4 md:px-12 pt-16 pb-10">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="flex flex-col md:flex-row justify-between gap-10">
+                            <div>
+                                <div className="flex items-center gap-2.5">
+                                    <span className="w-2.5 h-2.5 rounded-full bg-signal shadow-[0_0_12px_#FD0033]"></span>
+                                    <span className="font-heading text-lg tracking-tight text-white">CHANNELSCALE</span>
+                                </div>
+                                <p className="font-body text-sm text-white/45 mt-3 max-w-xs">Done-for-you podcast production. You hit record, we handle everything after.</p>
                             </div>
-                            <p className="font-data text-white/40 text-[10px] uppercase tracking-widest max-w-xs">
-                                Done-For-You Podcast Production.
-                            </p>
+                            <div className="grid grid-cols-2 gap-x-16 gap-y-3">
+                                {[['home', 'Home'], ['work', 'Work'], ['services', 'Offer'], ['about', 'About'], ['faq', 'FAQ']].map(([p, l]) => (
+                                    <a key={p} href="#" onClick={(e) => go(e, p)} className="font-body text-sm text-white/55 hover:text-white transition-colors">{l}</a>
+                                ))}
+                            </div>
                         </div>
 
-                        {/* Legal Navigation */}
-                        <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
-                            <a href="#" onClick={(e) => handleLegalClick(e, 'privacy')} className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Privacy Policy</a>
-                            <a href="#" onClick={(e) => handleLegalClick(e, 'terms')} className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Terms of Service</a>
-                            <a href="#" onClick={(e) => handleLegalClick(e, 'disclaimer')} className="font-body text-xs text-white/50 hover:text-[#FD0033] transition-colors uppercase tracking-wider">Disclaimers</a>
-                        </div>
-                    </div>
-
-                    {/* Disclaimer */}
-                    <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5">
-                        <p className="font-body text-[11px] text-white/25 leading-relaxed text-center max-w-4xl mx-auto mb-8">
+                        <p className="font-body text-[11px] text-white/25 leading-relaxed mt-14 pt-8 border-t border-white/[0.06] max-w-4xl">
                             Results are not guaranteed and are not typical. Client success depends on individual effort, experience, application, and many other factors unique to each business. Testimonials reflect exceptional outcomes and should not be considered average. Noia Media LLC makes no guarantee of financial results. All information provided is for educational purposes only and should not be considered professional advice.
                         </p>
-                    </div>
 
-                    {/* Copyright & Terminal Status */}
-                    <div className="max-w-7xl mx-auto pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="font-data text-[10px] text-white/30 tracking-widest uppercase text-center md:text-left">
-                            © {new Date().getFullYear()} CHANNELSCALE | A NOIA MEDIA LLC COMPANY. ALL RIGHTS RESERVED.
-                        </p>
+                        <div className="mt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <p className="font-data text-[10px] text-white/30 tracking-widest uppercase">
+                                © {new Date().getFullYear()} ChannelScale, a Noia Media LLC company
+                            </p>
+                            <div className="flex flex-wrap gap-x-6 gap-y-2">
+                                <a href="#" onClick={(e) => go(e, 'privacy')} className="font-body text-xs text-white/40 hover:text-white transition-colors">Privacy Policy</a>
+                                <a href="#" onClick={(e) => go(e, 'terms')} className="font-body text-xs text-white/40 hover:text-white transition-colors">Terms of Service</a>
+                                <a href="#" onClick={(e) => go(e, 'disclaimer')} className="font-body text-xs text-white/40 hover:text-white transition-colors">Disclaimers</a>
+                            </div>
+                        </div>
                     </div>
                 </footer>
             );
@@ -2738,255 +2063,6 @@
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
-    </script>
-
-    <!-- Interactive Particle Background -->
-    <script>
-    (function () {
-        // ── Canvas ────────────────────────────────────────────────────────
-        const canvas = document.createElement('canvas');
-        canvas.id = 'cs-bg';
-        Object.assign(canvas.style, {
-            position: 'fixed', top: '0', left: '0',
-            width: '100%', height: '100%',
-            pointerEvents: 'none',
-            zIndex: '3',
-            mixBlendMode: 'screen',
-        });
-        document.body.appendChild(canvas);
-        const ctx = canvas.getContext('2d', { alpha: true, willReadFrequently: false });
-
-        // ── Custom cursor (desktop only) ──────────────────────────────────
-        // Cursor positioning uses CSS transform (GPU-composited, no paint cost)
-        // instead of left/top (which triggers paint every frame).
-        const isTouchDevice = window.matchMedia('(hover: none)').matches;
-        let cursorDot, cursorRing, cursorHalfSize = 20;
-        if (!isTouchDevice) {
-            document.body.style.cursor = 'none';
-
-            cursorDot = document.createElement('div');
-            Object.assign(cursorDot.style, {
-                position: 'fixed', top: '0', left: '0',
-                width: '8px', height: '8px',
-                background: '#FD0033',
-                borderRadius: '50%',
-                pointerEvents: 'none',
-                zIndex: '9999',
-                willChange: 'transform',
-                boxShadow: '0 0 10px #FD0033, 0 0 22px rgba(253,0,51,0.5)',
-            });
-
-            cursorRing = document.createElement('div');
-            Object.assign(cursorRing.style, {
-                position: 'fixed', top: '0', left: '0',
-                width: '40px', height: '40px',
-                border: '1.5px solid rgba(253,0,51,0.55)',
-                borderRadius: '50%',
-                pointerEvents: 'none',
-                zIndex: '9998',
-                willChange: 'transform',
-                transition: 'width .22s cubic-bezier(.25,.46,.45,.94), height .22s cubic-bezier(.25,.46,.45,.94), border-color .18s',
-            });
-
-            document.body.append(cursorDot, cursorRing);
-
-            document.addEventListener('mouseover', e => {
-                const el = e.target.closest('a, button, [role="button"], input, textarea, select, label');
-                if (el) {
-                    cursorRing.style.width  = '62px';
-                    cursorRing.style.height = '62px';
-                    cursorRing.style.borderColor = 'rgba(253,0,51,1)';
-                    cursorHalfSize = 31;
-                } else {
-                    cursorRing.style.width  = '40px';
-                    cursorRing.style.height = '40px';
-                    cursorRing.style.borderColor = 'rgba(253,0,51,0.55)';
-                    cursorHalfSize = 20;
-                }
-            });
-        }
-
-        // ── State ─────────────────────────────────────────────────────────
-        let W, H, animT = 0;
-        let mouseX = -2000, mouseY = -2000, mouseActive = false;
-        const ringPos = { x: -2000, y: -2000 };
-
-        function resize() {
-            W = canvas.width  = window.innerWidth;
-            H = canvas.height = window.innerHeight;
-        }
-        resize();
-        window.addEventListener('resize', resize);
-
-        // ── Pre-cached color strings — eliminates per-frame string GC ────
-        const STEPS = 64;
-        const RED_LINE = [], WHT_LINE = [], RED_FILL = [], WHT_FILL = [], RED_SHADOW = [];
-        for (let i = 0; i < STEPS; i++) {
-            const f = i / (STEPS - 1);
-            RED_LINE[i]   = 'rgba(253,0,51,'    + (f * 0.42).toFixed(3) + ')';
-            WHT_LINE[i]   = 'rgba(226,232,240,' + (f * 0.22).toFixed(3) + ')';
-            RED_FILL[i]   = 'rgba(255,60,80,'   + f.toFixed(3)          + ')';
-            WHT_FILL[i]   = 'rgba(226,232,240,' + f.toFixed(3)          + ')';
-            RED_SHADOW[i] = 'rgba(253,0,51,'    + (f * 0.70).toFixed(3) + ')';
-        }
-
-        // ── Connection batch buckets (8 levels) — one stroke() per bucket ─
-        // Reduces ~700+ individual GPU flushes per frame down to 16 max.
-        const BUCKETS = 8;
-        const redBatch = Array.from({ length: BUCKETS }, () => []);
-        const whtBatch = Array.from({ length: BUCKETS }, () => []);
-        const RED_LINE_B = Array.from({ length: BUCKETS }, (_, i) =>
-            'rgba(253,0,51,'    + ((i / (BUCKETS - 1)) * 0.42).toFixed(3) + ')');
-        const WHT_LINE_B = Array.from({ length: BUCKETS }, (_, i) =>
-            'rgba(226,232,240,' + ((i / (BUCKETS - 1)) * 0.22).toFixed(3) + ')');
-        const LW_RED_B = Array.from({ length: BUCKETS }, (_, i) => (i / (BUCKETS - 1)) * 1.4);
-        const LW_WHT_B = Array.from({ length: BUCKETS }, (_, i) => (i / (BUCKETS - 1)) * 0.9);
-
-        // ── Particles ─────────────────────────────────────────────────────
-        const isMobile  = window.innerWidth < 768;
-        const N         = isMobile ? 50 : 100;
-        const CONNECT   = isMobile ? 120 : 160;
-        const CONNECT2  = CONNECT * CONNECT;
-        const REPEL     = 210;
-        const REPEL2    = REPEL * REPEL;
-        function rnd(a, b) { return a + Math.random() * (b - a); }
-
-        const particles = Array.from({ length: N }, (_, i) => {
-            const isRed = i < Math.floor(N * 0.14);
-            return {
-                x: Math.random() * W, y: Math.random() * H,
-                vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28,
-                r:      isRed ? rnd(1.2, 2.2) : rnd(0.7, 1.8),
-                baseOp: isRed ? rnd(0.55, 0.85) : rnd(0.28, 0.56),
-                op: 0, red: isRed,
-                phase: Math.random() * Math.PI * 2,
-            };
-        });
-        particles.forEach(p => p.op = p.baseOp);
-
-        // ── Input ─────────────────────────────────────────────────────────
-        // mousemove ONLY records coords — the dot is positioned inside RAF on a
-        // steady cadence. Updating the dot here causes bursty/coalesced jitter
-        // when the main thread is busy (the "lags every few seconds" effect).
-        window.addEventListener('mousemove', e => {
-            mouseX = e.clientX; mouseY = e.clientY; mouseActive = true;
-        });
-        window.addEventListener('touchmove', e => {
-            mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY; mouseActive = true;
-        }, { passive: true });
-        window.addEventListener('touchend',   () => { mouseActive = false; });
-        window.addEventListener('mouseleave', () => { mouseActive = false; });
-
-        // ── Render loop ───────────────────────────────────────────────────
-        function tick() {
-            requestAnimationFrame(tick);
-
-            // Position the cursor FIRST, before any canvas work, so it lands on
-            // a consistent frame cadence and never waits on the heavy draw below.
-            if (cursorDot) {
-                cursorDot.style.transform =
-                    'translate(' + Math.round(mouseX - 4) + 'px,' + Math.round(mouseY - 4) + 'px)';
-            }
-            ringPos.x += (mouseX - ringPos.x) * .18;
-            ringPos.y += (mouseY - ringPos.y) * .18;
-            if (cursorRing) {
-                cursorRing.style.transform =
-                    'translate(' + Math.round(ringPos.x - cursorHalfSize) + 'px,' +
-                                   Math.round(ringPos.y - cursorHalfSize) + 'px)';
-            }
-
-            ctx.clearRect(0, 0, W, H);
-            animT += 0.011;
-
-            // Cursor glow — one gradient object per active frame (cheap)
-            if (mouseActive) {
-                const g = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 380);
-                g.addColorStop(0,    'rgba(253,0,51,0.13)');
-                g.addColorStop(0.35, 'rgba(253,0,51,0.05)');
-                g.addColorStop(1,    'rgba(0,0,0,0)');
-                ctx.fillStyle = g;
-                ctx.fillRect(0, 0, W, H);
-            }
-
-            // ── Physics + opacity update ──────────────────────────────────
-            for (let i = 0; i < N; i++) {
-                const p = particles[i];
-                if (mouseActive) {
-                    const dx = p.x - mouseX, dy = p.y - mouseY;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < REPEL2 && d2 > 0) {
-                        const d = Math.sqrt(d2);
-                        const f = (1 - d / REPEL) * 0.028;
-                        p.vx += (dx / d) * f; p.vy += (dy / d) * f;
-                        p.op  = p.baseOp + (1 - d / REPEL) * 0.42;
-                    } else { p.op += (p.baseOp - p.op) * .05; }
-                } else { p.op += (p.baseOp - p.op) * .05; }
-
-                const spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-                if (spd > 1.6) { p.vx = p.vx / spd * 1.6; p.vy = p.vy / spd * 1.6; }
-                p.vx *= .972; p.vy *= .972;
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < -6) p.x = W + 6; else if (p.x > W + 6) p.x = -6;
-                if (p.y < -6) p.y = H + 6; else if (p.y > H + 6) p.y = -6;
-            }
-
-            // ── Connection bucketing (squared-distance pre-check) ─────────
-            for (let b = 0; b < BUCKETS; b++) { redBatch[b].length = 0; whtBatch[b].length = 0; }
-            for (let i = 0; i < N; i++) {
-                const p = particles[i];
-                for (let j = i + 1; j < N; j++) {
-                    const q  = particles[j];
-                    const dx = p.x - q.x, dy = p.y - q.y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < CONNECT2) {
-                        const str    = 1 - Math.sqrt(d2) / CONNECT;
-                        const bucket = Math.min(Math.floor(str * BUCKETS), BUCKETS - 1);
-                        const arr    = (p.red || q.red) ? redBatch[bucket] : whtBatch[bucket];
-                        arr.push(p.x, p.y, q.x, q.y);
-                    }
-                }
-            }
-            // Flush each bucket in one stroke() call
-            for (let b = 0; b < BUCKETS; b++) {
-                const rb = redBatch[b];
-                if (rb.length) {
-                    ctx.beginPath();
-                    for (let k = 0; k < rb.length; k += 4) { ctx.moveTo(rb[k], rb[k+1]); ctx.lineTo(rb[k+2], rb[k+3]); }
-                    ctx.strokeStyle = RED_LINE_B[b]; ctx.lineWidth = LW_RED_B[b]; ctx.stroke();
-                }
-                const wb = whtBatch[b];
-                if (wb.length) {
-                    ctx.beginPath();
-                    for (let k = 0; k < wb.length; k += 4) { ctx.moveTo(wb[k], wb[k+1]); ctx.lineTo(wb[k+2], wb[k+3]); }
-                    ctx.strokeStyle = WHT_LINE_B[b]; ctx.lineWidth = LW_WHT_B[b]; ctx.stroke();
-                }
-            }
-
-            // ── Draw particles ────────────────────────────────────────────
-            for (let i = 0; i < N; i++) {
-                const p      = particles[i];
-                const breath = Math.sin(animT * 1.4 + p.phase) * 0.1;
-                const op     = Math.min(Math.max(p.op + breath, 0), 1);
-                const idx    = Math.min(Math.floor(op * (STEPS - 1)), STEPS - 1);
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                if (p.red) {
-                    // shadowBlur glow — GPU-side blur, zero JS object allocation
-                    ctx.shadowColor = RED_SHADOW[idx];
-                    ctx.shadowBlur  = p.r * 7;
-                    ctx.fillStyle   = RED_FILL[idx];
-                    ctx.fill();
-                    ctx.shadowBlur  = 0;
-                } else {
-                    ctx.fillStyle = WHT_FILL[idx];
-                    ctx.fill();
-                }
-            }
-        }
-
-        tick();
-    })();
     </script>
 </body>
 

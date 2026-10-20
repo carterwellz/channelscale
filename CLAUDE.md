@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ChannelScale is a **single-page React application** serving as a marketing website for a full-stack content marketing retainer service. The entire application is a single `index.html` file — no build process, no package.json, no Node.js dependencies.
+ChannelScale is a **single-page React application** serving as a marketing website for a done-for-you podcast production service ("Record once. Show up everywhere."). The entire application is a single `index.html` file — no build process, no package.json, no Node.js dependencies.
 
 **Tech Stack:**
 - React 18 (via CDN, unpkg)
@@ -27,15 +27,9 @@ There is no build step, lint command, or test suite.
 
 ## Architecture
 
-The page has **two separate script blocks** at the bottom of `index.html`:
+All app code lives in one `<script type="text/babel">` block at the bottom of `index.html`. Babel standalone compiles it in the browser at runtime, so React mounts only after compilation finishes.
 
-1. **`<script type="text/babel">`** (lines ~154–2625) — All React components and app logic. Babel standalone compiles this JSX in the browser at runtime. This is the last thing to execute; React mounts only after Babel finishes compilation.
-
-2. **`<script>` plain JS** (lines ~2626–end) — Particle canvas animation and custom cursor. Runs immediately without Babel. This is why the animated background and cursor appear before React content.
-
-> Line numbers drift as the file grows (~2870 lines as of this writing). Grep for `<script type="text/babel">` and the trailing `<script>` to locate the current boundaries.
-
-> **Performance note:** `@babel/standalone` (~2.5MB uncompressed) compiles ~220KB of JSX on every page load. This is the sole cause of the slow initial load. Content from `#root` only appears after compilation finishes. The custom cursor hides the native cursor immediately (via `document.body.style.cursor = 'none'`) so users see the particle animation + cursor with no React content during the Babel compilation window.
+> **Performance note:** `@babel/standalone` (~2.5MB) compiles the JSX on every page load and is the main cause of a slow first paint. Precompiling the JSX would fix it but adds a build step.
 
 All React components are defined as plain functions in the Babel block — no imports, no modules.
 
@@ -45,7 +39,7 @@ Client-side routing via React state (`currentPage`). The `App` component renders
 
 | `currentPage` value | Renders |
 |---|---|
-| `'home'` | `HeroSection` + `StatsSection` + `StrategicIntakeSection` + `WhySocialSection` + `ProcessSection` + `HomeFAQSection` |
+| `'home'` | `HeroSection` + `StatsSection` + `OfferSection` + `ResultsSection` + `ProcessSection` + `HomeFAQSection` + `StrategicIntakeSection` + `MobileApplyBar` |
 | `'work'` | `WorkPage` |
 | `'about'` | `AboutPage` |
 | `'faq'` | `FAQPage` |
@@ -54,13 +48,13 @@ Client-side routing via React state (`currentPage`). The `App` component renders
 | `'terms'` | `TermsOfServicePage` |
 | `'disclaimer'` | `DisclaimerPage` |
 
-`'services'` → `SystemConfigurationsPage` is the **`else` fallback** in the render chain, not an explicit `currentPage === 'services'` check — any unrecognized value lands there. Nav label for this page is `[SERVICES]`.
+`'services'` → `SystemConfigurationsPage` is the **`else` fallback** in the render chain, not an explicit `currentPage === 'services'` check — any unrecognized value lands there. Nav label for this page is `Offer`.
 
 All navigation calls `setCurrentPage()` + `window.scrollTo(0, 0)`.
 
 ### `navigateToForm` helper
 
-Defined in `App`, passed as a prop to `NavBar` and all page components. Navigates home then smooth-scrolls to `#intake-form`. Use this for any "Initialize" / CTA button — do not call `setCurrentPage('home')` alone.
+Defined in `App`, passed as a prop to `NavBar` and all page components. Navigates home then smooth-scrolls to `#intake-form`. Use this for any "Apply" / CTA button — do not call `setCurrentPage('home')` alone.
 
 ### Icon initialization
 
@@ -85,6 +79,8 @@ Lucide icons use the `data-lucide` attribute pattern. They must be initialized b
 - `.btn-magnetic` — scale-on-hover transition
 - `.no-scrollbar` — hides scrollbar cross-browser
 
+**Redesign classes** (plain CSS in the same `<style>` block): `.cs-eyebrow` + `.cs-dot` (pill label), `.cs-title` (Bebas section title), `.cs-card` (rounded gradient card), `.cs-btn-primary` / `.cs-btn-ghost` with `.cs-btn-lg` / `.cs-btn-sm` (pill buttons). Shared JSX helpers: `ArrowIcon`, `ShieldIcon`, `CheckIcon`, `ApplyButton`, `SectionIntro`, `ChoiceGroup`. Use inline SVG icons inside components that re-render (the form), since Lucide replaces `<i>` nodes outside React's control.
+
 Signal glow pattern: `drop-shadow-[0_0_Xpx_#FD0033]` and `shadow-[0_0_Xpx_rgba(253,0,51,Y)]`
 
 ## Animation Patterns
@@ -108,15 +104,15 @@ Never use `useState` for animation state — always GSAP.
 
 The `StrategicIntakeSection` submits as JSON to the n8n webhook: `https://n8n-production-a00d.up.railway.app/webhook/d9fbe289-a8eb-4236-b47d-99ac3f7d1794`
 
-Fields: `first_name`, `last_name`, `business_email`, `country_code`, `phone_number`, `preferred_communication`, `business_narrative`, plus radio groups `revenue_scale`, `marketing_spend`, `posting_history`, `deployment_timeline`.
+Fields: `first_name`, `last_name`, `business_email`, `phone_number`, `preferred_communication`, `business_narrative`, plus radio groups `revenue_scale`, `marketing_spend`, `posting_history`, `deployment_timeline` (rendered as pill chips via `ChoiceGroup`; inputs are `sr-only`, not `hidden`, so `required` validation works). Errors render inline, not via `alert()`. Option values are what n8n receives, so keep them unchanged.
 
-On success, `isSuccess` state switches to a "TRANSMISSION_RECEIVED" confirmation screen.
+On success, `isSuccess` state switches to an "Application received." confirmation.
 
 `StrategicIntakeSection` also hosts the **inline Cal.com booking** flow. A `showCal` state gates a `#my-cal-inline` container; when revealed, a `useEffect` calls `window.Cal("inline", { calLink: "carterw/30min", … })` once (guarded by `calInitedRef`) and applies the dark theme via `window.Cal("ui", …)`. The Cal loader stub is initialized in `<head>` (`Cal("init", …)`). Change the booking link by editing `calLink`.
 
 ## Third-Party Embeds
 
-- **Wistia VSL** — the hero video is a `<wistia-player media-id="2phmix67ds">` custom element in `HeroSection`. Loader scripts (`fast.wistia.com/player.js` + the per-media `embed/2phmix67ds.js`) and a blurred-swatch placeholder `<style>` live in `<head>`. To swap the video, replace the media-id in all three places (the two `<head>` scripts, the placeholder style, and the `<wistia-player>` element).
+- **Hero video** — removed in Oct 2026 (the old Wistia VSL pitched the previous offer). A new VSL can go back into `HeroSection` under the CTAs.
 - **Cal.com** — see the Form section above.
 - **Instagram / Twitter (X)** — `instagram.com/embed.js` and `platform.twitter.com/widgets.js` load in `<head>` for embedded social proof.
 
@@ -146,8 +142,7 @@ On success, `isSuccess` state switches to a "TRANSMISSION_RECEIVED" confirmation
 
 ## Notes
 
-- **SEO meta tags** reference `/Website%20Preview.jpg` — update if the preview image path changes.
-- **CDN dependencies** — the app does not function offline. React, ReactDOM, Babel, and Lucide load from `cdn.jsdelivr.net` (pinned versions); GSAP and ScrollTrigger from `cdnjs.cloudflare.com`; Tailwind from `cdn.tailwindcss.com`. Third-party embeds (Wistia, Cal.com, Instagram, Twitter/X) load from their own hosts — see Third-Party Embeds above.
+- **SEO meta tags** reference `/images/Website%20Preview.jpg` — update if the preview image path changes.
+- **CDN dependencies** — the app does not function offline. React, ReactDOM, Babel, and Lucide load from `cdn.jsdelivr.net` (pinned versions); GSAP and ScrollTrigger from `cdnjs.cloudflare.com`; Tailwind from `cdn.tailwindcss.com`. Third-party embeds (Cal.com, Instagram, Twitter/X) load from their own hosts — see Third-Party Embeds above.
 - **n8n webhook** — form submits JSON to the production URL above; test any field changes after editing.
-- Nav labels use bracket notation matching the page identity: `[HOME]`, `[OUR_WORK]`, `[SERVICES]`, `[DIRECTOR]`, `[FAQ]`.
-- **Custom cursor** — desktop-only; sets `document.body.style.cursor = 'none'` and injects two `<div>` elements (a dot + ring). Lives in the plain JS block, not React, so it activates before React mounts.
+- Nav is a floating pill with plain labels (Work, Offer, About, FAQ) and a red Apply button. The particle canvas and custom cursor were removed in the Oct 2026 redesign.

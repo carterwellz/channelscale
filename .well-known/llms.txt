@@ -1,6 +1,6 @@
 # ChannelScale
 
-> You hit record. We handle everything after. Done-for-you podcast production.
+> Record once. Show up everywhere. Done-for-you podcast production: you hit record, we handle everything after.
 
 ChannelScale is a done-for-you podcast production studio founded by Carter Wells. Clients record their show and upload the raw files. ChannelScale edits every episode, packages it for YouTube, cuts and captions 20-30 clips a month, and posts everything across platforms.
 
