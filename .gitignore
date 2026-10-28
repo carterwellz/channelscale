@@ -1,0 +1,11 @@
+node_modules/
+.wrangler/
+.env*
+!.env.example
+site/.next/
+site/out/
+*.tsbuildinfo
+.claude/
+audit-2026-10-27/
+# The private local workspace is deliberately excluded from this public repository.
+redesign/

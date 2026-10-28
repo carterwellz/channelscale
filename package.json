@@ -1,0 +1,27 @@
+{
+  "name": "channelscale-public",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:marketing": "node scripts/sync-marketing.mjs",
+    "build": "next build site",
+    "dev": "wrangler dev --port 3213",
+    "test": "tsx --test tests/*.test.ts",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "lucide-react": "^0.468.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.0",
+    "tsx": "^4.20.0",
+    "wrangler": "4.154.0"
+  }
+}

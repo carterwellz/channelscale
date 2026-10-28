@@ -1,5 +1,12 @@
 # CLAUDE.md
 
+## Current public deployment (October 2026)
+
+The approved white-and-blue marketing site now lives in `site/`, with a Next.js static export served by Cloudflare Worker `channelscale-yt`. Read `DEPLOYMENT.md` for the build, inquiry contract, verification and rollback. `redesign/` is the private local authoring/workspace app and is deliberately excluded from the public repository. Use the explicit `scripts/sync-marketing.mjs` allowlist to sync public changes; never publish its database, environment files, client uploads or private routes.
+
+The current offer is 60 unique clips per month across 4+ agreed client-owned platforms, custom pricing after source review, and an optional scoped paid pilot. The historical root `index.html` and documentation below describe the previous site and are retained for reference; they are not the deployment source.
+
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
