@@ -22,6 +22,9 @@ function Nav() {
         <Link href="/about" onClick={() => setOpen(false)}>
           About
         </Link>
+        <a href="https://whop.com/channelscale/products/noia-media-3/" onClick={() => setOpen(false)}>
+          For clippers
+        </a>
         <Link href="/apply" className="button" onClick={() => setOpen(false)}>
           Discuss your content <ArrowUpRight size={15} />
         </Link>
@@ -48,6 +51,7 @@ function Footer() {
         <Link href="/work">Work</Link>
         <Link href="/offer">Offer</Link>
         <Link href="/faq">FAQs</Link>
+        <a href="https://whop.com/channelscale/products/noia-media-3/">Clipper community</a>
         <a href="mailto:hello@channelscale.yt">Contact</a>
         {process.env.NEXT_PUBLIC_SITE_MODE !== "production" && <><Link href="/login">Team sign in</Link><Link href="/portal">Client portal</Link></>}
       </div>
