@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 export const siteOrigin = "https://channelscale.yt";
 export const publicPages: Record<string, { title: string; description: string }> = {
-  "": { title: "ChannelScale | 60 clips. A full content operation.", description: "Turn interviews, lessons and podcasts into 60 original clips a month. Selection, editing, approvals and publishing across 4+ agreed platforms." },
+  "": { title: "ChannelScale | Short-form content & distribution", description: "Grow your channels and reach beyond them with managed short-form content and separately scoped clipping campaigns." },
   work: { title: "Selected work & channel results", description: "Explore ChannelScale’s editing, production and channel operations work for Bible Alive, Counterpoint and Bowmar Bowhunting. Dated results and source links." },
-  offer: { title: "60 clips a month, managed from start to finish", description: "A managed content operation on your accounts: selection, editing, approvals, publishing and review. Custom pricing and a scoped paid pilot." },
-  services: { title: "60 clips a month, managed from start to finish", description: "Explore ChannelScale’s monthly content operation and scoped paid pilots." },
+  offer: { title: "Managed content & clipping campaigns", description: "Explore managed short-form content for your accounts and separately scoped creator-led clipping campaigns." },
+  services: { title: "Managed content & clipping campaigns", description: "Explore ChannelScale’s managed content and creator campaign options." },
   about: { title: "Meet Carter & ChannelScale", description: "Production experience, editorial judgment and one accountable lead for turning useful recordings into a consistent publishing operation." },
-  faq: { title: "Questions about clips, publishing & paid pilots", description: "What counts as a clip, what footage we need, how approvals work and how to start with a paid pilot." },
-  apply: { title: "Discuss your content", description: "Share your footage, goals and timing. Talk through a monthly content scope or paid pilot with Carter." },
+  faq: { title: "Questions about clipping, campaigns & publishing", description: "Learn about managed content, clipping campaigns, approvals and paid pilots." },
+  apply: { title: "Discuss your goals", description: "Share your content and goals. Discuss managed content, a clipping campaign or both with ChannelScale." },
+  clippers: { title: "For clippers | ChannelScale community", description: "Join the free ChannelScale Whop community and find clipping opportunities as they become available." },
   privacy: { title: "Privacy policy", description: "How ChannelScale handles website inquiries and website usage information." },
   terms: { title: "Terms of use", description: "Website terms and how ChannelScale service engagements are scoped." },
   disclaimer: { title: "Project & results disclaimer", description: "Context for selected work, dated results, owner-reported figures and estimates." },
@@ -23,7 +24,7 @@ export function marketingMetadata(path: string): Metadata {
   return {
     title: path ? page.title : { absolute: page.title }, description: page.description,
     alternates: { canonical }, robots: { index: live, follow: live },
-    openGraph: { title: page.title, description: page.description, url: canonical, siteName: "ChannelScale", type: "website", images: [{ url: `${siteOrigin}/og.png`, width: 1200, height: 630, alt: "ChannelScale — Turn your footage into daily content." }] },
-    twitter: { card: "summary_large_image", title: page.title, description: page.description, images: [`${siteOrigin}/og.png`] },
+    openGraph: { title: page.title, description: page.description, url: canonical, siteName: "ChannelScale", type: "website", images: [{ url: `${siteOrigin}/og.png?v=2`, width: 1200, height: 630, alt: "ChannelScale — Grow your channels. Reach beyond them." }] },
+    twitter: { card: "summary_large_image", title: page.title, description: page.description, images: [`${siteOrigin}/og.png?v=2`] },
   };
 }

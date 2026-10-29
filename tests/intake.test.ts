@@ -22,6 +22,14 @@ test("intake validates optional phone and preserves meaningful legacy receiver k
   assert.equal(mapped.marketing_spend, "Not provided");
   assert.match(mapped.business_narrative, /https:\/\/example.com\/channel/);
   assert.equal(mapped.phone_number, "");
+  assert.equal(mapped.business_narrative, "Editing and publishing our lessons\n\nContent: https://example.com/channel\nFootage: Regular recordings\nPaid pilot interest: Not specified");
+});
+test("service interests reach the existing receiver narrative while older submissions remain valid", () => {
+  const campaign = legacyIntakePayload(intakeSchema.parse({ ...sample, service_interest: "Clipping campaign" }));
+  assert.equal(campaign.service_interest, "Clipping campaign");
+  assert.match(campaign.business_narrative, /Service interest: Clipping campaign/);
+  assert.equal(intakeSchema.safeParse({ ...sample, service_interest: "Unrecognized service" }).success, false);
+  assert.equal(intakeSchema.safeParse(sample).success, true);
 });
 test("intake rejects invalid email, unsafe URL, missing selections and bots", () => {
   for (const changes of [

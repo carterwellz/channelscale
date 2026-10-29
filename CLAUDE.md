@@ -2,9 +2,9 @@
 
 ## Current public deployment (October 2026)
 
-The approved white-and-blue marketing site now lives in `site/`, with a Next.js static export served by Cloudflare Worker `channelscale-yt`. Read `DEPLOYMENT.md` for the build, inquiry contract, verification and rollback. `redesign/` is the private local authoring/workspace app and is deliberately excluded from the public repository. Use the explicit `scripts/sync-marketing.mjs` allowlist to sync public changes; never publish its database, environment files, client uploads or private routes.
+The approved white-and-blue marketing site lives in `site/`, with a Next.js static export served by Cloudflare Worker `channelscale-yt`. Read `DEPLOYMENT.md` for the build, inquiry contract, verification and rollback. `site/` is the current public source of truth. `redesign/` is the private local workspace and is deliberately excluded from the public repository; its marketing snapshot may be older. The allowlisted `scripts/sync-marketing.mjs` overwrites public files from that snapshot, so use it only for deliberate reconciliation after inspecting both versions. Never publish its database, environment files, client uploads or private routes.
 
-The current offer is 60 unique clips per month across 4+ agreed client-owned platforms, custom pricing after source review, and an optional scoped paid pilot. The historical root `index.html` and documentation below describe the previous site and are retained for reference; they are not the deployment source.
+The current site presents managed content on client-owned accounts (60 unique clips per month across 4+ agreed platforms, custom pricing, and an optional scoped paid pilot) alongside separately scoped creator clipping campaigns. Its clipper path leads to the free Whop community, with opportunities listed there as available. Do not claim that campaign capacity, participation, results, or active listings are verified without evidence. The historical root `index.html` and documentation below describe the previous site and are retained for reference; they are not the deployment source.
 
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.

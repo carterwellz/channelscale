@@ -16,7 +16,13 @@ export function InquiryForm() {
   const payload = useRef<Record<string, FormDataEntryValue> | null>(null);
   const submitting = useRef(false);
   const [pilot, setPilot] = useState(false);
-  useEffect(() => { setPilot(new URLSearchParams(window.location.search).get("interest") === "pilot"); }, []);
+  const [serviceInterest, setServiceInterest] = useState("");
+  useEffect(() => {
+    const interest = new URLSearchParams(window.location.search).get("interest");
+    setPilot(interest === "pilot");
+    if (interest === "managed") setServiceInterest("Managed content for my accounts");
+    if (interest === "campaign") setServiceInterest("Clipping campaign");
+  }, []);
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (submitting.current) return;
@@ -67,6 +73,7 @@ export function InquiryForm() {
           <fieldset disabled={state === "busy" || !!payload.current} className="inquiry-fields">
             <label>Your name<input name="name" required maxLength={200} autoComplete="name" /></label>
             <label>Email<input name="business_email" type="email" required maxLength={254} autoComplete="email" /></label>
+            <label>What are you interested in?<select name="service_interest" required value={serviceInterest} onChange={e => setServiceInterest(e.target.value)}><option value="" disabled>Select an option</option><option>Managed content for my accounts</option><option>Clipping campaign</option><option>Both</option><option>Not sure yet</option></select></label>
             <label>Where can we see your content?<input name="source_url" type="url" required maxLength={2000} placeholder="https://your-channel-or-website.com" aria-describedby="source-help" /><small id="source-help">A channel, website or sample recording link. No upload needed.</small></label>
             <label>What would you like us to take off your plate?<textarea name="business_narrative" required maxLength={5000} rows={3} placeholder="What you make, who it’s for, and what’s slowing you down." /></label>
             <div className="form-grid">

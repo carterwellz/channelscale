@@ -31,6 +31,7 @@ const paths = new Set([
   "/about",
   "/faq",
   "/apply",
+  "/clippers",
   "/privacy",
   "/terms",
   "/disclaimer",
