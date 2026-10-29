@@ -5089,6 +5089,11 @@ td .button {
 .marketing .clipper-community-grid h3 { margin: 22px 0 12px; font-size: 20px; }
 .marketing .clipper-community-grid p { font-size: 14px; }
 .marketing .clipper-opportunities { background: #f5f8ff; border: 1px solid #dce6ff; border-radius: 24px; padding: 48px; max-width: 1088px; margin: 20px auto 60px; }
+.marketing .campaign-listing { padding: 18px 20px; margin-bottom: 22px; border: 1px solid #dce5f7; border-radius: 14px; background: #fff; }
+.marketing .campaign-listing > span { display: block; color: #5369a5; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.marketing .campaign-listing p { margin: 7px 0 0; font-size: 14px; }
+.marketing .campaign-listing h3 { margin-top: 13px; font-size: 18px; }
+.marketing .campaign-listing article + article { margin-top: 15px; border-top: 1px solid var(--line); }
 .marketing .clipper-brand-link { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; padding: 10px 24px 70px; text-align: center; }
 .marketing .clipper-brand-link a { display: inline-flex; align-items: center; gap: 7px; color: var(--blue-ink); font-weight: 600; }
 @media (max-width: 760px) {

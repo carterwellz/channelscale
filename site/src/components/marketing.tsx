@@ -18,6 +18,7 @@ import { LinkButton } from "./ui";
 import { CaseCards } from "./case-studies";
 import { PublicShell } from "./public-shell";
 import { DigitalType } from "./digital-type";
+import { clipperCampaigns } from "@/lib/clipper-campaigns";
 const WHOP_JOIN_URL = "https://whop.com/channelscale/products/noia-media-3/";
 const faq = [
   [
@@ -396,10 +397,20 @@ export function ClippersPage() {
       <section className="public-section clipper-opportunities" id="opportunities">
         <div>
           <Label>Campaigns & opportunities</Label>
-          <h2>Find the latest<br />briefs in Whop.</h2>
+          <h2>Find your next<br />opportunity.</h2>
         </div>
         <div>
-          <p>Open ChannelScale’s Opportunities section in the community to check for active campaigns and assignments. If there isn’t a listing right now, check back as new opportunities are posted.</p>
+          <div className="campaign-listing">
+            <span>Active campaigns</span>
+            {clipperCampaigns.length ? clipperCampaigns.map((campaign) => (
+              <article key={campaign.url}>
+                <h3>{campaign.title}</h3>
+                <p>{campaign.description}</p>
+                <a className="service-option-link" href={campaign.url}>View campaign <ArrowUpRight size={15} /></a>
+              </article>
+            )) : <p>No campaigns are listed on this page yet.</p>}
+          </div>
+          <p>Check the Opportunities section in our Whop community for the latest campaign briefs and assignments.</p>
           <p>Read each brief for its eligibility, content rules and payment terms before you participate. Joining the community does not guarantee work or earnings.</p>
           <a className="button" href={WHOP_JOIN_URL}>Go to the Whop community <ArrowUpRight size={16} /></a>
         </div>

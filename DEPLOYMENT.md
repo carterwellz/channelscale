@@ -29,3 +29,5 @@ Allowlisted events are written to Cloudflare Worker logs: page_view, inquiry_cta
 Check `/`, `/offer`, `/clippers`, `/work`, case pages and `/apply` on desktop and mobile. Confirm metadata, canonical URLs, `/robots.txt`, `/sitemap.xml`, `/og.png`, 404s for unknown and private routes, and the local test receiver. The deployment has no private workspace routes or data.
 
 The previous production commit is `27f70d1`. Cloudflare version rollback can restore the prior deployment. Preserve the local redesign and its baseline under `audit-2026-10-27/implementation-baseline`; do not reset the whole checkout.
+
+The clipper page's website campaign list is maintained in `site/src/lib/clipper-campaigns.ts` and currently has no entries. It is not automatically synchronized with Whop or Content Rewards. Add only real, open opportunities with approved links, and remove them when closed. Whop's Opportunities section remains the source for current community briefs.
