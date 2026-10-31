@@ -4,13 +4,12 @@ import { InquiryForm } from "./inquiry-form";
 import {
   ArrowRight,
   ArrowUpRight,
-  Check,
   ChevronDown,
+  Search,
   Scissors,
   Send,
   ClipboardCheck,
   TrendingUp,
-  UsersRound,
   BookOpen,
   MessagesSquare,
 } from "lucide-react";
@@ -27,7 +26,7 @@ const faq = [
   ],
   [
     "What does 60 clips actually mean?",
-    "Sixty unique finished edits each month. Posting the same edit on four platforms creates four placements; it still counts as one clip. Platform adaptations and any additional scope are agreed before work starts.",
+    "Sixty unique finished edits each month. Posting the same edit in multiple places still counts as one clip. Any adaptations and additional scope are agreed before work starts.",
   ],
   [
     "Do you handle publishing?",
@@ -46,10 +45,6 @@ const faq = [
     "We commit to the agreed deliverables and operating process. We do not promise a specific view count, leads or sales. We review the available performance signals to improve the next batch.",
   ],
   [
-    "Can we start smaller?",
-    "Yes. A scoped paid pilot can test the editorial approach, working relationship and publishing process before an ongoing engagement. We agree its output and dates after reviewing your material.",
-  ],
-  [
     "How do I join as a clipper?",
     "Visit For clippers to join our free Whop community. The Opportunities section is where we share available briefs; joining does not guarantee work or earnings.",
   ],
@@ -64,26 +59,10 @@ function Label({ children }: { children: React.ReactNode }) {
 }
 function Process() {
   const steps = [
-    [
-      "01",
-      "We find the moments",
-      "We review your footage and select ideas that make sense beyond the original recording.",
-    ],
-    [
-      "02",
-      "We make the clips",
-      "Thoughtful cuts, faithful hooks, clear captions and a consistent style. You approve in batches.",
-    ],
-    [
-      "03",
-      "We get them out",
-      "We publish the approved versions across your agreed accounts and verify the posts.",
-    ],
-    [
-      "04",
-      "We make the next batch better",
-      "We review what held attention and turn the learning into better selections and recording prompts.",
-    ],
+    { icon: Search, title: "Find the moments", text: "We select moments that stand on their own." },
+    { icon: Scissors, title: "Make the clips", text: "We edit, caption and share clips for your approval." },
+    { icon: Send, title: "Publish", text: "Approved clips go out on your agreed accounts." },
+    { icon: TrendingUp, title: "Keep improving", text: "We use performance signals to guide the next batch." },
   ];
   return (
     <section className="public-section" id="process">
@@ -96,15 +75,11 @@ function Process() {
             We keep it moving.
           </h2>
         </div>
-        <p>
-          A clear handoff. One accountable lead.
-          <br />A repeatable rhythm every month.
-        </p>
       </div>
       <div className="process-grid">
-        {steps.map(([num, title, text]) => (
-          <article key={num}>
-            <span className="step-number">{num}</span>
+        {steps.map(({ icon: Icon, title, text }) => (
+          <article key={title}>
+            <span className="process-icon"><Icon size={24} aria-hidden="true" /></span>
             <h3>{title}</h3>
             <p>{text}</p>
           </article>
@@ -143,28 +118,11 @@ function CTA() {
     </section>
   );
 }
-function Pilot() {
-  return (
-    <section className="public-section pilot-section" id="pilot">
-      <div>
-        <Label>Managed content · start with a paid pilot</Label>
-        <h2>Find the rhythm.<br />Then build on it.</h2>
-        <p>Test the editorial approach, approvals and publishing process with a smaller, defined scope before an ongoing engagement.</p>
-        <LinkButton href="/apply?interest=pilot">Discuss a pilot</LinkButton>
-      </div>
-      <ol className="pilot-steps">
-        <li><span>01</span><div><h3>Review your footage</h3><p>We check source quality, usable moments and the audience you want to reach.</p></div></li>
-        <li><span>02</span><div><h3>Agree the pilot</h3><p>Clip count, platforms, revisions, fee and delivery dates are set before payment.</p></div></li>
-        <li><span>03</span><div><h3>Review the work together</h3><p>Use the delivered clips and working experience to decide the next step.</p></div></li>
-      </ol>
-    </section>
-  );
-}
 function Handoff() {
   const rows = [
     ["Source & direction", "Authorized recordings, audience context and accurate business claims.", "Source review, clip selection and a shared voice and style brief."],
     ["Editing & approvals", "One approval owner and consolidated feedback within agreed review windows.", "60 original edits per month, captions, quality checks and scoped revisions."],
-    ["Publishing & learning", "Access to your agreed accounts and approval to publish.", "Publishing across 4+ platforms, live-post checks and next-batch recommendations."],
+    ["Publishing & learning", "Access to your agreed accounts and approval to publish.", "Publishing on your accounts, live-post checks and next-batch recommendations."],
   ];
   return (
     <section className="public-section handoff-section">
@@ -174,7 +132,7 @@ function Handoff() {
         <div className="handoff-row handoff-header" role="row"><span role="columnheader">Stage</span><span role="columnheader">You bring</span><span role="columnheader">We manage</span></div>
         {rows.map(([stage, you, us]) => <div className="handoff-row" role="row" key={stage}><strong role="rowheader">{stage}</strong><p role="cell"><b className="mobile-cell-label">You bring</b>{you}</p><p role="cell"><b className="mobile-cell-label">We manage</b>{us}</p></div>)}
       </div>
-      <p className="scope-note">60 clips means 60 unique edits. The same clip on four platforms is four placements, not four clips. Your proposal defines the source allowance, accounts, review windows and calendar.</p>
+      <p className="scope-note">60 clips means 60 unique edits. Posting the same edit in multiple places still counts as one clip. Your proposal defines the source allowance, accounts, review windows and calendar.</p>
       <p className="scope-note">Filming, full episodes, original scripts, heavy motion design and thumbnails require a separate scope. Clipping campaigns are scoped separately from managed content on your accounts.</p>
     </section>
   );
@@ -184,35 +142,28 @@ function ServiceOptions() {
     <section className="public-section service-options" id="services">
       <div className="section-heading">
         <div>
-          <Label>For brands & creators</Label>
-          <h2>Two ways to put your<br />content to work.</h2>
+          <h2>Where should your clips go?</h2>
         </div>
-        <p>Build your own channels, explore a wider campaign, or talk to us about both.</p>
       </div>
       <div className="service-option-grid">
         <article className="service-option">
-          <div className="service-option-icon"><Scissors size={21} /></div>
-          <span className="service-option-kicker">Your accounts</span>
-          <h3>Managed content</h3>
-          <p>We find the moments, make the clips and publish approved content on the accounts you control.</p>
-          <ul>
-            <li><Check size={16} /> 60 original clips each month</li>
-            <li><Check size={16} /> Publishing across 4+ agreed platforms</li>
-            <li><Check size={16} /> Editing, approvals and ongoing review</li>
-          </ul>
-          <Link href="/apply?interest=managed" className="service-option-link">Discuss managed content <ArrowRight size={16} /></Link>
+          <div className="service-option-main">
+            <span className="service-option-kicker">Your accounts</span>
+            <h3>Managed content</h3>
+            <p className="service-option-description">We clip your footage and publish approved content to your accounts.</p>
+            <img className="service-option-art" src="/service-visuals/managed-content.webp" width="1254" height="1254" alt="" aria-hidden="true" decoding="async" />
+          </div>
+          <Link href="/apply?interest=managed" className="service-option-link">Discuss managed content <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </article>
         <article className="service-option campaign-option">
-          <div className="service-option-icon"><UsersRound size={21} /></div>
-          <span className="service-option-kicker">Creator distribution</span>
-          <h3>Clipping campaigns</h3>
-          <p>Plan a campaign where independent clippers create and share your content on their own or campaign-specific pages.</p>
-          <ul>
-            <li><Check size={16} /> A brief built around your content and goals</li>
-            <li><Check size={16} /> Creator budget and management scoped separately</li>
-            <li><Check size={16} /> Review and reporting agreed before launch</li>
-          </ul>
-          <Link href="/apply?interest=campaign" className="service-option-link">Discuss a campaign <ArrowRight size={16} /></Link>
+          <div className="service-option-main">
+            <span className="service-option-kicker">Creator distribution</span>
+            <h3>Clipping campaigns</h3>
+            <p className="service-option-description">Independent clippers create and share your content on their own or campaign pages.</p>
+            <img className="service-option-art" src="/service-visuals/clipping-campaigns.webp" width="1254" height="1254" alt="" aria-hidden="true" decoding="async" />
+          </div>
+          <p className="service-option-note">Creator budget & management scoped separately.</p>
+          <Link href="/apply?interest=campaign" className="service-option-link">Discuss a campaign <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </article>
       </div>
     </section>
@@ -223,13 +174,15 @@ function AudienceChoices() {
     <div className="audience-choices" aria-label="Choose your path">
       <a className="audience-choice" href="#services">
         <span>For brands & creators</span>
-        <strong>I need clipping services</strong>
-        <small>Explore content and campaigns <ArrowRight size={15} /></small>
+        <strong>Get clipping services</strong>
+        <img className="audience-choice-art" src="/service-visuals/audience-brands.webp" width="512" height="512" alt="" aria-hidden="true" decoding="async" />
+        <span className="choice-arrow" aria-hidden="true"><ArrowRight size={22} /></span>
       </a>
       <Link className="audience-choice" href="/clippers">
         <span>For clippers</span>
-        <strong>I want to clip</strong>
-        <small>Join the community <ArrowRight size={15} /></small>
+        <strong>Join the community</strong>
+        <img className="audience-choice-art" src="/service-visuals/audience-clippers.webp" width="512" height="512" alt="" aria-hidden="true" decoding="async" />
+        <span className="choice-arrow" aria-hidden="true"><ArrowRight size={22} /></span>
       </Link>
     </div>
   );
@@ -237,8 +190,8 @@ function AudienceChoices() {
 export function Home() {
   return (
     <PublicShell>
+      <div className="homepage">
       <section className="hero">
-        <Label>Short-form content & distribution</Label>
         <h1>
           Grow your channels.
           <br />
@@ -247,49 +200,19 @@ export function Home() {
           </span>
         </h1>
         <p>
-          We turn your content into short-form videos for your own accounts and help plan clipping campaigns where independent creators share it on their pages.
+          Short-form content for your channels. Clipping campaigns powered by creators.
         </p>
         <AudienceChoices />
       </section>
-      <div className="platform-line">
-        <span>Made for the places people watch.</span>
-        <strong>YouTube</strong>
-        <strong>Instagram</strong>
-        <strong>TikTok</strong>
-        <strong>Facebook</strong>
-      </div>
       <ServiceOptions />
       <CaseCards />
-      <section className="public-section fit-section">
-        <div>
-          <Label>A good fit</Label>
-          <h2>You have the substance.<br />We build the publishing rhythm.</h2>
-        </div>
-        <div>
-          <p>For businesses and personalities with useful recordings and too little time to turn them into consistent content.</p>
-          <ul className="fit-list">
-            <li><Check size={18} /> Interviews, podcasts, lessons or demonstrations</li>
-            <li><Check size={18} /> A clear audience and a message worth sharing</li>
-            <li><Check size={18} /> One person to review and approve each batch</li>
-          </ul>
-          <p className="scope-note">Need filming or full-episode production too? We’ll scope that separately.</p>
+      <section className="home-cta">
+        <h2>Let’s talk about your content.</h2>
+        <div className="home-cta-actions">
+          <LinkButton href="/apply">Discuss your goals</LinkButton>
         </div>
       </section>
-      <Process />
-      <Pilot />
-      <section className="public-section faq-section">
-        <div>
-          <Label>FAQs</Label>
-          <h2>Common questions.</h2>
-          <p>
-            Good working relationships start
-            <br />
-            with clear expectations.
-          </p>
-        </div>
-        <FAQ />
-      </section>
-      <CTA />
+      </div>
     </PublicShell>
   );
 }
@@ -357,7 +280,6 @@ export function OfferPage() {
           <LinkButton href="/apply?interest=campaign">Discuss a campaign</LinkButton>
         </div>
       </section>
-      <Pilot />
       <Process />
       <section className="public-section faq-section">
         <div>
@@ -422,39 +344,6 @@ export function ClippersPage() {
     </PublicShell>
   );
 }
-export function AboutPage() {
-  return (
-    <PublicShell>
-      <section className="about-layout public-section">
-        <div>
-          <Label>About ChannelScale</Label>
-          <h1>
-            Built by someone
-            <br />
-            <span>who does the work.</span>
-          </h1>
-          <p>
-            ChannelScale brings production experience and editorial judgment to
-            the part of content that often gets left behind: turning useful
-            recordings into a consistent publishing and distribution plan.
-          </p>
-          <p>
-            I’m Carter. My work spans production, editing, technical operations
-            and repurposing. The goal here is straightforward: give your content
-            a reliable home, a clear owner and a reason to keep getting better.
-          </p>
-          <p>
-            We start with your footage and your business. Then we build the
-            rhythm around it.
-          </p>
-          <LinkButton href="/apply">Talk with Carter</LinkButton>
-        </div>
-        <img src="/work/carter.jpeg" alt="Carter, founder of ChannelScale" />
-      </section>
-      <CaseCards />
-    </PublicShell>
-  );
-}
 export function FAQPage() {
   return (
     <PublicShell>
@@ -482,9 +371,9 @@ export function ApplyPage() {
           <h1>Your footage.<br /><span>A clear next step.</span></h1>
           <p>Tell us what you’re making and where you want it to go. We’ll discuss a managed content scope, a clipping campaign, or both.</p>
           <ol className="apply-steps">
-            <li><span>01</span>Share your content and goals</li>
-            <li><span>02</span>Talk through the fit with Carter</li>
-            <li><span>03</span>Agree the scope, fee and calendar</li>
+            <li>Share your content and goals</li>
+            <li>Talk through the fit</li>
+            <li>Agree the scope, fee and calendar</li>
           </ol>
           <p className="scope-note">No commitment from an inquiry. Custom pricing after source review.</p>
         </div>

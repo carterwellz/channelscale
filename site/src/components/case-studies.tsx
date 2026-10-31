@@ -10,7 +10,6 @@ import {
   bowmarResults,
   bowmarVideos,
   compact,
-  evidenceDate,
   caseAccounts,
   type CaseAccount,
   type CounterpointProof,
@@ -23,7 +22,7 @@ const cases = [
     category: "Clipping & channel operations",
     context: "Built from launch: editorial selection, short-form editing and ongoing channel operations.",
     headline: compact(bibleResults.youtubeViews),
-    metric: "YouTube views",
+    metric: "Recorded YouTube views",
     secondary: "585K YouTube subscribers",
     accounts: caseAccounts.bible,
   },
@@ -33,7 +32,7 @@ const cases = [
     category: "Full production & clipping",
     context: "Long-form debates supported by production, editing and short-form repurposing.",
     headline: "1.88M",
-    metric: "hours of YouTube watch time",
+    metric: "Recorded YouTube watch hours",
     secondary: "8.82M lifetime YouTube views",
     accounts: caseAccounts.counterpoint,
   },
@@ -43,7 +42,7 @@ const cases = [
     category: "YouTube editing",
     context: "Short-form and long-form editing that keeps the story clear and the action moving.",
     headline: "~270M",
-    metric: "estimated views across our edits",
+    metric: "Estimated views across our edits",
     secondary: "Short-form & long-form editing",
     accounts: caseAccounts.bowmar,
   },
@@ -91,10 +90,6 @@ function CaseArtwork({ slug }: { slug: string }) {
           </span>
           <span>
             <strong>COUNTERPOINT</strong>
-            <span>
-              <PlatformIcon platform="youtube" />
-              @counterpointstudios
-            </span>
           </span>
         </div>
         <span className="case-open">
@@ -156,11 +151,7 @@ export function CaseCards({ full = false }: { full?: boolean }) {
       {!full && (
         <div className="section-heading">
           <div>
-            <div className="section-label">
-              <span />
-              Our work
-            </div>
-            <h2>Work behind the numbers.</h2>
+            <h2>Our work</h2>
           </div>
         </div>
       )}
@@ -187,7 +178,6 @@ export function CaseCards({ full = false }: { full?: boolean }) {
             </Link>
             <div className="case-card-sources">
               <AccountLinks accounts={c.accounts} />
-              <span className="case-proof-date">Snapshot: {evidenceDate}</span>
             </div>
           </article>
         ))}
@@ -299,18 +289,10 @@ function PlatformBars({
     </div>
   );
 }
-function SourceDetails({
-  children,
-  date = evidenceDate,
-}: {
-  children: ReactNode;
-  date?: string;
-}) {
+function SourceDetails({ children }: { children: ReactNode }) {
   return (
     <details className="result-sources">
-      <summary>
-        View sources <span>{date}</span>
-      </summary>
+      <summary>View sources</summary>
       <div className="result-sources-content">{children}</div>
     </details>
   );
@@ -355,7 +337,7 @@ export function BibleCase() {
           <ResultMetric
             primary
             value={compact(bibleResults.youtubeViews)}
-            label="YouTube views"
+            label="Recorded YouTube views"
             detail="Built and operated from launch"
           />
           <div className="result-from-zero">
@@ -370,14 +352,14 @@ export function BibleCase() {
               <div>
                 <strong>585K</strong>
                 <span className="result-current-bar" aria-hidden="true" />
-                <small>Oct. 22, 2026</small>
+                <small>Recorded total</small>
               </div>
             </div>
           </div>
         </section>
         <section className="result-section">
           <h2>Views across platforms</h2>
-          <p className="result-evidence-note">Instagram, TikTok and Facebook totals are owner-reported as of {ownerReportedViews.reportedAt}. Platform totals are separate audiences.</p>
+          <p className="result-evidence-note">Instagram, TikTok and Facebook view totals are owner-reported. Platform totals are separate.</p>
           <PlatformBars
             rows={[
               {
@@ -451,8 +433,7 @@ export function BibleCase() {
           </p>
           <p>
             Instagram views (128.7M), TikTok views (21.4M) and Facebook views
-            (65.8M) are account totals provided by the owner on{" "}
-            {ownerReportedViews.reportedAt}.
+            (65.8M) are account totals provided by the owner.
           </p>
           <p>
             TikTok @BibleAlive displays 49.1K followers. Facebook
@@ -467,12 +448,6 @@ export function BibleCase() {
   );
 }
 export function CounterpointCase({ proof }: { proof: CounterpointProof }) {
-  const date = new Date(proof.checkedAt).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
   return (
     <PublicShell>
       <div className="case-results">
@@ -481,7 +456,7 @@ export function CounterpointCase({ proof }: { proof: CounterpointProof }) {
           category="Full production & clipping"
           accounts={caseAccounts.counterpoint}
         />
-        <p className="result-evidence-note">YouTube snapshot: {date}. Production, editing and repurposing support the full show; these channel totals are not a forecast for an individual client.</p>
+        <p className="result-evidence-note">These recorded YouTube totals reflect the full show, not a forecast for an individual client.</p>
         <section
           className="result-metric-grid"
           aria-label="Counterpoint YouTube results"
@@ -509,7 +484,7 @@ export function CounterpointCase({ proof }: { proof: CounterpointProof }) {
         </section>
         <section className="result-section">
           <h2>Views across platforms</h2>
-          <p className="result-evidence-note">Instagram and TikTok totals are owner-reported as of {ownerReportedViews.reportedAt}.</p>
+          <p className="result-evidence-note">Instagram and TikTok view totals are owner-reported.</p>
           <PlatformBars
             rows={[
               {
@@ -530,7 +505,7 @@ export function CounterpointCase({ proof }: { proof: CounterpointProof }) {
             ]}
           />
         </section>
-        <SourceDetails date={date}>
+        <SourceDetails>
           <p>
             <a
               href="https://counterpoint.show/sponsor"
@@ -539,18 +514,14 @@ export function CounterpointCase({ proof }: { proof: CounterpointProof }) {
             >
               Counterpoint's live audience data
             </a>
-            .{" "}
-            {proof.refreshed
-              ? "YouTube figures refreshed"
-              : "Last verified YouTube snapshot"}{" "}
-            {date}. Average episode views includes public main episodes at least
-            20 minutes long, excluding Part 2 and members-only uploads.
+            . Recorded YouTube figures are based on the linked audience data.
+            Average episode views includes public main episodes at least 20
+            minutes long, excluding Part 2 and members-only uploads.
           </p>
           <p>
             Instagram views (16.1M) and TikTok views (5.6M) are account totals
-            provided by the owner on {ownerReportedViews.reportedAt}. The links
-            below are selected examples with public counts checked{" "}
-            {evidenceDate}. Instagram includes a Counterpoint clip published by
+            provided by the owner. The links below are selected examples with
+            public counts. Instagram includes a Counterpoint clip published by
             @thelastguerilla.
           </p>
           <PostSources
@@ -652,8 +623,8 @@ export function BowmarCase() {
           <p>
             The three linked YouTube Shorts total{" "}
             {bowmarResults.youtubeViews.toLocaleString("en-US")} views. Editing
-            credit confirmed by Carter. The additional 20M views across other
-            edits is Carter's estimate, bringing the combined estimate to
+            credit confirmed by ChannelScale’s owner. The additional 20M views across other
+            edits is the owner’s estimate, bringing the combined estimate to
             roughly 270M.
           </p>
           <ul className="result-source-links">

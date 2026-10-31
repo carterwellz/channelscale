@@ -13,14 +13,11 @@ function Nav() {
         <Link href="/work" onClick={() => setOpen(false)}>
           The work
         </Link>
-        <Link href="/#process" onClick={() => setOpen(false)}>
+        <Link href="/offer#process" onClick={() => setOpen(false)}>
           How it works
         </Link>
         <Link href="/offer" onClick={() => setOpen(false)}>
           Services
-        </Link>
-        <Link href="/about" onClick={() => setOpen(false)}>
-          About
         </Link>
         <Link href="/clippers" onClick={() => setOpen(false)}>
           For clippers
@@ -45,7 +42,6 @@ function Footer() {
     <footer className="public-footer">
       <div>
         <Brand />
-        <p>Short-form content and distribution.</p>
       </div>
       <div className="footer-links">
         <Link href="/work">Work</Link>

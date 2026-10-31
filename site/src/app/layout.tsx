@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | ChannelScale",
   },
   description:
-    "Clip selection, editing, approvals and publishing. 60 original clips a month across 4+ agreed platforms for brands and personalities.",
+    "Clip selection, editing, approvals and publishing. 60 original clips a month for brands and personalities.",
   robots: { index: false, follow: false },
 };
 export default function RootLayout({

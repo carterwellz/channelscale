@@ -1,11 +1,10 @@
 import { marketingMetadata } from "@/lib/marketing-metadata";
-export function generateStaticParams() { return ["work", "offer", "services", "about", "faq", "apply", "clippers", "privacy", "terms", "disclaimer"].map(page => ({page})); }
+export function generateStaticParams() { return ["work", "offer", "services", "faq", "apply", "clippers", "privacy", "terms", "disclaimer"].map(page => ({page})); }
 export async function generateMetadata({params}: {params: Promise<{page: string}>}) { return marketingMetadata((await params).page); }
 import { CaseStudiesIndex } from "@/components/case-studies";
 import { notFound } from "next/navigation";
 import {
   OfferPage,
-  AboutPage,
   FAQPage,
   ApplyPage,
   ClippersPage,
@@ -23,8 +22,6 @@ export default async function Page({
     case "offer":
     case "services":
       return <OfferPage />;
-    case "about":
-      return <AboutPage />;
     case "faq":
       return <FAQPage />;
     case "apply":
@@ -83,9 +80,9 @@ export default async function Page({
       return (
         <LegalPage kind="Project & results disclaimer">
           <p>
-            Selected work includes projects Carter operates or produces and is
-            labeled accordingly. An operated project is not presented as a
-            paying agency client.
+            Selected work includes projects operated or produced by ChannelScale’s
+            owner and is labeled accordingly. An operated project is not presented
+            as a paying agency client.
           </p>
           <p>
             Examples illustrate editorial and production work. They do not

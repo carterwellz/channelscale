@@ -28,7 +28,6 @@ const paths = new Set([
   "/",
   "/work",
   "/offer",
-  "/about",
   "/faq",
   "/apply",
   "/clippers",
@@ -50,6 +49,8 @@ export default {
       });
     if (url.pathname === "/services")
       return Response.redirect(`${url.origin}/offer`, 301);
+    if (url.pathname === "/about" || url.pathname === "/about/")
+      return Response.redirect(`${url.origin}/`, 301);
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(request);
     if (!["/api/intake", "/api/events"].includes(url.pathname))
       return json({ error: "Not found" }, 404);

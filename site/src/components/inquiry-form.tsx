@@ -15,11 +15,9 @@ export function InquiryForm() {
   const requestId = useRef("");
   const payload = useRef<Record<string, FormDataEntryValue> | null>(null);
   const submitting = useRef(false);
-  const [pilot, setPilot] = useState(false);
   const [serviceInterest, setServiceInterest] = useState("");
   useEffect(() => {
     const interest = new URLSearchParams(window.location.search).get("interest");
-    setPilot(interest === "pilot");
     if (interest === "managed") setServiceInterest("Managed content for my accounts");
     if (interest === "campaign") setServiceInterest("Clipping campaign");
   }, []);
@@ -62,7 +60,7 @@ export function InquiryForm() {
           <ClipboardCheck size={36} className="blue" />
           <h2>{preview ? "Local test complete." : "Your inquiry is in."}</h2>
           <p>{preview ? "Your details were validated locally. Nothing was sent to the production inbox." : "Thanks for sharing your content. We’ll review the details and follow up by email to discuss the fit and scope."}</p>
-          {!preview && <p>Want to choose a time now? Book a conversation with Carter.</p>}
+          {!preview && <p>Want to choose a time now? Book a conversation.</p>}
           <a className="button secondary" href="https://cal.com/carterw/30min" target="_blank" rel="noreferrer">View booking availability <ArrowUpRight size={16} /></a>
         </div>
       ) : (
@@ -81,13 +79,12 @@ export function InquiryForm() {
               <label>When would you like to start?<select name="deployment_timeline" defaultValue="" required><option value="" disabled>Select</option><option value="Now">As soon as there’s a fit</option><option value="Within 30 days">Within 30 days</option><option value="30 days or more">Later / exploring</option></select></label>
             </div>
             <label>Phone (optional)<input name="phone_number" type="tel" maxLength={100} autoComplete="tel" /></label>
-            <label className="inquiry-check"><input name="pilot_interest" type="checkbox" value="yes" checked={pilot} onChange={e => setPilot(e.target.checked)} />I’m interested in starting with a paid pilot.</label>
             <div className="inquiry-trap" aria-hidden="true"><label>Company website confirmation<input name="website_confirmation" tabIndex={-1} autoComplete="off" /></label></div>
           </fieldset>
           {error && <p className="error" role="alert">{error}</p>}
           <Button type="submit" busy={state === "busy"} disabled={uncertain}>{payload.current && error ? "Check this inquiry again" : production ? "Send inquiry" : "Test inquiry locally"}<ArrowRight size={16} /></Button>
           <small>By submitting, you agree we may email you about this inquiry. See our <Link href="/privacy">privacy policy</Link>.</small>
-          <p className="booking-alternative">Prefer to talk? <a href="https://cal.com/carterw/30min" target="_blank" rel="noreferrer">Book a conversation with Carter <ArrowUpRight size={13} /></a></p>
+          <p className="booking-alternative">Prefer to talk? <a href="https://cal.com/carterw/30min" target="_blank" rel="noreferrer">Book a conversation <ArrowUpRight size={13} /></a></p>
         </form>
       )}
     </div>

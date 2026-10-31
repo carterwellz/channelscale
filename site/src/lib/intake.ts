@@ -18,7 +18,7 @@ export function legacyIntakePayload(data: Intake) {
   return {
     schema_version: 2, request_id: data.request_id, first_name, last_name: last.join(" "),
     business_email: data.business_email, phone_number: data.phone_number, preferred_communication: "Email",
-    business_narrative: `${data.business_narrative}\n\nContent: ${data.source_url}\nFootage: ${data.footage_availability}\nPaid pilot interest: ${data.pilot_interest === "yes" ? "Yes" : "Not specified"}${data.service_interest ? `\nService interest: ${data.service_interest}` : ""}`,
+    business_narrative: `${data.business_narrative}\n\nContent: ${data.source_url}\nFootage: ${data.footage_availability}${data.service_interest ? `\nService interest: ${data.service_interest}` : ""}`,
     // Preserve receiver keys without inventing financial or publishing history.
     revenue_scale: "Not provided", marketing_spend: "Not provided", posting_history: "Not provided",
     deployment_timeline: data.deployment_timeline, source_url: data.source_url,
