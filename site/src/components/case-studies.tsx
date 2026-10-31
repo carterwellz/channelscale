@@ -206,7 +206,7 @@ export function CaseStudiesIndex() {
 function CaseCTA() {
   return (
     <section className="public-cta">
-      <h2>Put your content to work</h2>
+      <h2>Put your content to work.</h2>
       <LinkButton href="/apply">Discuss your content</LinkButton>
     </section>
   );
@@ -341,7 +341,7 @@ export function BibleCase() {
             detail="Built and operated from launch"
           />
           <div className="result-from-zero">
-            <h2>From zero to 585K subscribers</h2>
+            <h2>From zero to 585K subscribers.</h2>
             <div className="result-growth-chart">
               <div>
                 <strong>0</strong>
