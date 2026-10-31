@@ -357,27 +357,6 @@ small,
   margin-top: 5px;
   background: #fcfcff;
 }
-.digital-type {
-  display: inline-block;
-  position: relative;
-  font-weight: 650;
-  white-space: nowrap;
-}
-.digital-type-text {
-  display: inline-block;
-}
-.digital-type-noise {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .digital-type-noise {
-    display: none;
-  }
-}
 .hero > p {
   font-size: 16px;
   line-height: 1.85;
@@ -5193,4 +5172,201 @@ td .button {
 .marketing .case-cards-section .section-end a { min-height: 44px; font-size: 15px; font-weight: 600; }
 @media (max-width: 420px) {
   .marketing .case-proof-artwork { aspect-ratio: 1.65; }
+}
+
+/*
+ * Unslop polish pass (Oct 2026). Polish mode: keeps the white and royal-blue brand,
+ * Inter with Sora for display headlines, the layout and the service visuals.
+ * Fixes labels, the hero headline, glass, gradients, colored shadows, extra font
+ * families, tracking, radii, spacing and hover motion.
+ * Method from unslop by Damir Sokolovsky (@heydamir), CC BY 4.0.
+ */
+.marketing {
+  --ink-2: #4b5565;
+  --ink-3: #6b7487;
+  --hairline: #e3e8f2;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.marketing h1, .marketing h2, .marketing h3 { text-wrap: balance; }
+
+/* Navigation: a solid surface with a hairline, no glass blur */
+.marketing .public-nav {
+  top: 16px;
+  margin: 16px auto 0;
+  padding: 12px 16px 12px 20px;
+  gap: 32px;
+  border-color: var(--hairline);
+  border-radius: 16px;
+  background: #fff;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04), 0 8px 24px rgba(17, 24, 39, 0.04);
+}
+.marketing .public-nav nav { gap: 24px; font-size: 14px; color: var(--ink-2); }
+.marketing .public-nav nav > a:not(.button) { transition: color 150ms var(--ease); }
+.marketing .public-nav nav > a:not(.button):hover { color: var(--text); }
+.marketing .public-nav .button { min-height: 36px; padding: 8px 16px; font-size: 14px; }
+
+/* Section labels: sentence case, no pill; the small blue dot stays as the signature */
+.marketing .section-label {
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-2);
+}
+.marketing .hero .section-label { margin: 0 auto 24px; padding: 0; border: 0; border-radius: 0; background: none; letter-spacing: 0; }
+
+/* Hero: one solid headline, no ring and no animated texture over the words */
+.marketing .hero h1,
+.marketing .homepage .hero h1 {
+  max-width: 960px;
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+.marketing .hero h1 > span,
+.marketing .homepage .hero h1 > span {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--blue);
+  letter-spacing: inherit;
+}
+.marketing .homepage .hero > p { margin-top: 24px; color: var(--ink-2); }
+
+/* Audience paths: flat surfaces, neutral depth, one family */
+.marketing .homepage .audience-choices { gap: 16px; margin-top: 40px; }
+.marketing .homepage .audience-choice {
+  min-height: 164px;
+  padding: 24px 176px 24px 28px;
+  border-radius: 20px;
+  border-color: #dfe6f7;
+  background: #f3f6fd;
+  box-shadow: none;
+  transition: background-color 150ms var(--ease), border-color 150ms var(--ease), transform 120ms var(--ease);
+}
+.marketing .homepage .audience-choice:first-child { background: var(--blue); border-color: var(--blue); }
+.marketing .homepage .audience-choice:hover { transform: none; box-shadow: none; background: #ebf0fb; border-color: #c9d5f2; }
+.marketing .homepage .audience-choice:first-child:hover { background: #1d43f0; border-color: #1d43f0; }
+.marketing .homepage .audience-choice:active { transform: scale(0.98); }
+.marketing .homepage .audience-choice > span:first-child { font-family: inherit; font-weight: 500; }
+.marketing .homepage .audience-choice strong { letter-spacing: -0.02em; }
+.marketing .homepage .audience-choice:first-child .audience-choice-art { filter: none; }
+.marketing .homepage .audience-choice > .choice-arrow { width: 40px; height: 40px; }
+
+/* Service options: solid surfaces, neutral shadow, sentence-case kicker */
+.marketing .service-option-grid,
+.marketing .homepage .service-option-grid { gap: 16px; }
+.marketing .service-option {
+  padding: 32px;
+  border-color: var(--hairline);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+}
+.marketing .campaign-option { background: #f3f6fd; border-color: #dfe6f7; }
+.marketing .service-option-kicker,
+.marketing .campaign-listing > span {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-3);
+}
+.marketing .service-option h3 { margin: 12px 0; letter-spacing: -0.025em; }
+.marketing .service-option .service-option-note { margin: 0 0 16px; }
+.marketing .service-option .service-option-link { font-weight: 500; padding-top: 16px; border-top-color: var(--hairline); }
+.marketing .service-option .service-option-link svg { transition: transform 150ms var(--ease), background-color 150ms var(--ease); }
+.marketing .service-option-link { font-weight: 500; }
+
+/* Headings, sections and copy */
+.marketing .public-section { padding-top: 80px; padding-bottom: 80px; border-top-color: #eef1f6; }
+.marketing .homepage .service-options { padding-top: 80px; padding-bottom: 80px; }
+.marketing .public-section h2 { font-weight: 500; line-height: 1.15; letter-spacing: -0.025em; }
+.marketing .homepage .service-options h2 { letter-spacing: -0.03em; }
+.marketing .public-section p { line-height: 1.7; }
+.marketing .section-heading { gap: 32px; margin-bottom: 32px; }
+.marketing .fit-section h2, .marketing .handoff-section h2 { letter-spacing: -0.025em; }
+.marketing .subpage-intro { padding: 96px 24px 64px; }
+.marketing .subpage-intro h1 { line-height: 1.06; letter-spacing: -0.035em; }
+.marketing .subpage-intro p { color: var(--ink-2); }
+.marketing .handoff-header { font-weight: 500; }
+
+/* Process */
+.marketing .process-grid { gap: 32px; }
+.marketing .process-icon { width: 48px; height: 48px; border-radius: 12px; }
+.marketing .process-grid h3 { font-weight: 500; letter-spacing: -0.015em; }
+
+/* FAQ */
+.marketing .faq-section { gap: 64px; }
+.marketing .faq-list details { padding: 20px 0; }
+.marketing .faq-list summary { font-weight: 500; }
+.marketing .faq-list summary svg { transition: transform 180ms var(--ease); }
+.marketing .faq-list details > p { margin-top: 12px; }
+
+/* Case cards: figures in tabular numerals, calmer tracking */
+.marketing .case-card h3 { margin: 8px 0 24px; font-weight: 500; letter-spacing: -0.015em; }
+.marketing .case-number { letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.marketing .case-card p { margin-top: 20px; }
+.marketing .case-card-bottom { gap: 16px; padding-top: 16px; }
+.marketing .proof-audience strong,
+.marketing .case-metrics strong,
+.marketing .result-metric > strong,
+.marketing .result-platform-label > strong { font-variant-numeric: tabular-nums; }
+
+/* Closing calls to action */
+.marketing .public-cta { padding: 64px 24px; border-radius: 20px; border-color: #dfe6f7; }
+.marketing .public-cta h2 { letter-spacing: -0.025em; }
+.marketing .public-cta p { margin: 16px 0 24px; color: var(--ink-2); }
+.marketing .homepage .home-cta { padding: 64px 32px; border-radius: 20px; }
+.marketing .homepage .home-cta h2 { font-family: "Sora", Inter, system-ui, sans-serif; font-weight: 600; letter-spacing: -0.03em; }
+.marketing .homepage .home-cta-actions { margin-top: 24px; }
+.marketing .homepage .home-cta .button { padding: 12px 20px; min-height: 48px; }
+.marketing .homepage .home-cta .button:hover { background: #eef2ff; border-color: #eef2ff; }
+
+/* Footer */
+.marketing .public-footer { padding-bottom: 24px; }
+.marketing .footer-links { gap: 24px; padding-top: 8px; color: var(--ink-2); }
+.marketing .footer-bottom { padding-top: 24px; color: var(--ink-3); }
+
+/* Buttons: no glow, one easing curve, a small press */
+.marketing .button { transition: background-color 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease), transform 120ms var(--ease); }
+.marketing .button:hover { box-shadow: none; }
+.marketing .button:active { transform: scale(0.97); }
+.marketing a:focus-visible, .marketing button:focus-visible, .marketing summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+@media (min-width: 761px) and (max-width: 900px) {
+  .marketing .homepage .audience-choice { padding-right: 152px; }
+}
+@media (max-width: 760px) {
+  .marketing .public-section { padding-top: 48px; padding-bottom: 48px; }
+  .marketing .homepage .service-options { padding: 56px 20px; }
+  .marketing .subpage-intro { padding: 64px 20px 40px; }
+  .marketing .homepage .audience-choice { padding-right: 160px; }
+  .marketing .homepage .home-cta { margin: 8px 20px 56px; padding: 56px 24px; }
+}
+@media (max-width: 560px) {
+  .marketing .hero h1,
+  .marketing .homepage .hero h1 { font-size: clamp(34px, 9.5vw, 40px); line-height: 1.08; letter-spacing: -0.03em; }
+  .marketing .hero h1 > span,
+  .marketing .homepage .hero h1 > span { padding: 0; margin: 0; }
+  .marketing .hero .section-label { margin-bottom: 20px; }
+  .marketing .homepage .audience-choice { min-height: 128px; padding: 20px 152px 20px 24px; }
+  .marketing .homepage .service-options .section-heading { margin-bottom: 24px; }
+  .marketing .homepage .service-option-grid { gap: 12px; }
+  .marketing .homepage .service-option { padding: 24px; }
+  .marketing .section-label { margin-bottom: 12px; }
+  .marketing .public-cta { margin: 0 16px 48px; padding: 40px 20px; border-radius: 16px; }
+  .marketing .homepage .home-cta { padding: 48px 20px; border-radius: 16px; }
+}
+@media (max-width: 360px) {
+  .marketing .homepage .audience-choice { padding-right: 132px; }
 }

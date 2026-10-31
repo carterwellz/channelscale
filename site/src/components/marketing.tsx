@@ -16,7 +16,6 @@ import {
 import { LinkButton } from "./ui";
 import { CaseCards } from "./case-studies";
 import { PublicShell } from "./public-shell";
-import { DigitalType } from "./digital-type";
 import { clipperCampaigns } from "@/lib/clipper-campaigns";
 const WHOP_JOIN_URL = "https://whop.com/channelscale/products/noia-media-3/";
 const faq = [
@@ -72,7 +71,7 @@ function Process() {
           <h2>
             You bring the footage.
             <br />
-            We keep it moving.
+            We keep it moving
           </h2>
         </div>
       </div>
@@ -107,7 +106,7 @@ function CTA() {
   return (
     <section className="public-cta">
       <Label>Your next step</Label>
-      <h2>Let’s put your content to work.</h2>
+      <h2>Let’s put your content to work</h2>
       <p>
         Tell us what you’re making and how you want it to reach people.
         <br />
@@ -127,7 +126,7 @@ function Handoff() {
   return (
     <section className="public-section handoff-section">
       <Label>Managed content · a clear handoff</Label>
-      <h2>What you bring. What we take on.</h2>
+      <h2>What you bring. What we take on</h2>
       <div className="handoff-table" role="table" aria-label="Client and ChannelScale responsibilities">
         <div className="handoff-row handoff-header" role="row"><span role="columnheader">Stage</span><span role="columnheader">You bring</span><span role="columnheader">We manage</span></div>
         {rows.map(([stage, you, us]) => <div className="handoff-row" role="row" key={stage}><strong role="rowheader">{stage}</strong><p role="cell"><b className="mobile-cell-label">You bring</b>{you}</p><p role="cell"><b className="mobile-cell-label">We manage</b>{us}</p></div>)}
@@ -162,7 +161,7 @@ function ServiceOptions() {
             <p className="service-option-description">Independent clippers create and share your content on their own or campaign pages.</p>
             <img className="service-option-art" src="/service-visuals/clipping-campaigns.webp" width="1254" height="1254" alt="" aria-hidden="true" decoding="async" />
           </div>
-          <p className="service-option-note">Creator budget & management scoped separately.</p>
+          <p className="service-option-note">Creator budget and management scoped separately</p>
           <Link href="/apply?interest=campaign" className="service-option-link">Discuss a campaign <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </article>
       </div>
@@ -195,9 +194,7 @@ export function Home() {
         <h1>
           Grow your channels.
           <br />
-          <span>
-            <DigitalType>Reach beyond them.</DigitalType>
-          </span>
+          <span>Reach beyond them</span>
         </h1>
         <p>
           Short-form content for your channels. Clipping campaigns powered by creators.
@@ -207,7 +204,7 @@ export function Home() {
       <ServiceOptions />
       <CaseCards />
       <section className="home-cta">
-        <h2>Let’s talk about your content.</h2>
+        <h2>Let’s talk about your content</h2>
         <div className="home-cta-actions">
           <LinkButton href="/apply">Discuss your goals</LinkButton>
         </div>
@@ -246,7 +243,7 @@ export function OfferPage() {
         <h1>
           Your content.
           <br />
-          <span>More ways to reach people.</span>
+          <span>More ways to reach people</span>
         </h1>
         <p>
           Managed content for the accounts you own, or a separately scoped clipping campaign with independent creators. We’ll find the right fit for your goals.
@@ -256,7 +253,7 @@ export function OfferPage() {
       <ServiceOptions />
       <section className="public-section managed-intro">
         <Label>Managed content</Label>
-        <h2>Everything that keeps<br />your content moving.</h2>
+        <h2>Everything that keeps<br />your content moving</h2>
         <p>For your own accounts, we manage the work from source selection to publishing and learning.</p>
       </section>
       <section className="public-section service-grid">
@@ -272,7 +269,7 @@ export function OfferPage() {
       <section className="public-section campaign-explainer" id="campaigns">
         <div>
           <Label>Clipping campaigns</Label>
-          <h2>A wider path for<br />your content.</h2>
+          <h2>A wider path for<br />your content</h2>
         </div>
         <div>
           <p>For a suitable project, we can scope a separate campaign around approved footage, with independent creators making and posting clips to their own or campaign-specific pages.</p>
@@ -284,7 +281,7 @@ export function OfferPage() {
       <section className="public-section faq-section">
         <div>
           <Label>Clear expectations</Label>
-          <h2>The details matter.</h2>
+          <h2>The details matter</h2>
         </div>
         <FAQ />
       </section>
@@ -297,7 +294,7 @@ export function ClippersPage() {
     <PublicShell>
       <div className="subpage-intro clipper-intro">
         <Label>For clippers</Label>
-        <h1>Make clips.<br /><span>Find your people.</span></h1>
+        <h1>Make clips.<br /><span>Find your people</span></h1>
         <p>Join the ChannelScale community on Whop for short-form editors and creator-page operators. Find guidance, ask questions, and explore opportunities as they become available.</p>
         <div className="clipper-actions">
           <a className="button" href={WHOP_JOIN_URL}>Join free on Whop <ArrowUpRight size={16} /></a>
@@ -307,7 +304,7 @@ export function ClippersPage() {
       </div>
       <section className="public-section clipper-community">
         <div className="section-heading">
-          <div><Label>Inside the community</Label><h2>Start here. Make good work.<br />Keep getting better.</h2></div>
+          <div><Label>Inside the community</Label><h2>Start here. Make good work.<br />Keep getting better</h2></div>
           <p>A home for editors and creators who care about making thoughtful short-form content.</p>
         </div>
         <div className="clipper-community-grid">
@@ -319,7 +316,7 @@ export function ClippersPage() {
       <section className="public-section clipper-opportunities" id="opportunities">
         <div>
           <Label>Campaigns & opportunities</Label>
-          <h2>Find your next<br />opportunity.</h2>
+          <h2>Find your next<br />opportunity</h2>
         </div>
         <div>
           <div className="campaign-listing">
@@ -352,7 +349,7 @@ export function FAQPage() {
         <h1>
           Good questions.
           <br />
-          <span>Clear answers.</span>
+          <span>Clear answers</span>
         </h1>
       </div>
       <section className="public-section faq-standalone">
@@ -368,7 +365,7 @@ export function ApplyPage() {
       <section className="application-layout public-section">
         <div className="apply-intro">
           <Label>Let’s find the fit</Label>
-          <h1>Your footage.<br /><span>A clear next step.</span></h1>
+          <h1>Your footage.<br /><span>A clear next step</span></h1>
           <p>Tell us what you’re making and where you want it to go. We’ll discuss a managed content scope, a clipping campaign, or both.</p>
           <ol className="apply-steps">
             <li>Share your content and goals</li>
